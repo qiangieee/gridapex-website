@@ -24,12 +24,33 @@
         <span class="nav-brand-text">Grid<span>Apex</span></span>
       </a>
       <ul class="nav-links" id="navLinks">
-        <li><a href="#about">About</a></li>
-        <li><a href="#solutions">Solutions</a></li>
-        <li><a href="#technology">Technology</a></li>
-        <li><a href="#partners">Ecosystem</a></li>
-        <li><a href="#contact" class="nav-cta">Get Started</a></li>
+        <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="#solutions" data-i18n="nav.solutions">Solutions</a></li>
+        <li><a href="#technology" data-i18n="nav.technology">Technology</a></li>
+        <li><a href="#partners" data-i18n="nav.ecosystem">Ecosystem</a></li>
+        <li><a href="#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a></li>
       </ul>
+
+      <!-- Language Switcher -->
+      <div class="lang-switcher" id="langSwitcher">
+        <button class="lang-current" id="langToggle" aria-label="Select language">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+          <span id="langLabel">EN</span>
+          <svg class="chevron" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="6 9 12 15 18 9"/></svg>
+        </button>
+        <div class="lang-dropdown" id="langDropdown">
+          <button class="lang-option active" data-lang="en">
+            <span class="lang-flag">🇺🇸</span> English
+          </button>
+          <button class="lang-option" data-lang="ja">
+            <span class="lang-flag">🇯🇵</span> 日本語
+          </button>
+          <button class="lang-option" data-lang="zh">
+            <span class="lang-flag">🇨🇳</span> 中文
+          </button>
+        </div>
+      </div>
+
       <button class="burger" id="burger" aria-label="Toggle navigation">
         <span></span><span></span><span></span>
       </button>
@@ -41,13 +62,13 @@
     <div class="hero-content">
       <div class="hero-badge">
         <span class="pulse"></span>
-        Now Building — First 100MW Campus in Japan
+        <span data-i18n="hero.badge">Now Building — First 100MW Campus in Japan</span>
       </div>
-      <h1>AI-Ready <span class="gradient-text">Warm Shell</span> Data Centers</h1>
-      <p>Grid Apex designs, builds, and leases purpose-built AI-ready data center facilities in Japan — engineered from the ground up for the extreme power, cooling, and density demands of next-generation AI workloads.</p>
+      <h1 data-i18n-html="hero.title">AI-Ready <span class="gradient-text">Warm Shell</span> Data Centers</h1>
+      <p data-i18n="hero.subtitle">Grid Apex designs, builds, and leases purpose-built AI-ready data center facilities in Japan — engineered from the ground up for the extreme power, cooling, and density demands of next-generation AI workloads.</p>
       <div class="hero-actions">
-        <button class="btn-primary" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Partner With Us</button>
-        <button class="btn-outline" onclick="document.getElementById('solutions').scrollIntoView({behavior:'smooth'})">Our Approach</button>
+        <button class="btn-primary" data-i18n="hero.cta1" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Partner With Us</button>
+        <button class="btn-outline" data-i18n="hero.cta2" onclick="document.getElementById('solutions').scrollIntoView({behavior:'smooth'})">Our Approach</button>
       </div>
     </div>
     <div class="hero-glow"></div>
@@ -58,19 +79,19 @@
     <div class="container">
       <div class="stat-item reveal">
         <div class="stat-number" data-target="100" data-suffix="MW">0</div>
-        <div class="stat-label">Phase 1 Power Capacity</div>
+        <div class="stat-label" data-i18n="stats.power.label">Phase 1 Power Capacity</div>
       </div>
       <div class="stat-item reveal">
         <div class="stat-number" data-target="99" data-suffix=".999%">0</div>
-        <div class="stat-label">Designed Uptime SLA</div>
+        <div class="stat-label" data-i18n="stats.uptime.label">Designed Uptime SLA</div>
       </div>
       <div class="stat-item reveal">
         <div class="stat-number" data-target="6" data-suffix="mo">0</div>
-        <div class="stat-label">Prefab Deployment Speed</div>
+        <div class="stat-label" data-i18n="stats.deploy.label">Prefab Deployment Speed</div>
       </div>
       <div class="stat-item reveal">
         <div class="stat-number" data-target="100" data-suffix="kW+">0</div>
-        <div class="stat-label">Per-Rack Density</div>
+        <div class="stat-label" data-i18n="stats.density.label">Per-Rack Density</div>
       </div>
     </div>
   </section>
@@ -79,12 +100,12 @@
   <section class="about" id="about">
     <div class="container">
       <div class="about-text reveal">
-        <span class="section-label">Who We Are</span>
-        <h2 class="section-title">Your AI-Ready <span class="gradient-text">Real Estate Partner</span></h2>
-        <p class="section-subtitle" style="margin-bottom:1.5rem;">
+        <span class="section-label" data-i18n="about.label">Who We Are</span>
+        <h2 class="section-title" data-i18n-html="about.title">Your AI-Ready <span class="gradient-text">Real Estate Partner</span></h2>
+        <p class="section-subtitle" style="margin-bottom:1.5rem;" data-i18n="about.p1">
           Grid Apex is a startup building the next generation of AI-ready data centers in Japan. Our first 100MW campus is purpose-engineered from day one for the extreme power density, advanced cooling, and rapid scalability that AI workloads demand.
         </p>
-        <p class="section-subtitle">
+        <p class="section-subtitle" data-i18n="about.p2">
           Our core business is simple: we build AI-ready warm-shell facilities and lease the real estate to hyperscalers, AI labs, and enterprises — so tenants can deploy their GPU infrastructure into a space that's already optimized for them.
         </p>
       </div>
@@ -100,46 +121,46 @@
   <section class="solutions" id="solutions">
     <div class="container">
       <div class="solutions-header reveal">
-        <span class="section-label">What We Deliver</span>
-        <h2 class="section-title">AI-Ready <span class="gradient-text">Warm Shell</span> Leasing</h2>
-        <p class="section-subtitle">We build the facility. You bring the compute. Grid Apex delivers turnkey warm-shell data center space purpose-built for AI — ready for your hardware from day one.</p>
+        <span class="section-label" data-i18n="sol.label">What We Deliver</span>
+        <h2 class="section-title" data-i18n-html="sol.title">AI-Ready <span class="gradient-text">Warm Shell</span> Leasing</h2>
+        <p class="section-subtitle" data-i18n="sol.subtitle">We build the facility. You bring the compute. Grid Apex delivers turnkey warm-shell data center space purpose-built for AI — ready for your hardware from day one.</p>
       </div>
       <div class="solutions-grid">
 
         <div class="sol-card reveal">
           <div class="sol-icon">🏗️</div>
-          <h3>AI-Ready Warm Shell</h3>
-          <p>Fully built-out data center shells with high-density power, structural reinforcement, and cooling infrastructure pre-installed — ready for tenant fit-out with GPU racks and networking on move-in.</p>
+          <h3 data-i18n="sol1.title">AI-Ready Warm Shell</h3>
+          <p data-i18n="sol1.desc">Fully built-out data center shells with high-density power, structural reinforcement, and cooling infrastructure pre-installed — ready for tenant fit-out with GPU racks and networking on move-in.</p>
         </div>
 
         <div class="sol-card reveal">
           <div class="sol-icon purple">❄️</div>
-          <h3>Liquid Cooling Infrastructure</h3>
-          <p>Pre-plumbed direct-to-chip and rear-door liquid cooling systems supporting 100+ kW per rack, enabling tenants to deploy the densest AI hardware without thermal constraints.</p>
+          <h3 data-i18n="sol2.title">Liquid Cooling Infrastructure</h3>
+          <p data-i18n="sol2.desc">Pre-plumbed direct-to-chip and rear-door liquid cooling systems supporting 100+ kW per rack, enabling tenants to deploy the densest AI hardware without thermal constraints.</p>
         </div>
 
         <div class="sol-card reveal">
           <div class="sol-icon emerald">📦</div>
-          <h3>Prefab AI Containers</h3>
-          <p>Modular, factory-built AI compute containers that arrive pre-wired and pre-cooled — dramatically compressing deployment timelines from 18 months to as little as 6 months.</p>
+          <h3 data-i18n="sol3.title">Prefab AI Containers</h3>
+          <p data-i18n="sol3.desc">Modular, factory-built AI compute containers that arrive pre-wired and pre-cooled — dramatically compressing deployment timelines from 18 months to as little as 6 months.</p>
         </div>
 
         <div class="sol-card reveal">
           <div class="sol-icon hot">🔋</div>
-          <h3>Green Energy & Storage</h3>
-          <p>On-site renewable energy generation paired with grid-scale battery storage systems, reducing grid dependency and delivering sustainable power for energy-intensive AI workloads.</p>
+          <h3 data-i18n="sol4.title">Green Energy & Storage</h3>
+          <p data-i18n="sol4.desc">On-site renewable energy generation paired with grid-scale battery storage systems, reducing grid dependency and delivering sustainable power for energy-intensive AI workloads.</p>
         </div>
 
         <div class="sol-card reveal">
           <div class="sol-icon blue">⚡</div>
-          <h3>100MW Power Campus</h3>
-          <p>Our first campus in Japan is engineered for 100MW of IT load capacity with redundant utility feeds, on-site generation, and the electrical backbone to support massive GPU deployments.</p>
+          <h3 data-i18n="sol5.title">100MW Power Campus</h3>
+          <p data-i18n="sol5.desc">Our first campus in Japan is engineered for 100MW of IT load capacity with redundant utility feeds, on-site generation, and the electrical backbone to support massive GPU deployments.</p>
         </div>
 
         <div class="sol-card reveal">
           <div class="sol-icon">🤝</div>
-          <h3>Flexible Lease Terms</h3>
-          <p>Custom lease structures from single halls to full campus builds, with scalable power increments — allowing tenants to grow from initial deployment to full-scale AI operations.</p>
+          <h3 data-i18n="sol6.title">Flexible Lease Terms</h3>
+          <p data-i18n="sol6.desc">Custom lease structures from single halls to full campus builds, with scalable power increments — allowing tenants to grow from initial deployment to full-scale AI operations.</p>
         </div>
 
       </div>
@@ -150,30 +171,30 @@
   <section class="infrastructure" id="technology">
     <div class="container">
       <div class="infra-header reveal">
-        <span class="section-label">Our Technology</span>
-        <h2 class="section-title">Why Grid Apex Is <span class="gradient-text">AI-First</span></h2>
-        <p class="section-subtitle">Every design decision — from the foundation slab to the cooling manifolds — is made with the unique demands of AI compute in mind.</p>
+        <span class="section-label" data-i18n="tech.label">Our Technology</span>
+        <h2 class="section-title" data-i18n-html="tech.title">Why Grid Apex Is <span class="gradient-text">AI-First</span></h2>
+        <p class="section-subtitle" data-i18n="tech.subtitle">Every design decision — from the foundation slab to the cooling manifolds — is made with the unique demands of AI compute in mind.</p>
       </div>
       <div class="infra-timeline">
         <div class="infra-item reveal">
           <span class="infra-number">01</span>
-          <h3>Liquid Cooling by Design</h3>
-          <p>Our warm shells arrive with liquid cooling infrastructure pre-installed — chilled water distribution, manifold connections, and rear-door heat exchanger capacity — eliminating the #1 bottleneck for high-density GPU deployment.</p>
+          <h3 data-i18n="tech1.title">Liquid Cooling by Design</h3>
+          <p data-i18n="tech1.desc">Our warm shells arrive with liquid cooling infrastructure pre-installed — chilled water distribution, manifold connections, and rear-door heat exchanger capacity — eliminating the #1 bottleneck for high-density GPU deployment.</p>
         </div>
         <div class="infra-item reveal">
           <span class="infra-number">02</span>
-          <h3>Prefabricated, Fast-Deploy Modules</h3>
-          <p>Factory-built AI compute containers are manufactured in parallel with site work, pre-tested, and shipped ready to connect — compressing typical 18-month builds to 6 months or less.</p>
+          <h3 data-i18n="tech2.title">Prefabricated, Fast-Deploy Modules</h3>
+          <p data-i18n="tech2.desc">Factory-built AI compute containers are manufactured in parallel with site work, pre-tested, and shipped ready to connect — compressing typical 18-month builds to 6 months or less.</p>
         </div>
         <div class="infra-item reveal">
           <span class="infra-number">03</span>
-          <h3>Green Energy & Battery Storage</h3>
-          <p>On-site solar, grid-scale battery systems, and Japan's renewable energy credits ensure that AI workloads run on clean power — meeting ESG requirements and reducing long-term operating costs.</p>
+          <h3 data-i18n="tech3.title">Green Energy & Battery Storage</h3>
+          <p data-i18n="tech3.desc">On-site solar, grid-scale battery systems, and Japan's renewable energy credits ensure that AI workloads run on clean power — meeting ESG requirements and reducing long-term operating costs.</p>
         </div>
         <div class="infra-item reveal">
           <span class="infra-number">04</span>
-          <h3>100MW Power-Dense Foundation</h3>
-          <p>Redundant utility feeds, on-site backup generation, and an electrical distribution system rated for 100+ kW per rack — ensuring the campus can absorb the densest GPU hardware available today and tomorrow.</p>
+          <h3 data-i18n="tech4.title">100MW Power-Dense Foundation</h3>
+          <p data-i18n="tech4.desc">Redundant utility feeds, on-site backup generation, and an electrical distribution system rated for 100+ kW per rack — ensuring the campus can absorb the densest GPU hardware available today and tomorrow.</p>
         </div>
       </div>
     </div>
@@ -181,7 +202,7 @@
 
   <!-- ====== PARTNERS ====== -->
   <section class="partners" id="partners">
-    <div class="partners-title">Built for the Leaders of AI</div>
+    <div class="partners-title" data-i18n="partners.title">Built for the Leaders of AI</div>
     <div class="partners-track" id="partnersTrack">
       <span class="partner-logo">NVIDIA</span>
       <span class="partner-logo">AMD</span>
@@ -211,10 +232,10 @@
   <section class="cta-section" id="contact">
     <div class="container">
       <div class="cta-box reveal">
-        <span class="section-label" style="justify-content:center;">Get in Touch</span>
-        <h2 class="section-title">Secure Your Space in Japan's <span class="gradient-text">AI Future</span></h2>
-        <p class="section-subtitle">Our first 100MW AI-ready campus is under construction. Whether you need a single hall or an entire building, let's discuss how Grid Apex can be your launchpad in Japan.</p>
-        <button class="btn-primary" onclick="window.location.href='mailto:contact@gridapex.ai'">Contact Our Team</button>
+        <span class="section-label" style="justify-content:center;" data-i18n="cta.label">Get in Touch</span>
+        <h2 class="section-title" data-i18n-html="cta.title">Secure Your Space in Japan's <span class="gradient-text">AI Future</span></h2>
+        <p class="section-subtitle" data-i18n="cta.subtitle">Our first 100MW AI-ready campus is under construction. Whether you need a single hall or an entire building, let's discuss how Grid Apex can be your launchpad in Japan.</p>
+        <button class="btn-primary" data-i18n="cta.button" onclick="window.location.href='mailto:contact@gridapex.ai'">Contact Our Team</button>
       </div>
     </div>
   </section>
@@ -228,34 +249,34 @@
             <img src="assets/logo.png" alt="Grid Apex" style="width:36px;height:36px;" />
             <span class="nav-brand-text">Grid<span>Apex</span></span>
           </a>
-          <p>Building AI-ready warm-shell data centers in Japan — engineered for the future of artificial intelligence.</p>
+          <p data-i18n="footer.desc">Building AI-ready warm-shell data centers in Japan — engineered for the future of artificial intelligence.</p>
         </div>
         <div class="footer-col">
-          <h4>Company</h4>
-          <a href="#about">About Us</a>
-          <a href="#">Careers</a>
-          <a href="#">Press</a>
-          <a href="#">Blog</a>
+          <h4 data-i18n="footer.company">Company</h4>
+          <a href="#about" data-i18n="footer.about">About Us</a>
+          <a href="#" data-i18n="footer.careers">Careers</a>
+          <a href="#" data-i18n="footer.press">Press</a>
+          <a href="#" data-i18n="footer.blog">Blog</a>
         </div>
         <div class="footer-col">
-          <h4>Solutions</h4>
-          <a href="#solutions">Warm Shell Leasing</a>
-          <a href="#solutions">Liquid Cooling</a>
-          <a href="#solutions">Prefab AI Containers</a>
-          <a href="#solutions">Green Energy</a>
+          <h4 data-i18n="footer.solutions">Solutions</h4>
+          <a href="#solutions" data-i18n="footer.sol1">Warm Shell Leasing</a>
+          <a href="#solutions" data-i18n="footer.sol2">Liquid Cooling</a>
+          <a href="#solutions" data-i18n="footer.sol3">Prefab AI Containers</a>
+          <a href="#solutions" data-i18n="footer.sol4">Green Energy</a>
         </div>
         <div class="footer-col">
-          <h4>Resources</h4>
-          <a href="#">Documentation</a>
-          <a href="#">Status Page</a>
-          <a href="#">Security</a>
-          <a href="#contact">Contact</a>
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <a href="#" data-i18n="footer.docs">Documentation</a>
+          <a href="#" data-i18n="footer.status">Status Page</a>
+          <a href="#" data-i18n="footer.security">Security</a>
+          <a href="#contact" data-i18n="footer.contact">Contact</a>
         </div>
       </div>
       <div class="footer-bottom">
-        <span>&copy; 2026 Grid Apex Inc. All rights reserved.</span>
+        <span data-i18n="footer.copyright">&copy; 2026 Grid Apex Inc. All rights reserved.</span>
         <span>
-          <a href="#">Privacy</a> &nbsp;·&nbsp; <a href="#">Terms</a>
+          <a href="#" data-i18n="footer.privacy">Privacy</a> &nbsp;·&nbsp; <a href="#" data-i18n="footer.terms">Terms</a>
         </span>
       </div>
     </div>
@@ -263,6 +284,7 @@
 
 </div><!-- /.page-wrapper -->
 
+<script src="translations.js"></script>
 <script src="main.js"></script>
 </body>
 </html>

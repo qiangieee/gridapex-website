@@ -194,6 +194,90 @@ img { max-width: 100%; display: block; }
 }
 .nav-cta::after { display: none !important; }
 
+/* Language Switcher */
+.lang-switcher {
+  position: relative;
+  margin-left: .5rem;
+}
+.lang-current {
+  display: flex;
+  align-items: center;
+  gap: .4rem;
+  padding: .45rem .8rem;
+  border-radius: var(--radius-sm);
+  background: rgba(255, 255, 255, .05);
+  border: 1px solid rgba(255, 255, 255, .1);
+  color: var(--text-secondary);
+  font-family: var(--font-display);
+  font-size: .8rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: border-color .3s, background .3s, color .3s;
+  letter-spacing: .5px;
+}
+.lang-current:hover {
+  border-color: var(--accent-cyan);
+  color: var(--text-primary);
+  background: rgba(0, 212, 255, .06);
+}
+.lang-current .chevron {
+  transition: transform .3s var(--ease-out);
+}
+.lang-switcher.open .lang-current .chevron {
+  transform: rotate(180deg);
+}
+.lang-dropdown {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 150px;
+  padding: .4rem;
+  background: rgba(12, 18, 40, 0.92);
+  backdrop-filter: blur(20px) saturate(1.4);
+  -webkit-backdrop-filter: blur(20px) saturate(1.4);
+  border: 1px solid rgba(255, 255, 255, .08);
+  border-radius: var(--radius-md);
+  box-shadow: 0 12px 40px rgba(0, 0, 0, .5);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-8px);
+  transition: opacity .25s var(--ease-out), transform .25s var(--ease-out), visibility .25s;
+  z-index: 1001;
+}
+.lang-switcher.open .lang-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+.lang-option {
+  display: flex;
+  align-items: center;
+  gap: .6rem;
+  width: 100%;
+  padding: .55rem .8rem;
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: .85rem;
+  font-weight: 500;
+  cursor: pointer;
+  border-radius: var(--radius-sm);
+  transition: background .2s, color .2s;
+}
+.lang-option:hover {
+  background: rgba(0, 212, 255, .08);
+  color: var(--text-primary);
+}
+.lang-option.active {
+  color: var(--accent-cyan);
+  background: rgba(0, 212, 255, .06);
+}
+.lang-flag {
+  font-size: 1.1rem;
+  line-height: 1;
+}
+
 /* Mobile burger */
 .burger {
   display: none;

@@ -248,3 +248,94 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     }
   });
 });
+
+// ─── 8. Internationalization (i18n) ─────────────────────
+(function initI18n() {
+  const SUPPORTED_LANGS = ['en', 'ja', 'zh'];
+  const LANG_LABELS = { en: 'EN', ja: 'JA', zh: 'ZH' };
+
+  // Detect best language: saved preference > browser language > fallback
+  function detectLanguage() {
+    // 1. Check localStorage
+    const saved = localStorage.getItem('gridapex-lang');
+    if (saved && SUPPORTED_LANGS.includes(saved)) return saved;
+
+    // 2. Check browser language
+    const browserLangs = navigator.languages || [navigator.language || 'en'];
+    for (const bl of browserLangs) {
+      const code = bl.toLowerCase().split('-')[0]; // "ja-JP" → "ja", "zh-CN" → "zh"
+      if (SUPPORTED_LANGS.includes(code)) return code;
+    }
+
+    // 3. Fallback
+    return 'en';
+  }
+
+  // Apply translations to all elements with data-i18n or data-i18n-html
+  function applyLanguage(lang) {
+    if (typeof TRANSLATIONS === 'undefined') return;
+
+    // data-i18n → textContent
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (TRANSLATIONS[key] && TRANSLATIONS[key][lang]) {
+        el.textContent = TRANSLATIONS[key][lang];
+      }
+    });
+
+    // data-i18n-html → innerHTML (for elements containing gradient-text spans)
+    document.querySelectorAll('[data-i18n-html]').forEach(el => {
+      const key = el.getAttribute('data-i18n-html');
+      if (TRANSLATIONS[key] && TRANSLATIONS[key][lang]) {
+        el.innerHTML = TRANSLATIONS[key][lang];
+      }
+    });
+
+    // Update <html lang>
+    document.documentElement.lang = lang;
+
+    // Update switcher UI
+    const langLabel = document.getElementById('langLabel');
+    if (langLabel) langLabel.textContent = LANG_LABELS[lang];
+
+    // Update active state in dropdown
+    document.querySelectorAll('.lang-option').forEach(btn => {
+      btn.classList.toggle('active', btn.dataset.lang === lang);
+    });
+
+    // Save preference
+    localStorage.setItem('gridapex-lang', lang);
+  }
+
+  // Toggle dropdown
+  const switcher = document.getElementById('langSwitcher');
+  const toggle = document.getElementById('langToggle');
+  const dropdown = document.getElementById('langDropdown');
+
+  if (toggle && switcher) {
+    toggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      switcher.classList.toggle('open');
+    });
+
+    // Close dropdown on outside click
+    document.addEventListener('click', (e) => {
+      if (!switcher.contains(e.target)) {
+        switcher.classList.remove('open');
+      }
+    });
+
+    // Language option buttons
+    dropdown.querySelectorAll('.lang-option').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const lang = btn.dataset.lang;
+        applyLanguage(lang);
+        switcher.classList.remove('open');
+      });
+    });
+  }
+
+  // Auto-detect and apply on page load
+  const detectedLang = detectLanguage();
+  applyLanguage(detectedLang);
+})();
