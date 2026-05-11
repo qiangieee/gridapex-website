@@ -317,9 +317,8 @@ img { max-width: 100%; display: block; }
   font-size: .8rem;
   font-weight: 500;
   color: var(--accent-cyan);
-  margin-bottom: 2rem;
+  margin-bottom: .75rem;
   animation: fadeInUp .8s var(--ease-out) both;
-  position: relative;
   cursor: pointer;
 }
 .hero-badge .pulse {
@@ -330,30 +329,28 @@ img { max-width: 100%; display: block; }
   animation: pulse 2s infinite;
 }
 
-/* Badge hover popup — campus image */
-.badge-popup {
-  position: absolute;
-  bottom: calc(100% + 14px);
-  left: calc(100% + 14px);
-  width: 360px;
+/* Badge slide-out — campus image */
+.badge-slideout {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height .5s var(--ease-out), margin .5s var(--ease-out);
+  margin-bottom: 0;
+}
+.hero-badge:hover + .badge-slideout,
+.badge-slideout:hover {
+  max-height: 300px;
+  margin-bottom: 1.5rem;
+}
+.badge-slideout-inner {
+  width: 380px;
   border-radius: var(--radius-lg);
   overflow: hidden;
   background: rgba(12, 18, 40, 0.92);
   border: 1px solid rgba(0, 212, 255, .2);
-  box-shadow: 0 20px 60px rgba(0, 0, 0, .6), 0 0 30px rgba(0, 212, 255, .08);
-  opacity: 0;
-  visibility: hidden;
-  transform: translateY(-10px) scale(0.97);
-  transition: opacity .35s var(--ease-out), transform .35s var(--ease-out), visibility .35s;
-  z-index: 500;
-  pointer-events: none;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, .5), 0 0 24px rgba(0, 212, 255, .06);
+  margin-top: .75rem;
 }
-.hero-badge:hover .badge-popup {
-  opacity: 1;
-  visibility: visible;
-  transform: translateY(0) scale(1);
-}
-.badge-popup img {
+.badge-slideout-inner img {
   width: 100%;
   height: 200px;
   object-fit: cover;
