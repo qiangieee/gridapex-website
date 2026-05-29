@@ -62,7 +62,7 @@ const TRANSLATIONS = {
                          zh: "预铺设的直接芯片液冷和后门液冷系统，支持每机柜100kW以上，使租户能够在无热量限制的情况下部署最高密度的AI硬件。" },
 
   "sol3.title":        { en: "Prefab AI Factory",         ja: "プレハブAIコンテナ",           zh: "预制AI容器" },
-  "sol3.desc":         { en: "Modular, factory-built AI compute containers that arrive pre-wired and pre-cooled — dramatically compressing deployment timelines from 18 months to as little as 6 months.",
+  "sol3.desc":         { en: "Modular, factory-built AI computing pods that arrive pre-wired and pre-cooled — dramatically compressing deployment timelines from 18 months to as little as 6 months.",
                          ja: "配線・冷却済みの状態で届くモジュール式工場製AIコンピューティングコンテナ。展開期間を18ヶ月から最短6ヶ月に大幅短縮します。",
                          zh: "模块化工厂预制AI计算容器，预接线、预冷却交付——将部署周期从18个月大幅缩短至最快6个月。" },
 
@@ -96,7 +96,7 @@ const TRANSLATIONS = {
                          zh: "我们的温壳预装液冷基础设施——冷水分配、歧管连接和后门热交换器容量——消除了高密度GPU部署的第一大瓶颈。" },
 
   "tech2.title":       { en: "Prefabricated, Fast-Deploy Modules",  ja: "プレハブ式高速展開モジュール",    zh: "预制快速部署模块" },
-  "tech2.desc":        { en: "Factory-built AI compute containers are manufactured in parallel with site work, pre-tested, and shipped ready to connect — compressing typical 18-month builds to 6 months or less.",
+  "tech2.desc":        { en: "Factory-built AI computing pods are manufactured in parallel with site work, pre-tested, and shipped ready to connect — compressing typical 18-month builds to 6 months or less.",
                          ja: "工場製AIコンピューティングコンテナは現場工事と並行して製造・事前テストされ、接続準備完了状態で出荷。通常18ヶ月の建設を6ヶ月以下に短縮します。",
                          zh: "工厂预制AI计算容器与现场施工并行制造、预先测试，交付即可连接——将通常18个月的建设周期压缩至6个月或更短。" },
 
