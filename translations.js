@@ -61,7 +61,7 @@ const TRANSLATIONS = {
                          ja: "ラックあたり100kW以上をサポートするダイレクトチップ方式およびリアドア液冷システムを事前配管。テナントは熱制約なく最高密度のAIハードウェアを展開できます。",
                          zh: "预铺设的直接芯片液冷和后门液冷系统，支持每机柜100kW以上，使租户能够在无热量限制的情况下部署最高密度的AI硬件。" },
 
-  "sol3.title":        { en: "Prefab AI Containers",         ja: "プレハブAIコンテナ",           zh: "预制AI容器" },
+  "sol3.title":        { en: "Prefab AI Factory",         ja: "プレハブAIコンテナ",           zh: "预制AI容器" },
   "sol3.desc":         { en: "Modular, factory-built AI compute containers that arrive pre-wired and pre-cooled — dramatically compressing deployment timelines from 18 months to as little as 6 months.",
                          ja: "配線・冷却済みの状態で届くモジュール式工場製AIコンピューティングコンテナ。展開期間を18ヶ月から最短6ヶ月に大幅短縮します。",
                          zh: "模块化工厂预制AI计算容器，预接线、预冷却交付——将部署周期从18个月大幅缩短至最快6个月。" },
@@ -135,7 +135,7 @@ const TRANSLATIONS = {
   "footer.solutions":  { en: "Solutions",      ja: "ソリューション",   zh: "解决方案" },
   "footer.sol1":       { en: "Warm Shell Leasing",    ja: "ウォームシェルリース", zh: "温壳租赁" },
   "footer.sol2":       { en: "Liquid Cooling",        ja: "液冷システム",       zh: "液冷系统" },
-  "footer.sol3":       { en: "Prefab AI Containers",  ja: "プレハブAIコンテナ",  zh: "预制AI容器" },
+  "footer.sol3":       { en: "Prefab AI Factory",  ja: "プレハブAIコンテナ",  zh: "预制AI容器" },
   "footer.sol4":       { en: "Green Energy",          ja: "グリーンエネルギー",   zh: "绿色能源" },
   "footer.resources":  { en: "Resources",      ja: "リソース",       zh: "资源" },
   "footer.docs":       { en: "Documentation",  ja: "ドキュメント",    zh: "文档" },
