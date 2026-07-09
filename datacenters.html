@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Centers — Grid Apex</title>
+  <meta name="description" content="Grid Apex designs, builds, and leases purpose-built AI-ready data center facilities in Japan — engineered from the ground up for high density and power capacity." />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css?v=1.6" />
+</head>
+<body>
+
+<!-- Animated particle background -->
+<canvas id="bg-canvas"></canvas>
+
+<div class="page-wrapper">
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Grid Apex Logo" />
+        <span class="nav-brand-text">Grid<span>Apex</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="datacenters.html" class="active" data-i18n="nav.datacenters">Data Centers</a></li>
+        <li><a href="index.html#solutions" data-i18n="nav.solutions">Solutions</a></li>
+        <li><a href="index.html#technology" data-i18n="nav.technology">Technology</a></li>
+        <li><a href="index.html#partners" data-i18n="nav.ecosystem">Ecosystem</a></li>
+        <li><a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a></li>
+      </ul>
+
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero subpage-hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        <span data-i18n="datacenters.hero.badge">Japan Campuses</span>
+      </div>
+      <h1 data-i18n-html="datacenters.hero.title">AI-Ready <span class="gradient-text">Infrastructure</span> Sites</h1>
+      <p data-i18n="datacenters.hero.subtitle">Grid Apex builds high-capacity data center campuses in Japan's key markets. Discover our confirmed power infrastructure, modular layouts, and strategic utility layouts.</p>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- ====== SUB-NAV ====== -->
+  <div class="sub-nav">
+    <div class="container">
+      <div class="sub-nav-links">
+        <a href="#omitama" class="sub-nav-link">Project Omitama (Ibaraki)</a>
+        <a href="#mie" class="sub-nav-link">Project Mie (Mie)</a>
+        <a href="#comparison" class="sub-nav-link">Specifications Comparison</a>
+        <a href="#pipeline" class="sub-nav-link">Future Pipeline</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ====== SECTION: PROJECT OMITAMA ====== -->
+  <section class="spec-details-section" id="omitama">
+    <div class="container">
+      <div class="solutions-header reveal" style="text-align: left; margin-bottom: 3rem;">
+        <span class="section-label">Greater Tokyo Market</span>
+        <h2 class="section-title">Project <span class="gradient-text">Omitama</span> — Phase 1</h2>
+        <p class="section-subtitle" style="margin: 0;">50 MW Phase 1 AI-ready data center campus in Ibaraki, with secured power and long-term expansion potential to 650 MW.</p>
+      </div>
+
+      <div class="solutions-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="sol-card reveal">
+          <h3 style="margin-bottom: 1.5rem; color: var(--accent-cyan); font-family: var(--font-display); font-size: 1.25rem;">Project Overview</h3>
+          <ul class="spec-list">
+            <li><strong>Location:</strong> Omitama City, Ibaraki Prefecture, Japan, within the Greater Tokyo market</li>
+            <li><strong>Total campus area:</strong> 388,495 m² (approx. 117,520 tsubo)</li>
+            <li><strong>Phase 1 timeline:</strong> 50 MW modular data center with targeted power-on in 2027-2028</li>
+            <li><strong>Phase 1 land:</strong> 147,789.5 m²</li>
+            <li><strong>Expansion path:</strong> Phased campus plan to 200 MW and 400 MW+, with up to 650 MW total potential</li>
+            <li><strong>Zoning:</strong> Non-designated / unzoned; data center use permitted</li>
+            <li><strong>Land category:</strong> Forest / wilderness land; agricultural conversion approved</li>
+            <li><strong>Access:</strong> ~10 min from Ibaraki Airport</li>
+          </ul>
+        </div>
+
+        <div class="sol-card reveal" style="border-color: rgba(139, 92, 246, 0.25);">
+          <h3 style="margin-bottom: 1.5rem; color: var(--accent-purple); font-family: var(--font-display); font-size: 1.25rem;">Core Project Advantage — Confirmed Power</h3>
+          <ul class="spec-list advantages">
+            <li><strong>Confirmed power:</strong> 50 MW secured Phase 1 capacity with direct connection to the TEPCO grid.</li>
+            <li><strong>Grid readiness:</strong> Grid-side works substantially complete; power delivery targeted for 2027-2028.</li>
+            <li><strong>Cost-Efficient Modular Deployment:</strong> Phase 1 uses modular architecture to reduce construction complexity and cost, supporting targeted 2027 power-on; later phases scale into the secured 650 MW footprint.</li>
+            <li><strong>Market scarcity:</strong> Secured power in Greater Tokyo is the core bottleneck for AI-ready data centers.</li>
+            <li><strong>Scalability:</strong> Campus footprint supports a clear expansion path toward 650 MW as additional capacity is energized.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SECTION: PROJECT MIE ====== -->
+  <section class="spec-details-section" id="mie" style="background: var(--bg-secondary); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);">
+    <div class="container">
+      <div class="solutions-header reveal" style="text-align: left; margin-bottom: 3rem;">
+        <span class="section-label" style="color: var(--accent-purple);">Strategic Access Corridor</span>
+        <h2 class="section-title">Project <span class="gradient-text-purple">Mie</span></h2>
+        <p class="section-subtitle" style="margin: 0;">100 MW AI-ready data center campus in Mie, with secured power and strategic access to Japan's major metro markets.</p>
+      </div>
+
+      <div class="solutions-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));">
+        <div class="sol-card reveal" style="border-color: rgba(139, 92, 246, 0.25);">
+          <h3 style="margin-bottom: 1.5rem; color: var(--accent-purple); font-family: var(--font-display); font-size: 1.25rem;">Project Overview</h3>
+          <ul class="spec-list advantages">
+            <li><strong>Location:</strong> Tsu City, Mie Prefecture, Japan; strategically positioned between Tokyo and Osaka</li>
+            <li><strong>Capacity:</strong> 100 MW AI-ready colocation campus using modular deployment</li>
+            <li><strong>Site profile:</strong> 51,819 m² (approx. 15,675 tsubo) with approx. 28,000 m² usable area after grading</li>
+            <li><strong>Timeline:</strong> 100 MW capacity targeted for power-on in 2028-2029</li>
+            <li><strong>Zoning path:</strong> Mountainous forest land; rezoning toward Industrial Exclusive use</li>
+            <li><strong>Coverage / FAR:</strong> 60% / 200%</li>
+            <li><strong>Connectivity / resilience:</strong> Near submarine cable routes; 50m elevation supports strong BCP profile</li>
+            <li><strong>Access:</strong> Strong logistics access to technology corridors, Toyota's regional manufacturing base, and Chubu Centrair International Airport</li>
+          </ul>
+        </div>
+
+        <div class="sol-card reveal">
+          <h3 style="margin-bottom: 1.5rem; color: var(--accent-cyan); font-family: var(--font-display); font-size: 1.25rem;">Core Project Advantage — Confirmed Power</h3>
+          <ul class="spec-list">
+            <li><strong>Confirmed power:</strong> 100 MW officially confirmed by Chubu Electric Power.</li>
+            <li><strong>De-risked foundation:</strong> Secured power, site control, and rezoning pathway provide a strong execution basis for development.</li>
+            <li><strong>Cost-Efficient Modular Deployment:</strong> Modular rollout reduces construction complexity and supports staged delivery toward earlier revenue generation.</li>
+            <li><strong>Mie / Chubu industrial base:</strong> Strong regional economy, leading electronics manufacturing presence, and proximity to transmission infrastructure support execution and demand visibility.</li>
+            <li><strong>Market scarcity:</strong> 100 MW-scale grid access remains a key bottleneck for AI-ready data center development in Japan.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SECTION: SPEC COMPARISON ====== -->
+  <section class="spec-details-section" id="comparison">
+    <div class="container">
+      <div class="solutions-header reveal" style="text-align: center; margin-bottom: 3rem;">
+        <span class="section-label">Comparison Matrix</span>
+        <h2 class="section-title">Campus <span class="gradient-text">Specifications</span></h2>
+        <p class="section-subtitle" style="margin: 0 auto;">Direct side-by-side comparison of Grid Apex's primary digital infrastructure assets in Japan.</p>
+      </div>
+
+      <!-- Specs Table -->
+      <div class="spec-table-container reveal">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Parameter</th>
+              <th>Project Omitama (Phase 1)</th>
+              <th>Project Mie</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Location</strong></td>
+              <td>Omitama City, Ibaraki Prefecture (Greater Tokyo market)</td>
+              <td>Tsu City, Mie Prefecture (Strategic Tokyo-Osaka corridor)</td>
+            </tr>
+            <tr>
+              <td><strong>Phase 1 IT Load Capacity</strong></td>
+              <td>50 MW (Secured grid agreement)</td>
+              <td>100 MW (Officially confirmed grid agreement)</td>
+            </tr>
+            <tr>
+              <td><strong>Utility Power Connection</strong></td>
+              <td>TEPCO Grid (direct transmission line feed)</td>
+              <td>Chubu Electric Power (direct transmission line feed)</td>
+            </tr>
+            <tr>
+              <td><strong>Total Campus / Site Area</strong></td>
+              <td>388,495 m² (Phase 1 Land: 147,789.5 m²)</td>
+              <td>51,819 m² (~28,000 m² usable flat footprint after grading)</td>
+            </tr>
+            <tr>
+              <td><strong>Expansion Potential</strong></td>
+              <td>Scalable up to 650 MW footprint across later phases</td>
+              <td>100 MW total capacity target</td>
+            </tr>
+            <tr>
+              <td><strong>Zoning Status</strong></td>
+              <td>Non-designated / unzoned (Data Center use permitted)</td>
+              <td>Mountainous forest land (rezoning pathway to Industrial Exclusive)</td>
+            </tr>
+            <tr>
+              <td><strong>Target Power-On</strong></td>
+              <td>2027 - 2028</td>
+              <td>2028 - 2029</td>
+            </tr>
+            <tr>
+              <td><strong>Logistics & Airport Access</strong></td>
+              <td>~10 min to Ibaraki Airport</td>
+              <td>Centrair International Airport & major regional hubs</td>
+            </tr>
+            <tr>
+              <td><strong>Deployment Architecture</strong></td>
+              <td>Cost-efficient modular architecture for fast rollout</td>
+              <td>Modular rollout for staged delivery</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== SECTION: PIPELINE ====== -->
+  <section class="spec-details-section" id="pipeline">
+    <div class="container">
+      <div class="solutions-header reveal" style="text-align: left; margin-bottom: 3rem;">
+        <span class="section-label">Long-Term Growth Platform</span>
+        <h2 class="section-title">Future Expansion <span class="gradient-text">Pipeline</span></h2>
+        <p class="section-subtitle" style="margin: 0;">Additional Japan AI-ready data center opportunities to support long-term platform growth.</p>
+      </div>
+
+      <!-- Interactive Japan Map -->
+      <div class="japan-map-wrapper reveal">
+
+        <!-- Location Pins -->
+        <!-- Project Omitama -->
+        <div class="map-pin active-project" style="left: 60%; top: 57.5%;">
+          <div class="map-tooltip">
+            <div class="tooltip-header">
+              <h4>Project Omitama</h4>
+              <span class="tooltip-badge">Active</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Omitama City, Ibaraki Prefecture</p>
+              <p><strong>Site Area:</strong> 388,495 m²</p>
+              <p><strong>Target Power:</strong> 50 MW (Scalable to 650 MW)</p>
+              <p><strong>Status:</strong> TEPCO connection confirmed; agricultural conversion approved.</p>
+              <p><strong>Timeline:</strong> Target power-on 2027 – 2028</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project Mie -->
+        <div class="map-pin active-project" style="left: 47.5%; top: 68.33%;">
+          <div class="map-tooltip">
+            <div class="tooltip-header">
+              <h4>Project Mie</h4>
+              <span class="tooltip-badge">Active</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Tsu City, Mie Prefecture</p>
+              <p><strong>Site Area:</strong> 51,819 m²</p>
+              <p><strong>Target Power:</strong> 100 MW (Chubu Electric confirmed)</p>
+              <p><strong>Status:</strong> Land rezoning pathway to Industrial Exclusive.</p>
+              <p><strong>Timeline:</strong> Target power-on 2028 – 2029</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site A -->
+        <div class="map-pin pipeline-project" style="left: 48.75%; top: 66.67%;">
+          <div class="map-tooltip">
+            <div class="tooltip-header">
+              <h4>Site A</h4>
+              <span class="tooltip-badge pipeline">Pipeline</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Ichinomiya City, Aichi Prefecture</p>
+              <p><strong>Site Area:</strong> Approx. 12,467 m²</p>
+              <p><strong>Target Power:</strong> 40 MW</p>
+              <p><strong>Status:</strong> Negotiating land lease agreement with Chubu Electric Power Grid.</p>
+              <p><strong>Timeline:</strong> Dec. 2027 – Feb. 2028</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site B -->
+        <div class="map-pin pipeline-project" style="left: 22.5%; top: 78.33%;">
+          <div class="map-tooltip">
+            <div class="tooltip-header">
+              <h4>Site B</h4>
+              <span class="tooltip-badge pipeline">Pipeline</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Kurate District, Fukuoka Prefecture</p>
+              <p><strong>Site Area:</strong> Approx. 129,429 m²</p>
+              <p><strong>Target Power:</strong> 100 MW</p>
+              <p><strong>Status:</strong> Land grading completed.</p>
+              <p><strong>Timeline:</strong> 50 MW (Sep. 2028) / 50 MW (Sep. 2029)</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site C -->
+        <div class="map-pin pipeline-project" style="left: 17.5%; top: 90.0%;">
+          <div class="map-tooltip tooltip-right">
+            <div class="tooltip-header">
+              <h4>Site C</h4>
+              <span class="tooltip-badge pipeline">Pipeline</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Kirishima City, Kagoshima Prefecture</p>
+              <p><strong>Site Area:</strong> Approx. 287,191 m²</p>
+              <p><strong>Target Power:</strong> 30 MW</p>
+              <p><strong>Status:</strong> Grid contribution fee JPY 5.28M confirmed.</p>
+              <p><strong>Timeline:</strong> 31 months post-grid contract</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site D -->
+        <div class="map-pin pipeline-project" style="left: 52.5%; top: 65.0%;">
+          <div class="map-tooltip">
+            <div class="tooltip-header">
+              <h4>Site D</h4>
+              <span class="tooltip-badge pipeline">Pipeline</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Kakegawa City, Shizuoka Prefecture</p>
+              <p><strong>Site Area:</strong> Approx. 59,919 m²</p>
+              <p><strong>Target Power:</strong> 200 MW</p>
+              <p><strong>Status:</strong> Industrial zone; old factory demolished; cleared flat land.</p>
+              <p><strong>Timeline:</strong> Utility application pending review</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site E -->
+        <div class="map-pin pipeline-project" style="left: 56.25%; top: 61.67%;">
+          <div class="map-tooltip">
+            <div class="tooltip-header">
+              <h4>Site E</h4>
+              <span class="tooltip-badge pipeline">Pipeline</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Hadano City, Kanagawa Prefecture</p>
+              <p><strong>Site Area:</strong> Approx. 19,834 m²</p>
+              <p><strong>Target Power:</strong> 50 MW</p>
+              <p><strong>Status:</strong> Grid fee JPY 20M est.; former factory site with existing building.</p>
+              <p><strong>Timeline:</strong> 53 months post-grid contract</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site F -->
+        <div class="map-pin pipeline-project" style="left: 76.25%; top: 23.33%;">
+          <div class="map-tooltip tooltip-bottom tooltip-left">
+            <div class="tooltip-header">
+              <h4>Site F</h4>
+              <span class="tooltip-badge pipeline">Pipeline</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Tomakomai City, Hokkaido</p>
+              <p><strong>Site Area:</strong> Approx. 546,546 m²</p>
+              <p><strong>Target Power:</strong> 100 MW</p>
+              <p><strong>Status:</strong> Negotiating additional 100 MW connection with Hokkaido Electric.</p>
+              <p><strong>Timeline:</strong> Approx. 36 months post-grid contract</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Site G -->
+        <div class="map-pin pipeline-project" style="left: 59.38%; top: 60.83%;">
+          <div class="map-tooltip">
+            <div class="tooltip-header">
+              <h4>Site G</h4>
+              <span class="tooltip-badge pipeline">Pipeline</span>
+            </div>
+            <div class="tooltip-body">
+              <p><strong>Location:</strong> Isumi City, Chiba Prefecture</p>
+              <p><strong>Site Area:</strong> Approx. 17,912 m²</p>
+              <p><strong>Target Power:</strong> 30 MW</p>
+              <p><strong>Status:</strong> Located 27 km from Boso Peninsula submarine cable station.</p>
+              <p><strong>Timeline:</strong> Utility application pending review</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Pipeline Specifications Table -->
+      <div class="spec-table-container reveal" style="margin-top: 3rem;">
+        <table class="spec-table">
+          <thead>
+            <tr>
+              <th>Site Name</th>
+              <th>Location</th>
+              <th>Site Area</th>
+              <th>Target Power Capacity</th>
+              <th>Target Power Timeline</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>Site A</strong></td>
+              <td>Ichinomiya City, Aichi Prefecture</td>
+              <td>Approx. 12,467 m²</td>
+              <td>40 MW</td>
+              <td>Dec. 2027 – Feb. 2028</td>
+              <td>Power capacity confirmed; negotiating land lease agreement with Chubu Electric Power Grid</td>
+            </tr>
+            <tr>
+              <td><strong>Site B</strong></td>
+              <td>Kurate District, Fukuoka Prefecture</td>
+              <td>Approx. 129,429 m²</td>
+              <td>100 MW</td>
+              <td>50 MW (Sep. 2028) / 50 MW (Sep. 2029)</td>
+              <td>Land grading completed</td>
+            </tr>
+            <tr>
+              <td><strong>Site C</strong></td>
+              <td>Makizono-cho, Kirishima City, Kagoshima Prefecture</td>
+              <td>Approx. 287,191 m²</td>
+              <td>30 MW</td>
+              <td>31 months post-grid contract execution</td>
+              <td>Grid construction contribution fee confirmed at JPY 5.28 million (approx. US$33k)</td>
+            </tr>
+            <tr>
+              <td><strong>Site D</strong></td>
+              <td>Hosoya, Kakegawa City, Shizuoka Prefecture</td>
+              <td>Approx. 59,919 m²</td>
+              <td>200 MW</td>
+              <td>Utility application pending review</td>
+              <td>Located in an industrial zone; old factory demolished, currently cleared flat land</td>
+            </tr>
+            <tr>
+              <td><strong>Site E</strong></td>
+              <td>Hadano City, Kanagawa Prefecture</td>
+              <td>Approx. 19,834 m²</td>
+              <td>50 MW</td>
+              <td>53 months post-grid contract execution</td>
+              <td>Grid construction contribution fee estimated at JPY 20 million (approx. US$120k); former factory site with an existing building</td>
+            </tr>
+            <tr>
+              <td><strong>Site F</strong></td>
+              <td>Misawa, Tomakomai City, Hokkaido</td>
+              <td>Approx. 546,546 m²</td>
+              <td>100 MW</td>
+              <td>Approx. 36 months post-grid contract execution</td>
+              <td>Currently negotiating an additional 100 MW grid connection with Hokkaido Electric Power</td>
+            </tr>
+            <tr>
+              <td><strong>Site G</strong></td>
+              <td>Isumi City, Chiba Prefecture</td>
+              <td>Approx. 17,912 m²</td>
+              <td>30 MW</td>
+              <td>Utility application pending review</td>
+              <td>Strategically located approx. 27 km from the Boso Peninsula submarine cable landing station</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/logo.png" alt="Grid Apex" style="width:36px;height:36px;" />
+            <span class="nav-brand-text">Grid<span>Apex</span></span>
+          </a>
+          <p data-i18n="footer.desc">Building AI-ready warm-shell data centers in Japan — engineered for the future of artificial intelligence.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <a href="index.html#about" data-i18n="footer.about">About Us</a>
+          <a href="#" data-i18n="footer.careers">Careers</a>
+          <a href="#" data-i18n="footer.press">Press</a>
+          <a href="#" data-i18n="footer.blog">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.solutions">Solutions</h4>
+          <a href="index.html#solutions" data-i18n="footer.sol1">Warm Shell Leasing</a>
+          <a href="index.html#solutions" data-i18n="footer.sol2">Chilled Water Infrastructure</a>
+          <a href="index.html#solutions" data-i18n="footer.sol3">Prefab AI Factory</a>
+          <a href="index.html#solutions" data-i18n="footer.sol4">Green Energy</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <a href="#" data-i18n="footer.docs">Documentation</a>
+          <a href="#" data-i18n="footer.status">Status Page</a>
+          <a href="#" data-i18n="footer.security">Security</a>
+          <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">&copy; 2026 Grid Apex Inc. All rights reserved.</span>
+        <span>
+          <a href="#" data-i18n="footer.privacy">Privacy</a> &nbsp;·&nbsp; <a href="#" data-i18n="footer.terms">Terms</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /.page-wrapper -->
+
+<script src="main.js"></script>
+</body>
+</html>

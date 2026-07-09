@@ -4,10 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Grid Apex — AI-Ready Data Center Infrastructure in Japan</title>
-  <meta name="description" content="Grid Apex builds AI-ready warm-shell data centers in Japan, delivering turnkey 100MW facilities with liquid cooling, prefab AI containers, and green energy for the next wave of artificial intelligence." />
-  <meta name="keywords" content="AI data center, warm shell, data center leasing, Japan data center, liquid cooling, prefab AI containers, green energy, GPU infrastructure" />
+  <meta name="description" content="Grid Apex builds AI-ready warm-shell data centers in Japan, delivering turnkey 100MW facilities with chilled water loops, prefab AI containers, and green energy for the next wave of artificial intelligence." />
+  <meta name="keywords" content="AI data center, warm shell, data center leasing, Japan data center, chilled water loops, prefab AI containers, green energy, GPU infrastructure" />
   <link rel="icon" href="assets/logo.png" type="image/png" />
-  <link rel="stylesheet" href="styles.css" />
+  <link rel="stylesheet" href="styles.css?v=1.6" />
 </head>
 <body>
 
@@ -25,6 +25,7 @@
       </a>
       <ul class="nav-links" id="navLinks">
         <li><a href="#about" data-i18n="nav.about">About</a></li>
+        <li><a href="datacenters.html" data-i18n="nav.datacenters">Data Centers</a></li>
         <li><a href="#solutions" data-i18n="nav.solutions">Solutions</a></li>
         <li><a href="#technology" data-i18n="nav.technology">Technology</a></li>
         <li><a href="#partners" data-i18n="nav.ecosystem">Ecosystem</a></li>
@@ -41,21 +42,23 @@
   <!-- ====== HERO ====== -->
   <section class="hero" id="hero">
     <div class="hero-content">
-      <div class="hero-badge">
-        <span class="pulse"></span>
-        <span data-i18n="hero.badge">Now Building — First 100MW Campus in Japan</span>
-      </div>
-      <div class="badge-slideout">
-        <div class="badge-slideout-inner">
-          <img src="assets/mie-campus.jpg" alt="Grid Apex Campus — MIE, Japan" />
-          <span class="badge-popup-label">MIE, Japan</span>
-        </div>
-      </div>
       <h1 data-i18n-html="hero.title">AI-Ready <span class="gradient-text">Warm Shell</span> Data Centers</h1>
       <p data-i18n="hero.subtitle">Grid Apex designs, builds, and leases purpose-built AI-ready data center facilities in Japan — engineered from the ground up for the extreme power, cooling, and density demands of next-generation AI workloads.</p>
       <div class="hero-actions">
         <button class="btn-primary" data-i18n="hero.cta1" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">Partner With Us</button>
         <button class="btn-outline" data-i18n="hero.cta2" onclick="document.getElementById('solutions').scrollIntoView({behavior:'smooth'})">Our Approach</button>
+      </div>
+    </div>
+    <div class="hero-badge-panel">
+      <a href="datacenters.html" class="hero-badge hero-badge-large" style="text-decoration: none;">
+        <span class="pulse"></span>
+        <span data-i18n="hero.badge">Now Building — First 100MW Campus in Japan</span>
+      </a>
+      <div class="badge-slideout">
+        <div class="badge-slideout-inner">
+          <img src="assets/mie-campus.jpg" alt="Grid Apex Campus — MIE, Japan" />
+          <span class="badge-popup-label">MIE, Japan</span>
+        </div>
       </div>
     </div>
     <div class="hero-glow"></div>
@@ -122,8 +125,8 @@
 
         <div class="sol-card reveal">
           <div class="sol-icon purple">❄️</div>
-          <h3 data-i18n="sol2.title">Liquid Cooling Infrastructure</h3>
-          <p data-i18n="sol2.desc">Pre-plumbed direct-to-chip and rear-door liquid cooling systems supporting 100+ kW per rack, enabling tenants to deploy the densest AI hardware without thermal constraints.</p>
+          <h3 data-i18n="sol2.title">Chilled Water Infrastructure</h3>
+          <p data-i18n="sol2.desc">High-capacity facility chillers and chilled water loops engineered to support tenant-installed liquid cooling systems up to 300 kW per rack.</p>
         </div>
 
         <div class="sol-card reveal">
@@ -141,7 +144,7 @@
         <div class="sol-card reveal">
           <div class="sol-icon blue">⚡</div>
           <h3 data-i18n="sol5.title">100MW Power Campus</h3>
-          <p data-i18n="sol5.desc">Our first campus in Japan is engineered for 100MW of IT load capacity with redundant utility feeds, on-site generation, and the electrical backbone to support massive GPU deployments.</p>
+          <p data-i18n="sol5.desc">Our first campus in Japan is engineered for 100MW full load capacity with redundant utility feeds, on-site generation, and the electrical backbone to support massive GPU deployments.</p>
         </div>
 
         <div class="sol-card reveal">
@@ -160,13 +163,13 @@
       <div class="infra-header reveal">
         <span class="section-label" data-i18n="tech.label">Our Technology</span>
         <h2 class="section-title" data-i18n-html="tech.title">Why Grid Apex Is <span class="gradient-text">AI-First</span></h2>
-        <p class="section-subtitle" data-i18n="tech.subtitle">Every design decision — from the foundation slab to the cooling manifolds — is made with the unique demands of AI compute in mind.</p>
+        <p class="section-subtitle" data-i18n="tech.subtitle">Every design decision — from the foundation slab to the facility chilled water loops — is made with the unique demands of AI compute in mind.</p>
       </div>
       <div class="infra-timeline">
         <div class="infra-item reveal">
           <span class="infra-number">01</span>
-          <h3 data-i18n="tech1.title">Liquid Cooling by Design</h3>
-          <p data-i18n="tech1.desc">Our warm shells arrive with liquid cooling infrastructure pre-installed — chilled water distribution, manifold connections, and rear-door heat exchanger capacity — eliminating the #1 bottleneck for high-density GPU deployment.</p>
+          <h3 data-i18n="tech1.title">Chilled Water Loops</h3>
+          <p data-i18n="tech1.desc">Our warm shells feature pre-installed facility-level chillers and chilled water distribution loops, providing the primary cooling loop needed for high-density GPU deployment.</p>
         </div>
         <div class="infra-item reveal">
           <span class="infra-number">02</span>
@@ -181,7 +184,7 @@
         <div class="infra-item reveal">
           <span class="infra-number">04</span>
           <h3 data-i18n="tech4.title">100MW Power-Dense Foundation</h3>
-          <p data-i18n="tech4.desc">Redundant utility feeds, on-site backup generation, and an electrical distribution system rated for 100+ kW per rack — ensuring the campus can absorb the densest GPU hardware available today and tomorrow.</p>
+          <p data-i18n="tech4.desc">Redundant utility feeds, on-site backup generation, and an electrical distribution system rated for 300 kW per rack — ensuring the campus can absorb the densest GPU hardware available today and tomorrow.</p>
         </div>
       </div>
     </div>
@@ -228,7 +231,7 @@
         <div style="margin-top: 3rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 2rem; position: relative;">
           <div style="flex: 1; min-width: 250px; text-align: center;">
             <h4 style="color: var(--text-primary); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">US Headquarter</h4>
-            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">214-25 42nd Ave., 3rd Fl<br>Bayside, NY 11361</p>
+            <p style="color: var(--text-secondary); font-size: 0.9rem; line-height: 1.6;">1216 Broadway, Suite 1018<br>New York, NY 10001</p>
           </div>
           <div style="flex: 1; min-width: 250px; text-align: center;">
             <h4 style="color: var(--text-primary); font-size: 1rem; margin-bottom: 0.5rem; font-weight: 600;">Japan Office</h4>
@@ -260,7 +263,7 @@
         <div class="footer-col">
           <h4 data-i18n="footer.solutions">Solutions</h4>
           <a href="#solutions" data-i18n="footer.sol1">Warm Shell Leasing</a>
-          <a href="#solutions" data-i18n="footer.sol2">Liquid Cooling</a>
+          <a href="#solutions" data-i18n="footer.sol2">Chilled Water Infrastructure</a>
           <a href="#solutions" data-i18n="footer.sol3">Prefab AI Factory</a>
           <a href="#solutions" data-i18n="footer.sol4">Green Energy</a>
         </div>

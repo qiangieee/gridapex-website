@@ -56,7 +56,6 @@ body {
   background: var(--bg-primary);
   color: var(--text-primary);
   line-height: 1.7;
-  overflow-x: hidden;
 }
 a { text-decoration: none; color: inherit; }
 ul { list-style: none; }
@@ -98,6 +97,12 @@ img { max-width: 100%; display: block; }
 }
 .gradient-text {
   background: var(--grad-hero);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-purple {
+  background: linear-gradient(135deg, var(--accent-purple) 0%, var(--accent-hot) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -300,11 +305,21 @@ img { max-width: 100%; display: block; }
   min-height: 100vh;
   display: flex;
   align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
   padding: var(--section-pad);
   position: relative;
 }
 .hero-content {
-  max-width: 780px;
+  max-width: 620px;
+  flex: 1 1 50%;
+}
+.hero-badge-panel {
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: .75rem;
 }
 .hero-badge {
   display: inline-flex;
@@ -320,6 +335,24 @@ img { max-width: 100%; display: block; }
   margin-bottom: .75rem;
   animation: fadeInUp .8s var(--ease-out) both;
   cursor: pointer;
+}
+.hero-badge-large {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  gap: .75rem;
+  margin-bottom: 0;
+  box-shadow: 0 0 32px rgba(0, 212, 255, .18), 0 4px 24px rgba(0,0,0,.3);
+  transition: box-shadow .3s, transform .2s;
+  white-space: nowrap;
+}
+.hero-badge-large:hover {
+  box-shadow: 0 0 52px rgba(0, 212, 255, .35), 0 8px 32px rgba(0,0,0,.4);
+  transform: translateY(-2px);
+}
+.hero-badge-large .pulse {
+  width: 12px;
+  height: 12px;
 }
 .hero-badge .pulse {
   width: 8px;
@@ -337,6 +370,7 @@ img { max-width: 100%; display: block; }
   margin-bottom: 0;
 }
 .hero-badge:hover + .badge-slideout,
+.hero-badge-large:hover + .badge-slideout,
 .badge-slideout:hover {
   max-height: 300px;
   margin-bottom: 1.5rem;
@@ -756,6 +790,320 @@ img { max-width: 100%; display: block; }
 .reveal.visible {
   opacity: 1;
   transform: translateY(0);
+}
+
+/* Nav Link Active State */
+.nav-links a.active {
+  color: var(--text-primary);
+}
+.nav-links a.active::after {
+  width: 100%;
+}
+
+/* Subpage Layouts */
+.subpage-hero {
+  min-height: 55vh;
+  display: flex;
+  align-items: center;
+  padding-top: 8rem;
+  padding-bottom: 3rem;
+  position: relative;
+}
+.spec-details-section {
+  padding: var(--section-pad);
+  position: relative;
+}
+.spec-details-section .container {
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+}
+.spec-table-container {
+  margin-top: 4rem;
+  overflow-x: auto;
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  backdrop-filter: blur(12px);
+}
+.spec-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+.spec-table th, .spec-table td {
+  padding: 1.25rem 1.5rem;
+  border-bottom: 1px solid var(--border);
+}
+.spec-table th {
+  background: rgba(255, 255, 255, 0.02);
+  color: var(--accent-cyan);
+  font-family: var(--font-display);
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+.spec-table tr:last-child td {
+  border-bottom: none;
+}
+.spec-table td:first-child {
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.spec-table td:last-child {
+  color: var(--text-secondary);
+}
+.spec-table tr:hover td {
+  background: rgba(255, 255, 255, 0.01);
+}
+
+/* Sub-navigation for Data Centers */
+.sub-nav {
+  position: sticky;
+  top: 70px; /* navbar height */
+  left: 0;
+  width: 100%;
+  background: rgba(6, 8, 15, 0.8);
+  backdrop-filter: blur(16px);
+  border-bottom: 1px solid var(--border);
+  z-index: 99;
+  padding: 0.75rem 0;
+  transition: top 0.3s;
+}
+.sub-nav-links {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  padding: 0 clamp(1.5rem, 5vw, 6rem);
+}
+.sub-nav-link {
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  transition: color 0.3s, text-shadow 0.3s;
+  padding: 0.25rem 0.5rem;
+}
+.sub-nav-link:hover {
+  color: var(--accent-cyan);
+  text-shadow: 0 0 8px rgba(0, 212, 255, 0.5);
+}
+
+/* Custom Bullet List for Specifications */
+.spec-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.spec-list li {
+  position: relative;
+  padding-left: 1.5rem;
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+.spec-list li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.spec-list li::before {
+  content: '';
+  position: absolute;
+  left: 4px;
+  top: 10px;
+  width: 6px;
+  height: 6px;
+  background: var(--accent-cyan);
+  border-radius: 50%;
+  box-shadow: 0 0 8px var(--accent-cyan);
+}
+.spec-list.advantages li::before {
+  background: var(--accent-purple);
+  box-shadow: 0 0 8px var(--accent-purple);
+}
+
+/* Japan Map & Interactive Pinned Locations */
+.japan-map-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 900px;
+  margin: 4rem auto;
+  aspect-ratio: 4 / 3;
+  background-image: url('assets/japan_satellite_map.png');
+  background-size: cover;
+  background-position: center;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  backdrop-filter: blur(12px);
+  box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4), inset 0 0 32px rgba(255, 255, 255, 0.01);
+  overflow: hidden;
+}
+.japan-svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.island-path {
+  fill: rgba(0, 212, 255, 0.02);
+  stroke: rgba(0, 212, 255, 0.15);
+  stroke-width: 1.5;
+  transition: fill 0.3s var(--ease-out), stroke 0.3s;
+}
+.japan-map-wrapper:hover .island-path {
+  stroke: rgba(0, 212, 255, 0.3);
+  fill: rgba(0, 212, 255, 0.04);
+}
+.map-grid-overlay {
+  position: absolute;
+  inset: 0;
+  background-image: 
+    linear-gradient(rgba(0, 212, 255, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 212, 255, 0.02) 1px, transparent 1px);
+  background-size: 40px 40px;
+  pointer-events: none;
+}
+
+/* Pins & Pulse Animations */
+.map-pin {
+  position: absolute;
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  z-index: 10;
+  transition: transform 0.25s var(--ease-out);
+}
+.map-pin:hover {
+  transform: translate(-50%, -50%) scale(1.2);
+  z-index: 99;
+}
+.map-pin::before {
+  content: '';
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  background: inherit;
+  opacity: 0.4;
+  transform: scale(1);
+  animation: pinPulse 2.2s infinite ease-out;
+}
+.map-pin::after {
+  content: '';
+  position: absolute;
+  inset: 3px;
+  border-radius: 50%;
+  background: #fff;
+  box-shadow: 0 0 4px rgba(0, 0, 0, 0.5);
+}
+.map-pin.active-project {
+  background: var(--accent-cyan);
+  box-shadow: 0 0 12px var(--accent-cyan), 0 0 24px rgba(0, 212, 255, 0.3);
+}
+.map-pin.pipeline-project {
+  background: var(--accent-purple);
+  box-shadow: 0 0 12px var(--accent-purple), 0 0 24px rgba(139, 92, 246, 0.3);
+}
+
+@keyframes pinPulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  100% { transform: scale(2.6); opacity: 0; }
+}
+
+/* Tooltip Cards */
+.map-tooltip {
+  position: absolute;
+  bottom: 25px;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  width: 280px;
+  background: rgba(6, 8, 15, 0.96);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 1.25rem;
+  box-shadow: 0 20px 48px rgba(0, 0, 0, 0.7), 0 0 30px rgba(0, 212, 255, 0.05);
+  backdrop-filter: blur(16px);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+  z-index: 99;
+}
+.map-pin:hover .map-tooltip {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}
+
+/* Tooltip Header */
+.tooltip-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 0.5rem;
+}
+.tooltip-header h4 {
+  font-family: var(--font-display);
+  font-size: 1rem;
+  font-weight: 600;
+  color: var(--text-primary);
+}
+.tooltip-badge {
+  font-size: 0.68rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  padding: 0.15rem 0.4rem;
+  border-radius: 4px;
+  background: rgba(0, 212, 255, 0.1);
+  color: var(--accent-cyan);
+  border: 1px solid rgba(0, 212, 255, 0.15);
+}
+.tooltip-badge.pipeline {
+  background: rgba(139, 92, 246, 0.1);
+  color: var(--accent-purple);
+  border: 1px solid rgba(139, 92, 246, 0.15);
+}
+
+/* Tooltip Content */
+.tooltip-body p {
+  font-size: 0.8rem !important;
+  color: var(--text-secondary) !important;
+  line-height: 1.5 !important;
+  margin-bottom: 0.35rem;
+}
+.tooltip-body p strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+.tooltip-body p:last-child {
+  margin-bottom: 0;
+}
+
+/* Tooltip alignment helper classes */
+.map-tooltip.tooltip-bottom {
+  bottom: auto;
+  top: 25px;
+  transform: translateX(-50%) translateY(-10px);
+}
+.map-pin:hover .map-tooltip.tooltip-bottom {
+  transform: translateX(-50%) translateY(0);
+}
+
+.map-tooltip.tooltip-left {
+  left: auto;
+  right: 15px;
+  transform: translateX(0) translateY(10px);
+}
+.map-pin:hover .map-tooltip.tooltip-left {
+  transform: translateX(0) translateY(0);
+}
+
+.map-tooltip.tooltip-right {
+  left: 15px;
+  transform: translateX(0) translateY(10px);
+}
+.map-pin:hover .map-tooltip.tooltip-right {
+  transform: translateX(0) translateY(0);
 }
 
 /* ---------- Responsive ---------- */

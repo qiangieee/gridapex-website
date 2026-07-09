@@ -6,6 +6,7 @@ const TRANSLATIONS = {
 
   /* ── Navigation ── */
   "nav.about":         { en: "About",      ja: "会社概要",     zh: "关于我们" },
+  "nav.datacenters":   { en: "Data Centers", ja: "データセンター", zh: "数据中心" },
   "nav.solutions":     { en: "Solutions",   ja: "ソリューション", zh: "解决方案" },
   "nav.technology":    { en: "Technology",  ja: "テクノロジー",   zh: "核心技术" },
   "nav.ecosystem":     { en: "Ecosystem",   ja: "エコシステム",   zh: "生态系统" },
@@ -56,10 +57,10 @@ const TRANSLATIONS = {
                          ja: "高密度電力、構造補強、冷却インフラが事前設置された完全なデータセンターシェル。入居時にGPUラックとネットワークをすぐに設置できます。",
                          zh: "配备高密度电力、结构加固和预装冷却基础设施的完整数据中心壳体——租户入驻即可安装GPU机架和网络设备。" },
 
-  "sol2.title":        { en: "Liquid Cooling Infrastructure", ja: "液冷インフラ",               zh: "液冷基础设施" },
-  "sol2.desc":         { en: "Pre-plumbed direct-to-chip and rear-door liquid cooling systems supporting 100+ kW per rack, enabling tenants to deploy the densest AI hardware without thermal constraints.",
-                         ja: "ラックあたり100kW以上をサポートするダイレクトチップ方式およびリアドア液冷システムを事前配管。テナントは熱制約なく最高密度のAIハードウェアを展開できます。",
-                         zh: "预铺设的直接芯片液冷和后门液冷系统，支持每机柜100kW以上，使租户能够在无热量限制的情况下部署最高密度的AI硬件。" },
+  "sol2.title":        { en: "Chilled Water Infrastructure", ja: "設備冷水インフラ",               zh: "冷水基础设施" },
+  "sol2.desc":         { en: "High-capacity facility chillers and chilled water loops engineered to support tenant-installed liquid cooling systems up to 300 kW per rack.",
+                         ja: "ラックあたり100kW以上のテナント設置型液冷システムに対応する、大容量の設備用チラーおよび冷水ループ。",
+                         zh: "大容量设施级冷水机组和冷水循环系统，支持租户自行安装的单机柜100kW以上液冷系统。" },
 
   "sol3.title":        { en: "Prefab AI Factory",         ja: "プレハブAIコンテナ",           zh: "预制AI容器" },
   "sol3.desc":         { en: "Modular, factory-built AI computing pods that arrive pre-wired and pre-cooled — dramatically compressing deployment timelines from 18 months to as little as 6 months.",
@@ -86,14 +87,14 @@ const TRANSLATIONS = {
   "tech.title":        { en: 'Why Grid Apex Is <span class="gradient-text">AI-First</span>',
                          ja: 'Grid Apexが<span class="gradient-text">AI-First</span>である理由',
                          zh: 'Grid Apex为何是<span class="gradient-text">AI优先</span>' },
-  "tech.subtitle":     { en: "Every design decision — from the foundation slab to the cooling manifolds — is made with the unique demands of AI compute in mind.",
-                         ja: "基礎スラブから冷却マニホールドまで、すべての設計はAIコンピューティング特有の要件を念頭に置いて行われています。",
-                         zh: "从基础底板到冷却歧管，每一个设计决策都围绕AI计算的独特需求而做出。" },
+  "tech.subtitle":     { en: "Every design decision — from the foundation slab to the facility chilled water loops — is made with the unique demands of AI compute in mind.",
+                         ja: "基礎スラブから設備冷水ループに至るまで、すべての設計はAIコンピューティング特有の要件を念頭に置いて行われています。",
+                         zh: "从基础底板到设施级冷水循环，每一个设计决策都围绕AI计算的独特需求而做出。" },
 
-  "tech1.title":       { en: "Liquid Cooling by Design",            ja: "設計段階からの液冷",           zh: "设计即液冷" },
-  "tech1.desc":        { en: "Our warm shells arrive with liquid cooling infrastructure pre-installed — chilled water distribution, manifold connections, and rear-door heat exchanger capacity — eliminating the #1 bottleneck for high-density GPU deployment.",
-                         ja: "ウォームシェルには液冷インフラが事前設置されています。冷水配管、マニホールド接続、リアドア熱交換器容量を備え、高密度GPU展開の最大のボトルネックを解消します。",
-                         zh: "我们的温壳预装液冷基础设施——冷水分配、歧管连接和后门热交换器容量——消除了高密度GPU部署的第一大瓶颈。" },
+  "tech1.title":       { en: "Chilled Water Loops",            ja: "設備冷水ループ",           zh: "设施冷水循环" },
+  "tech1.desc":        { en: "Our warm shells feature pre-installed facility-level chillers and chilled water distribution loops, providing the primary cooling loop needed for high-density GPU deployment.",
+                         ja: "当社のウォームシェルには設備用チラーと冷水配管ループが事前に設置されており、高密度GPUの展開に必要な一次冷却ループを提供します。",
+                         zh: "我们的温壳数据中心预装了设施级冷水机组和冷水分配循环系统，提供高密度GPU部署所需的一次冷却循环。" },
 
   "tech2.title":       { en: "Prefabricated, Fast-Deploy Modules",  ja: "プレハブ式高速展開モジュール",    zh: "预制快速部署模块" },
   "tech2.desc":        { en: "Factory-built AI computing pods are manufactured in parallel with site work, pre-tested, and shipped ready to connect — compressing typical 18-month builds to 6 months or less.",
@@ -106,7 +107,7 @@ const TRANSLATIONS = {
                          zh: "现场太阳能发电、电网级电池系统以及日本可再生能源信用，确保AI工作负载使用清洁电力运行——满足ESG要求并降低长期运营成本。" },
 
   "tech4.title":       { en: "100MW Power-Dense Foundation",        ja: "100MW高密度電力基盤",          zh: "100MW高密度电力基础" },
-  "tech4.desc":        { en: "Redundant utility feeds, on-site backup generation, and an electrical distribution system rated for 100+ kW per rack — ensuring the campus can absorb the densest GPU hardware available today and tomorrow.",
+  "tech4.desc":        { en: "Redundant utility feeds, on-site backup generation, and an electrical distribution system rated for 300 kW per rack — ensuring the campus can absorb the densest GPU hardware available today and tomorrow.",
                          ja: "冗長化されたユーティリティフィード、オンサイトバックアップ発電、ラックあたり100kW以上の配電システムにより、現在および将来の最高密度GPUハードウェアに対応します。",
                          zh: "冗余电力供应、现场备用发电和额定每机柜100kW以上的配电系统——确保园区能够承载当前和未来最高密度的GPU硬件。" },
 
@@ -134,7 +135,7 @@ const TRANSLATIONS = {
   "footer.blog":       { en: "Blog",           ja: "ブログ",         zh: "博客" },
   "footer.solutions":  { en: "Solutions",      ja: "ソリューション",   zh: "解决方案" },
   "footer.sol1":       { en: "Warm Shell Leasing",    ja: "ウォームシェルリース", zh: "温壳租赁" },
-  "footer.sol2":       { en: "Liquid Cooling",        ja: "液冷システム",       zh: "液冷系统" },
+  "footer.sol2":       { en: "Chilled Water Infrastructure",        ja: "設備冷水インフラ",       zh: "冷水基础设施" },
   "footer.sol3":       { en: "Prefab AI Factory",  ja: "プレハブAIコンテナ",  zh: "预制AI容器" },
   "footer.sol4":       { en: "Green Energy",          ja: "グリーンエネルギー",   zh: "绿色能源" },
   "footer.resources":  { en: "Resources",      ja: "リソース",       zh: "资源" },
