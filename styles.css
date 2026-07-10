@@ -305,21 +305,11 @@ img { max-width: 100%; display: block; }
   min-height: 100vh;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 3rem;
   padding: var(--section-pad);
   position: relative;
 }
 .hero-content {
-  max-width: 620px;
-  flex: 1 1 50%;
-}
-.hero-badge-panel {
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-end;
-  gap: .75rem;
+  max-width: 780px;
 }
 .hero-badge {
   display: inline-flex;
@@ -1106,13 +1096,20 @@ img { max-width: 100%; display: block; }
   transform: translateX(0) translateY(0);
 }
 
-/* ---------- Responsive ---------- */
+/* ================================================
+   RESPONSIVE — TABLET & MOBILE
+   ================================================ */
+
 @media (max-width: 1024px) {
   .solutions-grid { grid-template-columns: repeat(2, 1fr); }
   .infra-timeline { grid-template-columns: 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
+  .hero-badge-panel { display: none; } /* panel was removed, keep rule for safety */
+  .spec-details-grid { grid-template-columns: 1fr; }
 }
+
 @media (max-width: 768px) {
+  /* ----- Navbar ----- */
   .nav-links { display: none; }
   .burger { display: flex; }
   .nav-links.active {
@@ -1122,16 +1119,114 @@ img { max-width: 100%; display: block; }
     top: 100%;
     left: 0;
     width: 100%;
-    background: rgba(6, 8, 15, 0.95);
+    background: rgba(6, 8, 15, 0.97);
     backdrop-filter: blur(20px);
-    padding: 2rem clamp(1.5rem, 5vw, 6rem);
-    gap: 1.5rem;
+    padding: 1.5rem clamp(1rem, 5vw, 3rem);
+    gap: 1.25rem;
     border-bottom: 1px solid var(--border);
+    z-index: 200;
   }
+
+  /* ----- Hero ----- */
+  .hero {
+    padding: 6rem 1.25rem 3rem;
+    min-height: auto;
+    align-items: flex-start;
+    padding-top: 7rem;
+  }
+  .hero-content { max-width: 100%; }
+  .hero h1 { font-size: clamp(2rem, 9vw, 3rem); margin-bottom: 1rem; }
+  .hero p { font-size: 1rem; max-width: 100%; margin-bottom: 1.75rem; }
+  .hero-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  .hero-actions button { width: 100%; text-align: center; }
+  .hero-badge { font-size: .75rem; }
+  .badge-slideout-inner { width: 100%; max-width: 320px; }
+
+  /* ----- Subpage hero ----- */
+  .subpage-hero {
+    min-height: 38vh;
+    padding: 6rem 1.25rem 2.5rem;
+  }
+  .subpage-hero .hero-content h1 { font-size: clamp(1.75rem, 8vw, 2.5rem); }
+
+  /* ----- Sub-nav (Data Centers page) ----- */
+  .sub-nav .container {
+    gap: .5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+  }
+  .sub-nav a {
+    font-size: .7rem;
+    padding: .4rem .65rem;
+    white-space: nowrap;
+  }
+
+  /* ----- Stats bar ----- */
+  .stats-bar .container { grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+  .stat-number { font-size: 2rem; }
+
+  /* ----- Section padding ----- */
+  section { padding: 3rem 1.25rem; }
+  .container { padding: 0 1.25rem; }
+  .section-title { font-size: clamp(1.5rem, 6vw, 2.2rem); }
+
+  /* ----- Solutions grid ----- */
+  .solutions-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .sol-card { padding: 1.5rem; }
+
+  /* ----- Technology / infra ----- */
+  .infra-timeline { grid-template-columns: 1fr; gap: 1.5rem; }
+  .infra-item { padding: 1.5rem; }
+
+  /* ----- Spec details (datacenters.html) ----- */
+  .spec-details-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .spec-details-section { padding: 3rem 1.25rem; }
+  .spec-table-container { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .spec-table-container table { min-width: 480px; }
+
+  /* ----- Japan map ----- */
+  .japan-map-wrapper {
+    height: 260px;
+    margin-bottom: 1.5rem;
+  }
+  .map-tooltip {
+    width: 170px;
+    font-size: .72rem;
+  }
+  .map-tooltip h4 { font-size: .8rem; }
+
+  /* ----- Pipeline table ----- */
+  .pipeline-table-wrapper { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+
+  /* ----- About ----- */
   .about .container { grid-template-columns: 1fr; }
   .about-visual { max-width: 100%; }
-  .solutions-grid { grid-template-columns: 1fr; }
-  .stats-bar .container { grid-template-columns: repeat(2, 1fr); }
-  .footer-grid { grid-template-columns: 1fr; }
-  .hero h1 { font-size: clamp(2.25rem, 8vw, 3.5rem); }
+
+  /* ----- Partners / logos ----- */
+  .partners-logos { gap: 1rem; }
+
+  /* ----- Contact / CTA ----- */
+  #contact .container { text-align: center; }
+  .hero-actions.contact-actions { align-items: center; }
+
+  /* ----- Footer ----- */
+  .footer-grid { grid-template-columns: 1fr; gap: 2rem; }
+  .footer-brand { text-align: center; }
+  .footer-col { text-align: center; }
+}
+
+@media (max-width: 480px) {
+  .stats-bar .container { grid-template-columns: 1fr 1fr; }
+  .stat-number { font-size: 1.75rem; }
+  .hero h1 { font-size: clamp(1.75rem, 10vw, 2.5rem); }
+  .section-title { font-size: clamp(1.35rem, 7vw, 1.9rem); }
+  .btn-primary, .btn-outline { padding: .75rem 1.25rem; font-size: .9rem; }
+  .japan-map-wrapper { height: 200px; }
+  .map-tooltip { width: 150px; }
+  .sub-nav a { font-size: .65rem; padding: .35rem .55rem; }
+  .sol-card { padding: 1.25rem; }
+  .spec-table-container table { min-width: 380px; font-size: .8rem; }
 }
