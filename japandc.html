@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Japan Data Center Map — Grid Apex</title>
+  <meta name="description" content="Interactive map of operational and under-construction data centers across Japan. Explore capacity, ownership, and AI-readiness of 130+ facilities." />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css?v=1.8" />
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.3/dist/chart.umd.min.js"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+  <style>
+    body { overflow-x: hidden; }
+    .map-hero {
+      background: var(--bg-primary);
+      padding: 7rem clamp(1.5rem,5vw,6rem) 3rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .map-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 80% 60% at 50% 0%, rgba(0,212,255,.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .map-hero .section-label { justify-content: center; }
+    .map-hero h1 {
+      font-family: var(--font-display);
+      font-size: clamp(2rem,5vw,3.5rem);
+      font-weight: 700;
+      line-height: 1.15;
+      margin: 0.75rem 0 1rem;
+      color: var(--text-primary);
+    }
+    .map-hero p { max-width: 700px; margin: 0 auto 2rem; color: var(--text-secondary); font-size: 1.05rem; }
+    .gradient-text { background: var(--grad-hero); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+    .dash-stats { display: flex; flex-wrap: wrap; justify-content: center; gap: 1rem; padding: 0 clamp(1.5rem,5vw,6rem) 2.5rem; background: var(--bg-primary); }
+    .dash-stat-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius-md); padding: 1.25rem 2rem; text-align: center; flex: 1; min-width: 180px; max-width: 240px; transition: border-color .3s, transform .3s; }
+    .dash-stat-card:hover { border-color: var(--border-glow); transform: translateY(-3px); }
+    .dash-stat-card .num { font-family: var(--font-display); font-size: 2rem; font-weight: 700; line-height: 1.1; }
+    .dash-stat-card .num.cyan   { color: var(--accent-cyan); }
+    .dash-stat-card .num.amber  { color: #fbbf24; }
+    .dash-stat-card .num.purple { color: var(--accent-purple); }
+    .dash-stat-card .num.emerald{ color: var(--accent-emerald); }
+    .dash-stat-card .lbl { font-size: .78rem; text-transform: uppercase; letter-spacing: 2px; color: var(--text-secondary); margin-top: .4rem; }
+    .map-section { padding: 0 clamp(1rem,3vw,4rem) 3rem; background: var(--bg-primary); }
+    .map-outer { background: rgba(12,18,40,0.7); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; position: relative; }
+    .map-toolbar { display: flex; align-items: center; flex-wrap: wrap; gap: 1rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); background: rgba(6,8,15,0.6); backdrop-filter: blur(12px); }
+    .map-toolbar-title { font-family: var(--font-display); font-size: .95rem; font-weight: 600; color: var(--text-primary); flex: 1; }
+    .legend { display: flex; gap: 1.5rem; align-items: center; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: .5rem; font-size: .82rem; color: var(--text-secondary); }
+    .legend-dot { width: 14px; height: 14px; border-radius: 50%; border: 2px solid; flex-shrink: 0; }
+    .legend-dot.operational { background: #00e5ff; border-color: #00b8d9; }
+    .legend-dot.construction { background: #fbbf24; border-color: #d97706; }
+    .filter-btn { display: flex; align-items: center; gap: .4rem; padding: .45rem 1rem; border-radius: 30px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); font-size: .82rem; cursor: pointer; transition: all .25s; font-family: var(--font-body); }
+    .filter-btn.active-op { border-color: #00e5ff; color: #00e5ff; background: rgba(0,229,255,.08); }
+    .filter-btn.active-uc { border-color: #fbbf24; color: #fbbf24; background: rgba(251,191,36,.08); }
+    .search-box { position: relative; display: flex; align-items: center; }
+    .search-box input { background: rgba(255,255,255,.05); border: 1px solid var(--border); border-radius: 30px; padding: .45rem 1rem .45rem 2.2rem; color: var(--text-primary); font-size: .82rem; width: 220px; outline: none; transition: border-color .25s; font-family: var(--font-body); }
+    .search-box input::placeholder { color: var(--text-dim); }
+    .search-box input:focus { border-color: var(--border-glow); }
+    .search-box .search-icon { position: absolute; left: .75rem; color: var(--text-dim); font-size: .85rem; pointer-events: none; }
+    #japan-map { width: 100%; height: 78vh; min-height: 620px; background: #0a0f1e; }
+    .leaflet-container { background: #0a0f1e !important; font-family: var(--font-body); }
+    .leaflet-tile { filter: invert(1) hue-rotate(180deg) brightness(0.85) contrast(0.9) saturate(1.2); }
+    .leaflet-control-zoom a { background: var(--bg-secondary) !important; color: var(--accent-cyan) !important; border-color: var(--border) !important; }
+    .leaflet-control-zoom a:hover { background: var(--bg-card) !important; }
+    .leaflet-control-attribution { background: rgba(6,8,15,.8) !important; color: var(--text-dim) !important; }
+    .leaflet-control-attribution a { color: var(--text-dim) !important; }
+    .leaflet-popup-content-wrapper { background: rgba(10,15,35,0.97) !important; border: 1px solid rgba(0,212,255,.3) !important; border-radius: 14px !important; box-shadow: 0 20px 60px rgba(0,0,0,.7), 0 0 30px rgba(0,212,255,.1) !important; color: var(--text-primary) !important; padding: 0 !important; backdrop-filter: blur(16px); }
+    .leaflet-popup-tip { background: rgba(10,15,35,.97) !important; }
+    .leaflet-popup-content { margin: 0 !important; width: auto !important; }
+    .popup-inner { padding: 1.2rem 1.4rem; max-width: 340px; }
+    .popup-badge { display: inline-block; font-size: .68rem; font-weight: 700; text-transform: uppercase; letter-spacing: 2px; padding: .2rem .65rem; border-radius: 30px; margin-bottom: .75rem; }
+    .popup-badge.op { background: rgba(0,229,255,.12); color: #00e5ff; border: 1px solid rgba(0,229,255,.3); }
+    .popup-badge.uc { background: rgba(251,191,36,.12); color: #fbbf24; border: 1px solid rgba(251,191,36,.3); }
+    .popup-name { font-family: var(--font-display); font-size: 1rem; font-weight: 700; color: var(--text-primary); line-height: 1.3; margin-bottom: .5rem; }
+    .popup-location { font-size: .82rem; color: var(--accent-cyan); margin-bottom: .85rem; }
+    .popup-grid { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem .75rem; margin-bottom: .85rem; }
+    .popup-field-label { font-size: .68rem; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-dim); margin-bottom: .15rem; }
+    .popup-field-value { font-size: .82rem; color: var(--text-secondary); font-weight: 500; line-height: 1.4; }
+    .popup-field-value.highlight { color: var(--accent-emerald); }
+    .popup-notes { font-size: .77rem; color: var(--text-dim); border-top: 1px solid var(--border); padding-top: .75rem; line-height: 1.5; }
+    .popup-ai-badge { display: inline-flex; align-items: center; gap: .3rem; font-size: .72rem; font-weight: 600; background: rgba(139,92,246,.15); color: var(--accent-purple); border: 1px solid rgba(139,92,246,.3); border-radius: 20px; padding: .15rem .6rem; margin-top: .5rem; }
+    .table-section { padding: 2rem clamp(1rem,3vw,4rem) 4rem; background: var(--bg-primary); }
+    .table-tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--border); padding-bottom: .75rem; }
+    .tab-btn { padding: .5rem 1.5rem; border-radius: 8px 8px 0 0; border: 1px solid transparent; background: transparent; color: var(--text-secondary); font-size: .9rem; font-weight: 500; cursor: pointer; transition: all .25s; font-family: var(--font-body); }
+    .tab-btn.active { background: rgba(0,212,255,.08); border-color: var(--border-glow); color: var(--accent-cyan); }
+    .tab-btn:hover:not(.active) { background: var(--surface); color: var(--text-primary); }
+    .table-panel { display: none; }
+    .table-panel.active { display: block; }
+    .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: var(--radius-md); }
+    .dc-table { width: 100%; border-collapse: collapse; font-size: .86rem; }
+    .dc-table thead th { background: rgba(12,18,40,.9); color: var(--text-dim); text-transform: uppercase; letter-spacing: 1.5px; font-size: .7rem; font-weight: 600; padding: .9rem 1rem; text-align: left; border-bottom: 1px solid var(--border); white-space: nowrap; }
+    .dc-table tbody tr { border-bottom: 1px solid rgba(255,255,255,.03); transition: background .2s; }
+    .dc-table tbody tr:hover { background: rgba(0,212,255,.04); }
+    .dc-table tbody td { padding: .8rem 1rem; color: var(--text-secondary); vertical-align: top; }
+    .dc-table tbody td:first-child { color: var(--text-primary); font-weight: 500; }
+    .ai-yes { display: inline-block; background: rgba(139,92,246,.12); color: var(--accent-purple); border: 1px solid rgba(139,92,246,.25); border-radius: 20px; padding: .1rem .55rem; font-size: .72rem; font-weight: 600; }
+    .ai-no { display: inline-block; color: var(--text-dim); font-size: .75rem; }
+    /* === CHART SECTION === */
+    .chart-section { padding: 0 clamp(1rem,3vw,4rem) 2rem; background: var(--bg-primary); }
+    .chart-outer { background: rgba(12,18,40,0.7); border: 1px solid var(--border); border-radius: var(--radius-lg); overflow: hidden; }
+    .chart-header { display: flex; align-items: center; flex-wrap: wrap; gap: .75rem; padding: 1rem 1.5rem; border-bottom: 1px solid var(--border); background: rgba(6,8,15,0.6); backdrop-filter: blur(12px); }
+    .chart-header-title { font-family: var(--font-display); font-size: .95rem; font-weight: 600; color: var(--text-primary); flex: 1; }
+    .chart-subtitle { font-size: .78rem; color: var(--text-dim); }
+    .chart-toggle-wrap { display: flex; gap: .4rem; }
+    .chart-toggle { padding: .35rem .85rem; border-radius: 20px; border: 1px solid var(--border); background: transparent; color: var(--text-secondary); font-size: .78rem; cursor: pointer; transition: all .22s; font-family: var(--font-body); }
+    .chart-toggle.active { border-color: var(--border-glow); color: var(--accent-cyan); background: rgba(0,212,255,.08); }
+    .chart-body { padding: 1.5rem 1.5rem 1rem; position: relative; }
+    .chart-canvas-wrap { position: relative; width: 100%; height: 460px; }
+    @media (max-width: 768px) {
+      #japan-map { height: 60vh; min-height: 450px; }
+      .map-toolbar { flex-direction: column; align-items: flex-start; }
+      .search-box input { width: 100%; }
+      .chart-header { flex-direction: column; align-items: flex-start; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar" id="navbar">
+  <div class="container">
+    <a href="index.html" class="nav-brand">
+      <img src="assets/logo.png" alt="Grid Apex Logo" />
+      <span class="nav-brand-text">Grid<span>Apex</span></span>
+    </a>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html#about">About</a></li>
+      <li><a href="datacenters.html">Data Centers</a></li>
+      <li><a href="solutions.html">Solutions</a></li>
+
+      <li><a href="index.html#partners">Ecosystem</a></li>
+      <li><a href="index.html#contact" class="nav-cta">Get Started</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Toggle navigation">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="map-hero">
+  <span class="section-label">Market Intelligence</span>
+  <h1>Japan <span class="gradient-text">Data Center</span> Landscape</h1>
+  <p>An interactive view of <strong id="total-op-count">—</strong> operational and <strong id="total-uc-count">—</strong> under-construction data centers across Japan — mapped, searchable, and filterable.</p>
+</section>
+
+<!-- STATS -->
+<div class="dash-stats">
+  <div class="dash-stat-card">
+    <div class="num cyan" id="stat-total">—</div>
+    <div class="lbl">Total Facilities</div>
+  </div>
+  <div class="dash-stat-card">
+    <div class="num emerald" id="stat-op">—</div>
+    <div class="lbl">Operational</div>
+  </div>
+  <div class="dash-stat-card">
+    <div class="num amber" id="stat-uc">—</div>
+    <div class="lbl">Under Construction</div>
+  </div>
+  <div class="dash-stat-card">
+    <div class="num purple" id="stat-ai">—</div>
+    <div class="lbl">AI-Ready DCs</div>
+  </div>
+</div>
+
+<!-- CAPACITY CHART -->
+<section class="chart-section">
+  <div class="chart-outer">
+    <div class="chart-header">
+      <div>
+        <div class="chart-header-title">&#9889; Power Capacity by Location &amp; Owner (MW)</div>
+        <div class="chart-subtitle">Stacked by owner — only DCs with disclosed MW capacity shown</div>
+      </div>
+      <div class="chart-toggle-wrap">
+        <button class="chart-toggle active" id="ctog-both" onclick="filterChart('both')">All</button>
+        <button class="chart-toggle" id="ctog-op" onclick="filterChart('operational')">Operational</button>
+        <button class="chart-toggle" id="ctog-uc" onclick="filterChart('construction')">Under Construction</button>
+      </div>
+    </div>
+    <div class="chart-body">
+      <div class="chart-canvas-wrap">
+        <canvas id="capacity-chart"></canvas>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MAP -->
+<section class="map-section">
+  <div class="map-outer">
+    <div class="map-toolbar">
+      <div class="map-toolbar-title">&#x1F5FE; Japan Data Center Map</div>
+      <div class="search-box">
+        <span class="search-icon">&#128269;</span>
+        <input type="text" id="map-search" placeholder="Search by name, owner, or city…" />
+      </div>
+      <button class="filter-btn active-op" id="btn-show-op" onclick="toggleLayer('operational')">
+        <span>&#9679;</span> Operational
+      </button>
+      <button class="filter-btn active-uc" id="btn-show-uc" onclick="toggleLayer('construction')">
+        <span>&#9670;</span> Under Construction
+      </button>
+      <div class="legend">
+        <div class="legend-item"><div class="legend-dot operational"></div> Operational (cyan = standard, purple = AI-Ready)</div>
+        <div class="legend-item"><div class="legend-dot construction"></div> Under Construction</div>
+      </div>
+    </div>
+    <div id="japan-map"></div>
+  </div>
+</section>
+
+<!-- TABLE DASHBOARD -->
+<section class="table-section">
+  <div class="table-tabs">
+    <button class="tab-btn active" id="tab-op" onclick="switchTab('op')">Operational Data Centers</button>
+    <button class="tab-btn" id="tab-uc" onclick="switchTab('uc')">Under Construction</button>
+  </div>
+  <div class="table-panel active" id="panel-op">
+    <div class="table-wrap">
+      <table class="dc-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Owner</th>
+            <th>Power Capacity</th>
+            <th>Campus Size</th>
+            <th>Built</th>
+            <th>AI-Ready</th>
+            <th>PUE</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-op"></tbody>
+      </table>
+    </div>
+  </div>
+  <div class="table-panel" id="panel-uc">
+    <div class="table-wrap">
+      <table class="dc-table">
+        <thead>
+          <tr>
+            <th>Name</th>
+            <th>Location</th>
+            <th>Owner</th>
+            <th>Power Capacity</th>
+            <th>Campus Size</th>
+            <th>Expected / Status</th>
+            <th>AI-Ready</th>
+            <th>Build Cost</th>
+          </tr>
+        </thead>
+        <tbody id="tbody-uc"></tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a href="index.html" class="nav-brand">
+          <img src="assets/logo.png" alt="Grid Apex" style="width:36px;height:36px;" />
+          <span class="nav-brand-text">Grid<span>Apex</span></span>
+        </a>
+        <p>Building AI-ready warm-shell data centers in Japan.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Company</h4>
+        <a href="index.html#about">About Us</a>
+        <a href="#">Careers</a>
+        <a href="#">Press</a>
+      </div>
+      <div class="footer-col">
+        <h4>Solutions</h4>
+        <a href="solutions.html">Warm Shell Leasing</a>
+        <a href="solutions.html">Chilled Water Infrastructure</a>
+        <a href="solutions.html">Prefab AI Factory</a>
+      </div>
+      <div class="footer-col">
+        <h4>Resources</h4>
+
+        <a href="datacenters.html">Data Centers</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>&copy; 2026 Grid Apex Inc. All rights reserved.</span>
+      <span><a href="#">Privacy</a> &nbsp;&middot;&nbsp; <a href="#">Terms</a></span>
+    </div>
+  </div>
+</footer>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="japandc_data.js"></script>
+<script src="japandc_map.js"></script>
+</body>
+</html>
