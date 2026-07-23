@@ -199,6 +199,28 @@ img { max-width: 100%; display: block; }
 }
 .nav-cta::after { display: none !important; }
 
+.nav-sub-link {
+  display: inline-flex;
+  align-items: center;
+  gap: .35rem;
+  padding: .4rem .9rem;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(0, 212, 255, .35);
+  background: rgba(0, 212, 255, .06);
+  color: var(--accent-cyan) !important;
+  font-weight: 600;
+  font-size: .84rem;
+  transition: all .25s var(--ease-out);
+}
+.nav-sub-link:hover {
+  background: rgba(0, 212, 255, .18);
+  border-color: var(--accent-cyan);
+  color: #ffffff !important;
+  box-shadow: 0 0 16px rgba(0, 212, 255, .25);
+  transform: translateY(-1px);
+}
+.nav-sub-link::after { display: none !important; }
+
 /* Language Switcher */
 .lang-switcher {
   position: relative;

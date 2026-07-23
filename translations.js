@@ -10,6 +10,7 @@ const TRANSLATIONS = {
   "nav.solutions":     { en: "Solutions",   ja: "ソリューション", zh: "解决方案" },
   "nav.technology":    { en: "Technology",  ja: "テクノロジー",   zh: "核心技术" },
   "nav.ecosystem":     { en: "Ecosystem",   ja: "エコシステム",   zh: "生态系统" },
+  "nav.japansite":    { en: "Japan Entity ↗", ja: "日本法人 (gridapex.co.jp) ↗", zh: "日本子公司 ↗" },
   "nav.cta":           { en: "Get Started", ja: "お問い合わせ",   zh: "立即开始" },
 
   /* ── Hero ── */
@@ -130,6 +131,7 @@ const TRANSLATIONS = {
                          zh: "在日本建设AI就绪温壳数据中心——为人工智能的未来而设计。" },
   "footer.company":    { en: "Company",       ja: "会社情報",       zh: "公司" },
   "footer.about":      { en: "About Us",      ja: "会社概要",       zh: "关于我们" },
+  "footer.japansite":   { en: "Grid Apex Japan (co.jp) ↗", ja: "日本法人 (gridapex.co.jp) ↗", zh: "日本子公司 (gridapex.co.jp) ↗" },
   "footer.careers":    { en: "Careers",        ja: "採用情報",       zh: "招聘" },
   "footer.press":      { en: "Press",          ja: "プレスリリース",   zh: "新闻" },
   "footer.blog":       { en: "Blog",           ja: "ブログ",         zh: "博客" },
