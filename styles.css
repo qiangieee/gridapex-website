@@ -1252,3 +1252,105 @@ img { max-width: 100%; display: block; }
   .sol-card { padding: 1.25rem; }
   .spec-table-container table { min-width: 380px; font-size: .8rem; }
 }
+
+/* ========================================================
+   Our Experience Gallery Section
+   ======================================================== */
+.experience-section {
+  padding: 5rem 0;
+  background: var(--bg-secondary);
+  border-top: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  position: relative;
+}
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 1.5rem;
+  margin-top: 3rem;
+}
+.exp-card {
+  position: relative;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  transition: transform .35s var(--ease-out), border-color .35s, box-shadow .35s;
+  display: flex;
+  flex-direction: column;
+}
+.exp-card:hover {
+  transform: translateY(-5px);
+  border-color: var(--border-glow);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.12);
+}
+.exp-card:nth-child(1),
+.exp-card:nth-child(2),
+.exp-card:nth-child(3) {
+  grid-column: span 2;
+}
+.exp-card:nth-child(4),
+.exp-card:nth-child(5) {
+  grid-column: span 3;
+}
+@media (max-width: 992px) {
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .exp-card:nth-child(1),
+  .exp-card:nth-child(2),
+  .exp-card:nth-child(3),
+  .exp-card:nth-child(4),
+  .exp-card:nth-child(5) {
+    grid-column: span 1;
+  }
+  .exp-card:nth-child(5) {
+    grid-column: span 2;
+  }
+}
+@media (max-width: 640px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
+  .exp-card:nth-child(5) {
+    grid-column: span 1;
+  }
+}
+.exp-img-wrap {
+  width: 100%;
+  height: 250px;
+  overflow: hidden;
+  position: relative;
+}
+.exp-img-wrap img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform .5s var(--ease-out);
+}
+.exp-card:hover .exp-img-wrap img {
+  transform: scale(1.06);
+}
+.exp-card-body {
+  padding: 1.25rem 1.5rem;
+  background: rgba(12, 18, 40, 0.85);
+  border-top: 1px solid var(--border);
+  flex-grow: 1;
+}
+.exp-tag {
+  font-size: 0.72rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-cyan);
+  margin-bottom: 0.35rem;
+  display: block;
+}
+.exp-title {
+  font-family: var(--font-display);
+  font-size: 0.98rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.45;
+}

@@ -44,6 +44,15 @@ const TRANSLATIONS = {
                          ja: "私たちのコアビジネスはシンプルです。AI対応のウォームシェル施設を建設し、ハイパースケーラー、AIラボ、企業にリースします。テナントは最適化済みのスペースにGPUインフラをすぐに展開できます。",
                          zh: "我们的核心业务很简单：建设AI就绪的温壳设施，并将不动产租赁给超大规模企业、AI实验室和企业客户——让租户可以将GPU基础设施部署到已经为他们优化好的空间中。" },
 
+  /* ── Experience ── */
+  "exp.label":         { en: "Track Record",  ja: "実績と展開",   zh: "案例与经验" },
+  "exp.title":         { en: 'Our <span class="gradient-text">Experience</span>',
+                         ja: '私たちの<span class="gradient-text">実績</span>',
+                         zh: '我们的<span class="gradient-text">经验与案例</span>' },
+  "exp.subtitle":      { en: "Our investors, partners had built prefabricated modular AIDCs in Japan, US and East South Asia, delivering projects at a unprecedented speed",
+                         ja: "弊社の投資家およびパートナーは、日本、米国、東南アジアにおいてプレハブモジュール型AIDCを建設し、前例のないスピードでプロジェクトを提供してきました。",
+                         zh: "我们的投资者和合作伙伴在日本、美国和东南亚建造了预制模块化AIDC，以前所未有的速度交付项目。" },
+
   /* ── Solutions ── */
   "sol.label":         { en: "What We Deliver",  ja: "提供するもの",   zh: "我们提供" },
   "sol.title":         { en: 'AI-Ready <span class="gradient-text">Warm Shell</span> Leasing',
