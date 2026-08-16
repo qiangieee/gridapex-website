@@ -1265,13 +1265,23 @@ img { max-width: 100%; display: block; }
 }
 .experience-grid {
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  gap: 1.5rem;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.75rem;
   margin-top: 3rem;
+}
+@media (max-width: 1024px) {
+  .experience-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 640px) {
+  .experience-grid {
+    grid-template-columns: 1fr;
+  }
 }
 .exp-card {
   position: relative;
-  border-radius: var(--radius-md);
+  border-radius: var(--radius-lg);
   overflow: hidden;
   border: 1px solid var(--border);
   background: var(--bg-card);
@@ -1280,45 +1290,13 @@ img { max-width: 100%; display: block; }
   flex-direction: column;
 }
 .exp-card:hover {
-  transform: translateY(-5px);
+  transform: translateY(-6px);
   border-color: var(--border-glow);
-  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.12);
-}
-.exp-card:nth-child(1),
-.exp-card:nth-child(2),
-.exp-card:nth-child(3) {
-  grid-column: span 2;
-}
-.exp-card:nth-child(4),
-.exp-card:nth-child(5) {
-  grid-column: span 3;
-}
-@media (max-width: 992px) {
-  .experience-grid {
-    grid-template-columns: repeat(2, 1fr);
-  }
-  .exp-card:nth-child(1),
-  .exp-card:nth-child(2),
-  .exp-card:nth-child(3),
-  .exp-card:nth-child(4),
-  .exp-card:nth-child(5) {
-    grid-column: span 1;
-  }
-  .exp-card:nth-child(5) {
-    grid-column: span 2;
-  }
-}
-@media (max-width: 640px) {
-  .experience-grid {
-    grid-template-columns: 1fr;
-  }
-  .exp-card:nth-child(5) {
-    grid-column: span 1;
-  }
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.5), 0 0 30px rgba(0, 212, 255, 0.15);
 }
 .exp-img-wrap {
   width: 100%;
-  height: 250px;
+  height: 220px;
   overflow: hidden;
   position: relative;
 }
@@ -1332,11 +1310,28 @@ img { max-width: 100%; display: block; }
 .exp-card:hover .exp-img-wrap img {
   transform: scale(1.06);
 }
+.exp-loc-badge {
+  position: absolute;
+  top: 0.85rem;
+  right: 0.85rem;
+  background: rgba(6, 8, 15, 0.88);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(0, 212, 255, 0.35);
+  color: var(--text-primary);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.3rem 0.75rem;
+  border-radius: 20px;
+  z-index: 2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+}
 .exp-card-body {
-  padding: 1.25rem 1.5rem;
+  padding: 1.5rem;
   background: rgba(12, 18, 40, 0.85);
   border-top: 1px solid var(--border);
   flex-grow: 1;
+  display: flex;
+  flex-direction: column;
 }
 .exp-tag {
   font-size: 0.72rem;
@@ -1349,8 +1344,23 @@ img { max-width: 100%; display: block; }
 }
 .exp-title {
   font-family: var(--font-display);
-  font-size: 0.98rem;
+  font-size: 1.05rem;
   font-weight: 600;
   color: var(--text-primary);
-  line-height: 1.45;
+  line-height: 1.4;
+  margin-bottom: 0.75rem;
+}
+.exp-details {
+  font-size: 0.84rem;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin-top: auto;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  padding-top: 0.75rem;
+}
+.exp-details p {
+  margin-bottom: 0.35rem;
+}
+.exp-details strong {
+  color: var(--text-primary);
 }
