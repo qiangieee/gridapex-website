@@ -1,0 +1,829 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Data Center Pollution Calculator — Grid Apex</title>
+  <meta name="description" content="Estimate CO₂, water usage, and pollutants from data center power draw, and model efficiency and renewable energy reduction measures." />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css?v=1.8" />
+  <style>
+    :root {
+      --calc-bg: #0b0f14;
+      --calc-panel: #121821;
+      --calc-panel-2: #161e2a;
+      --calc-border: #232d3b;
+      --calc-text: #e6edf3;
+      --calc-muted: #8b98a9;
+      --calc-accent: #00d4ff;
+      --calc-accent-2: #f6ad55;
+      --calc-danger: #f56565;
+      --calc-good: #10b981;
+    }
+    
+    .calc-wrap {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 4rem 1.5rem 6rem;
+    }
+    
+    .calc-header {
+      margin-bottom: 2.5rem;
+      text-align: left;
+    }
+    .calc-header h1 {
+      font-size: 2.2rem;
+      font-family: var(--font-display);
+      margin: 0 0 10px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--text-primary);
+    }
+    .calc-header p {
+      color: var(--text-secondary);
+      margin: 0;
+      font-size: 1.05rem;
+      max-width: 720px;
+      line-height: 1.6;
+    }
+    
+    .calc-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 24px;
+    }
+    @media (min-width: 860px) {
+      .calc-grid { grid-template-columns: 1.05fr 1fr; align-items: start; }
+    }
+    
+    .calc-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 24px 24px 28px;
+      backdrop-filter: blur(12px);
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    }
+    .calc-card h2 {
+      font-size: 1.15rem;
+      font-family: var(--font-display);
+      margin: 0 0 20px;
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .calc-field { margin-bottom: 20px; }
+    .calc-field:last-child { margin-bottom: 0; }
+    
+    .calc-label {
+      display: block;
+      font-size: 0.86rem;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      font-weight: 500;
+    }
+    
+    .calc-row { display: flex; gap: 10px; align-items: center; }
+    
+    .calc-input, .calc-select {
+      width: 100%;
+      background: rgba(6, 8, 15, 0.7);
+      border: 1px solid var(--border);
+      color: var(--text-primary);
+      padding: 11px 14px;
+      border-radius: var(--radius-sm);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .calc-input:focus, .calc-select:focus {
+      border-color: var(--accent-cyan);
+      box-shadow: 0 0 12px rgba(0, 212, 255, 0.2);
+    }
+    .calc-select { appearance: none; cursor: pointer; }
+    .calc-select option { background: #0c1228; color: #fff; }
+    
+    .duration-buttons {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+    .duration-buttons button {
+      flex: 1;
+      min-width: 65px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      color: var(--text-secondary);
+      padding: 8px 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.84rem;
+      cursor: pointer;
+      transition: all 0.2s;
+      font-family: var(--font-body);
+    }
+    .duration-buttons button:hover { border-color: var(--accent-cyan); color: var(--text-primary); }
+    .duration-buttons button.active {
+      background: rgba(0, 212, 255, 0.15);
+      border-color: var(--accent-cyan);
+      color: var(--accent-cyan);
+      font-weight: 600;
+    }
+    
+    input[type="range"].calc-range {
+      width: 100%;
+      accent-color: var(--accent-cyan);
+      height: 6px;
+      cursor: pointer;
+    }
+    
+    .pue-value {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-top: 8px;
+    }
+    .pue-value strong { color: var(--accent-cyan); font-size: 1rem; }
+    .calc-hint { font-size: 0.78rem; color: var(--text-muted); margin-top: 6px; line-height: 1.45; }
+    
+    .result-primary {
+      text-align: center;
+      padding: 20px 12px 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .result-primary .big {
+      font-size: 2.6rem;
+      font-weight: 700;
+      font-family: var(--font-display);
+      color: var(--accent-cyan);
+      line-height: 1.1;
+    }
+    .result-primary .unit { font-size: 1.05rem; color: var(--text-secondary); margin-left: 6px; }
+    .result-primary .sub { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
+    
+    .stat-list { display: grid; gap: 12px; margin-bottom: 20px; }
+    .stat-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      font-size: 0.9rem;
+      padding: 6px 0;
+      border-bottom: 1px dashed rgba(255, 255, 255, 0.06);
+    }
+    .stat-row .label { color: var(--text-secondary); }
+    .stat-row .val { font-weight: 600; color: var(--text-primary); }
+    
+    .equivalencies { display: grid; gap: 12px; margin-top: 6px; }
+    .eq-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      background: rgba(6, 8, 15, 0.5);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 12px 16px;
+    }
+    .eq-item .icon { font-size: 1.4rem; }
+    .eq-item .text { font-size: 0.88rem; line-height: 1.4; color: var(--text-secondary); }
+    .eq-item .text strong { color: var(--accent-cyan); font-weight: 600; }
+    
+    table.pollutants {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.88rem;
+      margin-top: 8px;
+    }
+    table.pollutants th, table.pollutants td {
+      text-align: left;
+      padding: 10px 8px;
+      border-bottom: 1px solid var(--border);
+    }
+    table.pollutants th { color: var(--text-muted); font-weight: 600; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.5px; }
+    table.pollutants td.num { text-align: right; font-variant-numeric: tabular-nums; font-weight: 600; color: var(--text-primary); }
+    
+    .section-card { margin-top: 24px; }
+    .slider-label-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      margin-bottom: 8px;
+    }
+    .slider-label-row label { margin: 0; }
+    .slider-label-row .value { color: var(--accent-cyan); font-weight: 700; font-size: 0.95rem; white-space: nowrap; margin-left: 10px; }
+    
+    .solar-helper {
+      background: rgba(6, 8, 15, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-sm);
+      padding: 16px 18px;
+      margin-top: 14px;
+    }
+    .solar-helper .helper-title { font-size: 0.82rem; color: var(--accent-cyan); margin-bottom: 12px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.5px; }
+    .solar-helper .helper-row { display: flex; gap: 12px; margin-bottom: 12px; }
+    .solar-helper .helper-row > div { flex: 1; }
+    .solar-helper .helper-row label { font-size: 0.78rem; margin-bottom: 4px; }
+    .solar-helper button {
+      width: 100%;
+      background: rgba(0, 212, 255, 0.12);
+      border: 1px solid var(--accent-cyan);
+      color: var(--accent-cyan);
+      padding: 10px;
+      border-radius: var(--radius-sm);
+      font-size: 0.86rem;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background 0.2s, color 0.2s;
+    }
+    .solar-helper button:hover { background: rgba(0, 212, 255, 0.25); color: #fff; }
+    .solar-helper .helper-result { font-size: 0.82rem; color: var(--text-secondary); margin-top: 10px; text-align: center; }
+    
+    .avoided-summary {
+      text-align: center;
+      padding: 8px 12px 24px;
+      border-bottom: 1px solid var(--border);
+      margin-bottom: 20px;
+    }
+    .avoided-summary .big { font-size: 2.5rem; font-weight: 700; font-family: var(--font-display); line-height: 1.1; }
+    .avoided-summary .big.positive { color: #10b981; }
+    .avoided-summary .big.negative { color: #f56565; }
+    .avoided-summary .unit { font-size: 1.05rem; color: var(--text-secondary); margin-left: 6px; }
+    .avoided-summary .sub { font-size: 0.85rem; color: var(--text-muted); margin-top: 8px; }
+    
+    .compare-bars { display: grid; gap: 16px; margin-bottom: 24px; }
+    .compare-bar-row .bar-label {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.84rem;
+      color: var(--text-secondary);
+      margin-bottom: 6px;
+    }
+    .compare-bar-track {
+      background: rgba(6, 8, 15, 0.7);
+      border-radius: 10px;
+      height: 16px;
+      overflow: hidden;
+      border: 1px solid var(--border);
+    }
+    .compare-bar-fill { height: 100%; border-radius: 10px; transition: width 0.3s ease; }
+    .compare-bar-fill.baseline { background: var(--accent-purple); }
+    .compare-bar-fill.adjusted { background: #10b981; }
+
+    .calc-footer-note {
+      margin-top: 32px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+      border-top: 1px solid var(--border);
+      padding-top: 20px;
+    }
+  </style>
+</head>
+<body>
+
+<canvas id="bg-canvas"></canvas>
+
+<div class="page-wrapper">
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Grid Apex Logo" />
+        <span class="nav-brand-text">Grid<span>Apex</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="datacenters.html" data-i18n="nav.datacenters">Data Centers</a></li>
+        <li><a href="solutions.html" data-i18n="nav.solutions">Solutions</a></li>
+        <li><a href="calculator.html" class="active" data-i18n="nav.calculator">Calculator</a></li>
+        <li><a href="index.html#partners" data-i18n="nav.ecosystem">Ecosystem</a></li>
+        <li><a href="https://gridapex.co.jp" target="_blank" rel="noopener noreferrer" class="nav-sub-link" data-i18n="nav.japansite">Japan Entity ↗</a></li>
+        <li><a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a></li>
+      </ul>
+
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== CALCULATOR WRAPPER ====== -->
+  <div class="calc-wrap">
+    <div class="calc-header">
+      <h1>🖥️ Data Center Pollution Calculator</h1>
+      <p>Estimate the CO₂, water usage, and pollutants produced by a data center's power draw based on IT load, cooling/overhead efficiency (PUE), runtime, and the carbon intensity of your electricity grid source.</p>
+    </div>
+
+    <div class="calc-grid">
+      <!-- INPUTS CARD -->
+      <div class="calc-card">
+        <h2>⚙️ Inputs</h2>
+
+        <div class="calc-field">
+          <label class="calc-label" for="power">IT power consumption (kW)</label>
+          <input type="number" id="power" class="calc-input" value="100" min="0" step="1">
+          <div class="calc-hint">Actual draw of servers/storage/network — not including cooling overhead.</div>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label">Runtime</label>
+          <div class="duration-buttons">
+            <button data-hours="1">1 hr</button>
+            <button data-hours="24" class="active">1 day</button>
+            <button data-hours="720">1 month</button>
+            <button data-hours="8760">1 year</button>
+          </div>
+          <input type="number" id="hours" class="calc-input" value="24" min="0" step="1">
+          <div class="calc-hint">Total hours the load runs at the power level above.</div>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label" for="pue">Power Usage Effectiveness (PUE)</label>
+          <input type="range" id="pue" class="calc-range" min="1.0" max="3.0" step="0.05" value="1.5">
+          <div class="pue-value">
+            <span>Total facility draw = IT load × PUE</span>
+            <strong id="pueVal">1.50</strong>
+          </div>
+          <div class="calc-hint">1.0 = no overhead (impossible in practice). Industry average is ~1.5–1.6; efficient hyperscale facilities reach ~1.1–1.2.</div>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label" for="coolingMethod">Cooling method</label>
+          <select id="coolingMethod" class="calc-select"></select>
+          <div class="calc-hint" id="coolingHint">Common in modern hyperscale facilities — balances energy and water use.</div>
+        </div>
+
+        <div class="calc-field">
+          <label class="calc-label" for="source">Electricity source / grid mix</label>
+          <select id="source" class="calc-select"></select>
+          <div class="calc-hint" id="sourceHint">Blended national average across all US generation sources.</div>
+        </div>
+
+        <div class="calc-field" id="customField" style="display:none;">
+          <label class="calc-label" for="customIntensity">Custom carbon intensity (g CO₂/kWh)</label>
+          <input type="number" id="customIntensity" class="calc-input" value="400" min="0" step="1">
+        </div>
+      </div>
+
+      <!-- RESULTS CARD -->
+      <div class="calc-card">
+        <h2>📊 Baseline Results</h2>
+
+        <div class="result-primary">
+          <div><span class="big" id="co2Total">1.39</span><span class="unit" id="co2Unit">metric tons CO₂</span></div>
+          <div class="sub" id="co2Sub">from 3,600 kWh at 386 g CO₂/kWh</div>
+        </div>
+
+        <div class="stat-list">
+          <div class="stat-row"><span class="label">IT energy consumed</span><span class="val" id="itEnergy">2,400 kWh</span></div>
+          <div class="stat-row"><span class="label">Total facility energy (incl. overhead)</span><span class="val" id="facilityEnergy">3,600 kWh</span></div>
+          <div class="stat-row"><span class="label">Overhead energy (cooling, power loss, etc.)</span><span class="val" id="overheadEnergy">1,200 kWh</span></div>
+          <div class="stat-row"><span class="label">Estimated water consumption (cooling)</span><span class="val" id="waterUsage">3,240 L (855.9 gal)</span></div>
+        </div>
+
+        <div class="equivalencies" id="equivalencies"></div>
+
+        <div id="pollutantsBlock" style="margin-top:24px;">
+          <label class="calc-label" style="margin-bottom:10px;">Estimated pollutant breakdown</label>
+          <table class="pollutants">
+            <thead><tr><th>Pollutant</th><th class="num">Amount</th></tr></thead>
+            <tbody id="pollutantsBody"></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- EMISSIONS REDUCTION MEASURES -->
+    <div class="calc-card section-card">
+      <h2>🌱 Emissions Reduction Measures</h2>
+      <p class="calc-hint" style="margin-bottom:20px;">Model efficiency upgrades and clean energy to see how much pollution they'd avoid, compared to the baseline above.</p>
+
+      <div class="calc-field">
+        <div class="slider-label-row"><label class="calc-label" for="effSlider">Server efficiency / virtualization gains</label><span class="value" id="effVal">0%</span></div>
+        <input type="range" id="effSlider" class="calc-range" min="0" max="70" step="1" value="0">
+        <div class="calc-hint">Consolidating workloads, virtualization, and retiring idle ("zombie") servers commonly cuts effective IT energy use by 10–30%, more in badly under-utilized environments.</div>
+
+        <div class="solar-helper">
+          <div class="helper-title">📈 Estimate from server utilization</div>
+          <div class="helper-row">
+            <div>
+              <label class="calc-label" for="utilCurrent">Current avg. utilization (%)</label>
+              <input type="number" id="utilCurrent" class="calc-input" value="18" min="1" max="100" step="1">
+            </div>
+            <div>
+              <label class="calc-label" for="utilTarget">Target after consolidation (%)</label>
+              <input type="number" id="utilTarget" class="calc-input" value="55" min="1" max="100" step="1">
+            </div>
+          </div>
+          <button id="applyUtil" type="button">Apply to efficiency slider</button>
+          <div class="helper-result" id="utilHelperResult"></div>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="slider-label-row"><label class="calc-label" for="optPue">Target PUE after cooling/infra upgrades</label><span class="value" id="optPueVal">1.50</span></div>
+        <input type="range" id="optPue" class="calc-range" min="1.0" max="3.0" step="0.05" value="1.5">
+        <div class="calc-hint">Current baseline PUE: <strong id="pueCurrentRef" style="color:var(--accent-cyan)">1.50</strong>. Free/economizer cooling, hot/cold aisle containment, and liquid cooling can bring PUE down toward 1.1–1.2.</div>
+      </div>
+
+      <div class="calc-field">
+        <div class="slider-label-row"><label class="calc-label" for="solarPct">On-site solar coverage</label><span class="value" id="solarVal">0%</span></div>
+        <input type="range" id="solarPct" class="calc-range" min="0" max="100" step="1" value="0">
+        <div class="calc-hint">Share of total facility energy supplied directly by on-site solar.</div>
+
+        <div class="solar-helper">
+          <div class="helper-title">🔆 Estimate coverage from a solar array</div>
+          <div class="helper-row">
+            <div>
+              <label class="calc-label" for="solarCapacity">Array capacity (kW DC)</label>
+              <input type="number" id="solarCapacity" class="calc-input" value="50" min="0" step="1">
+            </div>
+            <div>
+              <label class="calc-label" for="sunHours">Avg. peak sun hours/day</label>
+              <input type="number" id="sunHours" class="calc-input" value="5" min="0" step="0.1">
+            </div>
+          </div>
+          <button id="applySolar" type="button">Apply to coverage slider</button>
+          <div class="helper-result" id="solarHelperResult"></div>
+        </div>
+      </div>
+
+      <div class="calc-field">
+        <div class="slider-label-row"><label class="calc-label" for="renewPct">Additional renewable purchase (PPA / RECs)</label><span class="value" id="renewVal">0%</span></div>
+        <input type="range" id="renewPct" class="calc-range" min="0" max="100" step="1" value="0">
+        <div class="calc-hint">Share of the remaining grid electricity (after solar) sourced via a renewable power purchase agreement or certificates.</div>
+      </div>
+
+      <div class="calc-field">
+        <div class="slider-label-row"><label class="calc-label" for="shiftPct">Carbon-aware workload shifting</label><span class="value" id="shiftVal">0%</span></div>
+        <input type="range" id="shiftPct" class="calc-range" min="0" max="100" step="1" value="0">
+        <div class="calc-hint">Share of the remaining grid electricity (after solar + PPA) shifted to run during lower-carbon hours — e.g. batch jobs, training runs, or backups timed to overnight wind or midday solar.</div>
+        <div class="calc-row" style="margin-top:12px; gap:12px; align-items:flex-end;">
+          <div style="flex:1;">
+            <label class="calc-label" for="lowCarbonIntensity" style="margin-bottom:4px;">Low-carbon window intensity (g CO₂/kWh)</label>
+            <input type="number" id="lowCarbonIntensity" class="calc-input" value="180" min="0" step="10">
+          </div>
+        </div>
+        <div class="calc-hint">Check a service like WattTime or Electricity Maps for your grid's actual day-ahead carbon intensity range.</div>
+      </div>
+    </div>
+
+    <!-- EMISSIONS AVOIDED -->
+    <div class="calc-card section-card">
+      <h2>✅ Emissions Avoided</h2>
+
+      <div class="avoided-summary">
+        <div><span class="big positive" id="avoidedBig">0</span><span class="unit" id="avoidedUnit">kg CO₂ avoided</span></div>
+        <div class="sub" id="avoidedSub">0% lower than baseline</div>
+      </div>
+
+      <div class="compare-bars">
+        <div class="compare-bar-row">
+          <div class="bar-label"><span>Baseline (no measures)</span><span id="baselineBarLabel">1,389.6 kg</span></div>
+          <div class="compare-bar-track"><div class="compare-bar-fill baseline" id="baselineBarFill" style="width:100%;"></div></div>
+        </div>
+        <div class="compare-bar-row">
+          <div class="bar-label"><span>With measures applied</span><span id="adjustedBarLabel">1,389.6 kg</span></div>
+          <div class="compare-bar-track"><div class="compare-bar-fill adjusted" id="adjustedBarFill" style="width: 100%;"></div></div>
+        </div>
+      </div>
+
+      <div class="equivalencies" id="avoidedEquivalencies"></div>
+    </div>
+
+    <footer class="calc-footer-note">
+      Figures are illustrative averages for education/estimation, not audited emissions data. Real-world carbon
+      intensity and pollutant output vary significantly by plant technology, pollution controls, grid mix at time
+      of use, and region — for compliance-grade reporting, use your utility's actual emissions factors (e.g. EPA
+      eGRID, IEA, or your grid operator's real-time data).
+    </footer>
+  </div>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/logo.png" alt="Grid Apex" style="width:36px;height:36px;" />
+            <span class="nav-brand-text">Grid<span>Apex</span></span>
+          </a>
+          <p data-i18n="footer.desc">Building AI-ready warm-shell data centers in Japan — engineered for the future of artificial intelligence.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <a href="index.html#about" data-i18n="footer.about">About Us</a>
+          <a href="https://gridapex.co.jp" target="_blank" rel="noopener noreferrer" data-i18n="footer.japansite">Grid Apex Japan (co.jp) ↗</a>
+          <a href="#" data-i18n="footer.careers">Careers</a>
+          <a href="#" data-i18n="footer.press">Press</a>
+          <a href="#" data-i18n="footer.blog">Blog</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.solutions">Solutions</h4>
+          <a href="solutions.html" data-i18n="footer.sol1">Warm Shell Leasing</a>
+          <a href="solutions.html" data-i18n="footer.sol2">Chilled Water Infrastructure</a>
+          <a href="solutions.html" data-i18n="footer.sol3">Prefab AI Factory</a>
+          <a href="calculator.html" data-i18n="footer.calc">Pollution Calculator</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <a href="#" data-i18n="footer.docs">Documentation</a>
+          <a href="#" data-i18n="footer.status">Status Page</a>
+          <a href="#" data-i18n="footer.security">Security</a>
+          <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">&copy; 2026 Grid Apex Inc. All rights reserved.</span>
+        <span>
+          <a href="#" data-i18n="footer.privacy">Privacy</a> &nbsp;·&nbsp; <a href="#" data-i18n="footer.terms">Terms</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /.page-wrapper -->
+
+<script>
+  // Data Center Pollution Calculator Script
+  const SOURCES = [
+    { id: "coal",    label: "Coal",                 co2: 900, so2: 4.5,  nox: 1.8,  pm25: 0.30, note: "Highest-emitting common source; includes mining/transport lifecycle losses." },
+    { id: "oil",     label: "Oil / diesel",          co2: 650, so2: 5.0,  nox: 1.6,  pm25: 0.40, note: "Common for backup generators, not typical grid baseload in most regions." },
+    { id: "gas",     label: "Natural gas",           co2: 490, so2: 0.03, nox: 0.5,  pm25: 0.03, note: "Roughly half the CO₂ of coal per kWh; much lower particulates/SO₂." },
+    { id: "us",      label: "US grid average",       co2: 386, so2: 0.6,  nox: 0.5,  pm25: 0.05, note: "Blended national average across all US generation sources." },
+    { id: "eu",      label: "EU grid average",       co2: 230, so2: 0.3,  nox: 0.3,  pm25: 0.03, note: "Blended average across EU generation mix (higher renewables/nuclear share)." },
+    { id: "global",  label: "Global grid average",   co2: 475, so2: 0.9,  nox: 0.6,  pm25: 0.08, note: "Worldwide blended average across all generation types." },
+    { id: "hydro",   label: "Hydroelectric",         co2: 24,  so2: 0.01, nox: 0.01, pm25: 0.005, note: "Low direct emissions; mostly from construction/reservoir lifecycle." },
+    { id: "nuclear", label: "Nuclear",                co2: 12,  so2: 0.002,nox: 0.002,pm25: 0.001, note: "Very low lifecycle emissions; no combustion pollutants." },
+    { id: "solar",   label: "Solar PV",              co2: 45,  so2: 0.02, nox: 0.02, pm25: 0.01, note: "Emissions mostly from panel manufacturing, not operation." },
+    { id: "wind",    label: "Wind",                  co2: 11,  so2: 0.01, nox: 0.01, pm25: 0.005, note: "Lowest lifecycle footprint of common sources." },
+    { id: "custom",  label: "Custom…",                co2: null, so2: null, nox: null, pm25: null, note: "Enter your own grid carbon intensity below." },
+  ];
+
+  const $ = (id) => document.getElementById(id);
+  const powerEl = $("power"), hoursEl = $("hours"), pueEl = $("pue"), pueVal = $("pueVal");
+  const sourceEl = $("source"), sourceHint = $("sourceHint"), customField = $("customField"), customIntensityEl = $("customIntensity");
+  const coolingMethodEl = $("coolingMethod"), coolingHint = $("coolingHint");
+
+  const effSlider = $("effSlider"), effVal = $("effVal");
+  const optPueEl = $("optPue"), optPueVal = $("optPueVal"), pueCurrentRef = $("pueCurrentRef");
+  const solarPctEl = $("solarPct"), solarVal = $("solarVal");
+  const renewPctEl = $("renewPct"), renewVal = $("renewVal");
+  const solarCapacityEl = $("solarCapacity"), sunHoursEl = $("sunHours");
+  const applySolarBtn = $("applySolar"), solarHelperResult = $("solarHelperResult");
+  const utilCurrentEl = $("utilCurrent"), utilTargetEl = $("utilTarget");
+  const applyUtilBtn = $("applyUtil"), utilHelperResult = $("utilHelperResult");
+  const shiftPctEl = $("shiftPct"), shiftVal = $("shiftVal"), lowCarbonIntensityEl = $("lowCarbonIntensity");
+
+  const SOLAR_LIFECYCLE_INTENSITY = 45;
+  const PPA_INTENSITY = 24;
+  const IDLE_POWER_FRACTION = 0.5;
+
+  const COOLING_METHODS = [
+    { id: "air",  label: "Air-cooled (dry, no water use)",         wue: 0.0, note: "No direct water use; heat rejected via dry coolers/refrigerant. Usually higher PUE." },
+    { id: "free", label: "Free / economizer cooling",              wue: 0.0, note: "Uses cool outside air directly — minimal water, but climate-dependent." },
+    { id: "evap", label: "Evaporative cooling tower",               wue: 1.8, note: "Very effective at lowering PUE, but consumes significant on-site water." },
+    { id: "hybrid", label: "Hybrid (evaporative + free cooling)",  wue: 0.9, note: "Common in modern hyperscale facilities — balances energy and water use." },
+    { id: "liquid", label: "Direct liquid cooling (closed-loop)",  wue: 0.2, note: "Low water use with minimal make-up water; supports very low PUE at high density." },
+  ];
+
+  SOURCES.forEach(s => {
+    const opt = document.createElement("option");
+    opt.value = s.id;
+    opt.textContent = s.id === "custom" ? s.label : `${s.label} (~${s.co2} g CO₂/kWh)`;
+    sourceEl.appendChild(opt);
+  });
+  sourceEl.value = "us";
+
+  COOLING_METHODS.forEach(c => {
+    const opt = document.createElement("option");
+    opt.value = c.id;
+    opt.textContent = c.label;
+    coolingMethodEl.appendChild(opt);
+  });
+  coolingMethodEl.value = "hybrid";
+
+  document.querySelectorAll(".duration-buttons button").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".duration-buttons button").forEach(b => b.classList.remove("active"));
+      btn.classList.add("active");
+      hoursEl.value = btn.dataset.hours;
+      calculate();
+    });
+  });
+
+  hoursEl.addEventListener("input", () => {
+    document.querySelectorAll(".duration-buttons button").forEach(b => b.classList.remove("active"));
+    calculate();
+  });
+
+  [powerEl, pueEl, customIntensityEl].forEach(el => el.addEventListener("input", calculate));
+  sourceEl.addEventListener("change", () => {
+    const isCustom = sourceEl.value === "custom";
+    customField.style.display = isCustom ? "block" : "none";
+    const s = SOURCES.find(s => s.id === sourceEl.value);
+    sourceHint.textContent = s.note;
+    calculate();
+  });
+
+  coolingMethodEl.addEventListener("change", () => {
+    const c = COOLING_METHODS.find(c => c.id === coolingMethodEl.value);
+    coolingHint.textContent = c.note;
+    calculate();
+  });
+
+  [effSlider, optPueEl, solarPctEl, renewPctEl, shiftPctEl, lowCarbonIntensityEl].forEach(el => el.addEventListener("input", calculate));
+
+  applyUtilBtn.addEventListener("click", () => {
+    const u1 = Math.min(100, Math.max(1, parseFloat(utilCurrentEl.value) || 1)) / 100;
+    const u2 = Math.min(100, Math.max(1, parseFloat(utilTargetEl.value) || 1)) / 100;
+    const idle = IDLE_POWER_FRACTION;
+
+    const energyFactor1 = idle / u1 + (1 - idle);
+    const energyFactor2 = idle / u2 + (1 - idle);
+    const reductionFraction = 1 - (energyFactor2 / energyFactor1);
+    const reductionPct = Math.max(0, Math.min(70, Math.round(reductionFraction * 100)));
+
+    effSlider.value = reductionPct;
+    utilHelperResult.textContent = u2 > u1
+      ? `Raising utilization ${Math.round(u1*100)}% → ${Math.round(u2*100)}% needs ~${reductionPct}% less energy for the same workload (idle draw assumed at ${Math.round(idle*100)}% of peak).`
+      : `Target utilization isn't higher than current — no savings to apply.`;
+    calculate();
+  });
+
+  applySolarBtn.addEventListener("click", () => {
+    const capacity = Math.max(0, parseFloat(solarCapacityEl.value) || 0);
+    const sunHrs = Math.max(0, parseFloat(sunHoursEl.value) || 0);
+    const performanceRatio = 0.8;
+    const dailySolarKwh = capacity * sunHrs * performanceRatio;
+
+    const power = Math.max(0, parseFloat(powerEl.value) || 0);
+    const hours = Math.max(0, parseFloat(hoursEl.value) || 0);
+    const eff = parseFloat(effSlider.value) || 0;
+    const optPue = parseFloat(optPueEl.value) || 1.0;
+    const itEnergyAdjusted = power * hours * (1 - eff / 100);
+    const facilityEnergyAdjusted = itEnergyAdjusted * optPue;
+    const avgDailyFacilityKwh = hours > 0 ? facilityEnergyAdjusted / (hours / 24) : 0;
+
+    const coveragePct = avgDailyFacilityKwh > 0
+      ? Math.min(100, Math.round((dailySolarKwh / avgDailyFacilityKwh) * 100))
+      : 0;
+
+    solarPctEl.value = coveragePct;
+    solarHelperResult.textContent = `≈ ${fmt(dailySolarKwh, 0)} kWh/day → covers ~${coveragePct}% of average daily facility load`;
+    calculate();
+  });
+
+  function fmt(n, decimals = 1) {
+    return n.toLocaleString(undefined, { maximumFractionDigits: decimals, minimumFractionDigits: 0 });
+  }
+
+  function calculate() {
+    const power = Math.max(0, parseFloat(powerEl.value) || 0);
+    const hours = Math.max(0, parseFloat(hoursEl.value) || 0);
+    const pue = parseFloat(pueEl.value) || 1.0;
+    pueVal.textContent = pue.toFixed(2);
+
+    const sourceId = sourceEl.value;
+    const source = SOURCES.find(s => s.id === sourceId);
+    const intensity = sourceId === "custom" ? (Math.max(0, parseFloat(customIntensityEl.value) || 0)) : source.co2;
+    if (sourceId !== "custom") sourceHint.textContent = source.note;
+    else sourceHint.textContent = "Grams of CO₂ emitted per kWh of electricity from your source.";
+
+    const itEnergyKwh = power * hours;
+    const facilityEnergyKwh = itEnergyKwh * pue;
+    const overheadKwh = facilityEnergyKwh - itEnergyKwh;
+
+    $("itEnergy").textContent = `${fmt(itEnergyKwh)} kWh`;
+    $("facilityEnergy").textContent = `${fmt(facilityEnergyKwh)} kWh`;
+    $("overheadEnergy").textContent = `${fmt(overheadKwh)} kWh`;
+
+    const cooling = COOLING_METHODS.find(c => c.id === coolingMethodEl.value);
+    const waterLiters = facilityEnergyKwh * cooling.wue;
+    const waterGallons = waterLiters * 0.264172;
+    $("waterUsage").textContent = waterLiters > 0
+      ? `${fmt(waterLiters)} L (${fmt(waterGallons)} gal)`
+      : `~0 L (negligible)`;
+
+    const co2Grams = facilityEnergyKwh * intensity;
+    const co2Kg = co2Grams / 1000;
+    const co2Tons = co2Kg / 1000;
+
+    let bigVal, unit;
+    if (co2Tons >= 1) {
+      bigVal = fmt(co2Tons, 2);
+      unit = "metric tons CO₂";
+    } else {
+      bigVal = fmt(co2Kg, co2Kg < 10 ? 2 : 0);
+      unit = "kg CO₂";
+    }
+    $("co2Total").textContent = bigVal;
+    $("co2Unit").textContent = unit;
+    $("co2Sub").textContent = `from ${fmt(facilityEnergyKwh)} kWh at ${fmt(intensity,0)} g CO₂/kWh`;
+
+    const milesDriven = co2Kg / 0.404;
+    const treesPerYear = co2Kg / 21;
+    const phoneCharges = intensity > 0 ? (co2Grams / (0.012 * intensity)) : 0;
+
+    const eqEl = $("equivalencies");
+    eqEl.innerHTML = `
+      <div class="eq-item"><span class="icon">🚗</span><span class="text"><strong>${fmt(milesDriven)}</strong> miles driven by an average car</span></div>
+      <div class="eq-item"><span class="icon">🌳</span><span class="text"><strong>${fmt(treesPerYear)}</strong> tree-years of CO₂ absorption needed to offset this</span></div>
+      <div class="eq-item"><span class="icon">📱</span><span class="text"><strong>${fmt(phoneCharges,0)}</strong> smartphone charges' worth of energy</span></div>
+    `;
+
+    const pb = $("pollutantsBody");
+    if (sourceId === "custom") {
+      pb.innerHTML = `<tr><td colspan="2" style="color:var(--text-muted); text-align:center; padding:16px 0;">Select a specific energy source to see SO₂ / NOx / PM2.5 estimates.</td></tr>`;
+    } else {
+      const so2 = facilityEnergyKwh * source.so2 / 1000;
+      const nox = facilityEnergyKwh * source.nox / 1000;
+      const pm25 = facilityEnergyKwh * source.pm25 / 1000;
+      pb.innerHTML = `
+        <tr><td>CO₂ (carbon dioxide)</td><td class="num">${fmt(co2Kg)} kg</td></tr>
+        <tr><td>SO₂ (sulfur dioxide)</td><td class="num">${fmt(so2,3)} kg</td></tr>
+        <tr><td>NOₓ (nitrogen oxides)</td><td class="num">${fmt(nox,3)} kg</td></tr>
+        <tr><td>PM2.5 (fine particulates)</td><td class="num">${fmt(pm25,3)} kg</td></tr>
+      `;
+    }
+
+    pueCurrentRef.textContent = pue.toFixed(2);
+
+    const eff = parseFloat(effSlider.value);
+    effVal.textContent = `${eff}%`;
+    const optPue = parseFloat(optPueEl.value);
+    optPueVal.textContent = optPue.toFixed(2);
+    const solarPct = parseFloat(solarPctEl.value);
+    solarVal.textContent = `${solarPct}%`;
+    const renewPct = parseFloat(renewPctEl.value);
+    renewVal.textContent = `${renewPct}%`;
+    const shiftPct = parseFloat(shiftPctEl.value);
+    shiftVal.textContent = `${shiftPct}%`;
+    const lowCarbonIntensity = Math.max(0, parseFloat(lowCarbonIntensityEl.value) || 0);
+
+    const itEnergyAdjusted = itEnergyKwh * (1 - eff / 100);
+    const facilityEnergyAdjusted = itEnergyAdjusted * optPue;
+
+    const solarEnergy = facilityEnergyAdjusted * (solarPct / 100);
+    const remainingAfterSolar = facilityEnergyAdjusted - solarEnergy;
+    const renewEnergy = remainingAfterSolar * (renewPct / 100);
+    const gridEnergy = remainingAfterSolar - renewEnergy;
+
+    const shiftedGridEnergy = gridEnergy * (shiftPct / 100);
+    const normalGridEnergy = gridEnergy - shiftedGridEnergy;
+
+    const co2AdjustedGrams = solarEnergy * SOLAR_LIFECYCLE_INTENSITY
+      + renewEnergy * PPA_INTENSITY
+      + shiftedGridEnergy * lowCarbonIntensity
+      + normalGridEnergy * intensity;
+    const co2AdjustedKg = co2AdjustedGrams / 1000;
+
+    const avoidedKg = co2Kg - co2AdjustedKg;
+    const avoidedPct = co2Kg > 0 ? (avoidedKg / co2Kg) * 100 : 0;
+
+    const avoidedBig = $("avoidedBig"), avoidedUnit = $("avoidedUnit"), avoidedSub = $("avoidedSub");
+    avoidedBig.classList.remove("positive", "negative");
+    if (avoidedKg >= 0) {
+      avoidedBig.classList.add("positive");
+      avoidedBig.textContent = fmt(Math.abs(avoidedKg), Math.abs(avoidedKg) < 10 ? 2 : 0);
+      avoidedUnit.textContent = "kg CO₂ avoided";
+      avoidedSub.textContent = `${fmt(avoidedPct, 1)}% lower than baseline (${fmt(co2AdjustedKg)} kg vs ${fmt(co2Kg)} kg)`;
+    } else {
+      avoidedBig.classList.add("negative");
+      avoidedBig.textContent = fmt(Math.abs(avoidedKg), Math.abs(avoidedKg) < 10 ? 2 : 0);
+      avoidedUnit.textContent = "kg CO₂ added";
+      avoidedSub.textContent = `Settings above baseline PUE increase emissions ${fmt(Math.abs(avoidedPct), 1)}% vs the baseline scenario`;
+    }
+
+    const maxBar = Math.max(co2Kg, co2AdjustedKg, 0.0001);
+    $("baselineBarLabel").textContent = `${fmt(co2Kg)} kg`;
+    $("adjustedBarLabel").textContent = `${fmt(co2AdjustedKg)} kg`;
+    $("baselineBarFill").style.width = `${(co2Kg / maxBar) * 100}%`;
+    $("adjustedBarFill").style.width = `${(co2AdjustedKg / maxBar) * 100}%`;
+
+    const avoidedEqEl = $("avoidedEquivalencies");
+    if (avoidedKg > 0) {
+      const milesAvoided = avoidedKg / 0.404;
+      const treesAvoided = avoidedKg / 21;
+      avoidedEqEl.innerHTML = `
+        <div class="eq-item"><span class="icon">🚗</span><span class="text">Equivalent to not driving <strong>${fmt(milesAvoided)}</strong> miles</span></div>
+        <div class="eq-item"><span class="icon">🌳</span><span class="text">Equivalent to <strong>${fmt(treesAvoided)}</strong> tree-years of CO₂ absorption</span></div>
+      `;
+    } else {
+      avoidedEqEl.innerHTML = "";
+    }
+  }
+
+  sourceEl.dispatchEvent(new Event("change"));
+  coolingMethodEl.dispatchEvent(new Event("change"));
+  calculate();
+</script>
+
+<script src="main.js"></script>
+</body>
+</html>
