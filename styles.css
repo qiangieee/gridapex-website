@@ -1596,3 +1596,480 @@ img { max-width: 100%; display: block; }
 .exp-details strong {
   color: var(--text-primary);
 }
+
+/* ========================================
+   Team Page & Executive Cards
+   ======================================== */
+.team-section {
+  padding: 4rem 0 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+.team-synergy-strip {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1.25rem;
+  margin-bottom: 4.5rem;
+}
+
+.synergy-item {
+  background: rgba(12, 18, 40, 0.55);
+  border: 1px solid rgba(0, 212, 255, 0.12);
+  border-radius: var(--radius-md);
+  padding: 1.25rem 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  backdrop-filter: blur(12px);
+  transition: all 0.3s var(--ease-out);
+}
+.synergy-item:hover {
+  border-color: rgba(0, 212, 255, 0.35);
+  background: rgba(18, 28, 60, 0.7);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 212, 255, 0.08);
+}
+.synergy-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.15), rgba(139, 92, 246, 0.15));
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.25rem;
+  color: var(--accent-cyan);
+  flex-shrink: 0;
+}
+.synergy-text h4 {
+  font-family: var(--font-display);
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: 0.2rem;
+}
+.synergy-text p {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+  margin: 0;
+}
+
+/* Team Grid */
+.team-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .team-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Team Card */
+.team-card {
+  position: relative;
+  background: rgba(12, 18, 40, 0.65);
+  border: 1px solid rgba(0, 212, 255, 0.14);
+  border-radius: var(--radius-lg);
+  padding: 2.25rem;
+  display: flex;
+  flex-direction: column;
+  backdrop-filter: blur(16px);
+  overflow: hidden;
+  transition: all 0.4s var(--ease-out);
+}
+
+.team-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent-cyan), var(--accent-purple), transparent);
+  opacity: 0.4;
+  transition: opacity 0.4s var(--ease-out);
+}
+
+.team-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(0, 212, 255, 0.38);
+  background: rgba(16, 25, 55, 0.82);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.45), 0 0 35px rgba(0, 212, 255, 0.12);
+}
+
+.team-card:hover::before {
+  opacity: 1;
+}
+
+/* Techno Corner Accents */
+.team-card-corner-tl,
+.team-card-corner-br {
+  position: absolute;
+  width: 12px;
+  height: 12px;
+  pointer-events: none;
+}
+.team-card-corner-tl {
+  top: 8px;
+  left: 8px;
+  border-top: 1.5px solid rgba(0, 212, 255, 0.35);
+  border-left: 1.5px solid rgba(0, 212, 255, 0.35);
+}
+.team-card-corner-br {
+  bottom: 8px;
+  right: 8px;
+  border-bottom: 1.5px solid rgba(139, 92, 246, 0.35);
+  border-right: 1.5px solid rgba(139, 92, 246, 0.35);
+}
+
+/* Card Header (Photo + Identity) */
+.team-card-header {
+  display: flex;
+  gap: 1.75rem;
+  align-items: flex-start;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+@media (max-width: 540px) {
+  .team-card-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+}
+
+/* Photo Wrap */
+.team-photo-wrap {
+  position: relative;
+  width: 140px;
+  height: 140px;
+  flex-shrink: 0;
+  border-radius: 16px;
+  padding: 3px;
+  background: linear-gradient(135deg, rgba(0, 212, 255, 0.4), rgba(139, 92, 246, 0.25), rgba(255, 255, 255, 0.05));
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5), 0 0 20px rgba(0, 212, 255, 0.15);
+  transition: all 0.3s var(--ease-out);
+}
+
+.team-card:hover .team-photo-wrap {
+  transform: scale(1.03);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6), 0 0 28px rgba(0, 212, 255, 0.28);
+}
+
+.team-photo-inner {
+  width: 100%;
+  height: 100%;
+  border-radius: 13px;
+  overflow: hidden;
+  background: #080d1a;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.team-photo-inner img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+}
+
+/* Specific framing adjustment for Ruan.png to center upper body/head nicely */
+.photo-ruan img {
+  object-position: 45% 15%;
+}
+.photo-qiang img {
+  object-position: 50% 12%;
+}
+.photo-huang img {
+  object-position: 50% 15%;
+}
+.photo-perry img {
+  object-position: 50% 12%;
+}
+
+/* Monogram Avatar for Jun Shimaoka */
+.team-avatar-monogram {
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 35% 30%, #1e2954 0%, #0a0f24 85%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  border-radius: 13px;
+  border: 1px solid rgba(0, 212, 255, 0.2);
+}
+
+.team-avatar-monogram::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 9px;
+  border: 1px dashed rgba(0, 212, 255, 0.25);
+  pointer-events: none;
+}
+
+.monogram-letters {
+  font-family: var(--font-display);
+  font-size: 2.5rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, #00d4ff 0%, #a78bfa 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  letter-spacing: 2px;
+  line-height: 1;
+}
+
+.monogram-sub {
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  color: var(--accent-cyan);
+  margin-top: 4px;
+}
+
+/* Executive Index Badge */
+.team-exec-id {
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  background: rgba(6, 8, 15, 0.92);
+  border: 1px solid rgba(0, 212, 255, 0.4);
+  color: var(--accent-cyan);
+  font-size: 0.65rem;
+  font-family: var(--font-display);
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 6px;
+  letter-spacing: 1px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+  z-index: 2;
+}
+
+/* Team Info Header */
+.team-card-info {
+  flex-grow: 1;
+}
+
+.team-role-pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.85rem;
+  border-radius: 20px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  margin-bottom: 0.6rem;
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.28);
+  color: var(--accent-cyan);
+}
+
+.team-role-pill.ceo {
+  background: rgba(0, 212, 255, 0.1);
+  border-color: rgba(0, 212, 255, 0.4);
+  color: #38bdf8;
+}
+.team-role-pill.coo {
+  background: rgba(139, 92, 246, 0.1);
+  border-color: rgba(139, 92, 246, 0.4);
+  color: #c084fc;
+}
+.team-role-pill.cdo {
+  background: rgba(52, 211, 153, 0.1);
+  border-color: rgba(52, 211, 153, 0.4);
+  color: #34d399;
+}
+.team-role-pill.cfa {
+  background: rgba(245, 158, 11, 0.1);
+  border-color: rgba(245, 158, 11, 0.4);
+  color: #fbbf24;
+}
+.team-role-pill.cto {
+  background: rgba(0, 212, 255, 0.12);
+  border-color: rgba(0, 212, 255, 0.45);
+  color: #00d4ff;
+}
+
+.team-name {
+  font-family: var(--font-display);
+  font-size: 1.65rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  line-height: 1.25;
+  margin-bottom: 0.35rem;
+}
+
+.team-official-title {
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--text-secondary);
+  margin-bottom: 0.85rem;
+}
+
+/* Focus Tags */
+.team-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.team-tag {
+  font-size: 0.72rem;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  color: var(--text-secondary);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.team-card:hover .team-tag {
+  border-color: rgba(0, 212, 255, 0.2);
+  color: #cbd5e1;
+}
+
+/* Card Body / Bio List */
+.team-card-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.team-bio-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.25rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+
+.team-bio-list li {
+  font-size: 0.88rem;
+  line-height: 1.6;
+  color: var(--text-secondary);
+  position: relative;
+  padding-left: 1.25rem;
+}
+
+.team-bio-list li::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0.55rem;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-cyan);
+  box-shadow: 0 0 8px rgba(0, 212, 255, 0.7);
+}
+
+.team-bio-list li strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Credentials Block */
+.team-credentials-box {
+  margin-top: auto;
+  padding: 1rem 1.15rem;
+  border-radius: var(--radius-sm);
+  background: rgba(6, 9, 22, 0.7);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-left: 3px solid var(--accent-cyan);
+}
+
+.team-credentials-title {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.2px;
+  color: var(--accent-cyan);
+  margin-bottom: 0.4rem;
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.team-credentials-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.team-credentials-list li {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}
+.team-credentials-list li strong {
+  color: var(--text-primary);
+}
+
+/* Card Footer / Action Links */
+.team-card-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 1.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.team-link-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent-cyan);
+  background: rgba(0, 212, 255, 0.08);
+  border: 1px solid rgba(0, 212, 255, 0.25);
+  padding: 0.4rem 0.9rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+}
+
+.team-link-btn:hover {
+  background: rgba(0, 212, 255, 0.2);
+  border-color: rgba(0, 212, 255, 0.5);
+  color: #ffffff;
+  transform: translateY(-1px);
+  box-shadow: 0 4px 14px rgba(0, 212, 255, 0.25);
+}
+
+.team-badge-sub {
+  font-size: 0.75rem;
+  color: var(--text-dim);
+  display: flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+.team-badge-sub .pulse-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--accent-emerald);
+  box-shadow: 0 0 8px var(--accent-emerald);
+}
+
