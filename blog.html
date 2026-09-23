@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Blog & Research — Grid Apex</title>
+  <meta name="description" content="Technical whitepapers, engineering analyses, and operational blueprints on AI data centre design, prefabricated modular architecture, and Japanese infrastructure." />
+  <meta name="keywords" content="Grid Apex blog, AI data center whitepaper, modular data center research, liquid cooling, prefabricated building module, Article 6-3 tekihan" />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css?v=2.0" />
+</head>
+<body>
+
+<!-- Animated particle background -->
+<canvas id="bg-canvas"></canvas>
+
+<div class="page-wrapper">
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Grid Apex Logo" />
+        <span class="nav-brand-text">Grid<span>Apex</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="datacenters.html" data-i18n="nav.datacenters">Data Centers</a></li>
+        <li><a href="solutions.html" data-i18n="nav.solutions">Solutions</a></li>
+        <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+        <li><a href="blog.html" class="active" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="index.html#partners" data-i18n="nav.ecosystem">Ecosystem</a></li>
+        <li><a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== HERO ====== -->
+  <section class="hero subpage-hero" id="hero">
+    <div class="hero-content">
+      <div class="hero-badge">
+        <span class="pulse"></span>
+        <span>Grid Apex Engineering Insights</span>
+      </div>
+      <h1>Technical Insights & <span class="gradient-text">Research</span></h1>
+      <p>Peer-referenced whitepapers, structural engineering analyses, and operational blueprints on next-generation AI data centres, liquid cooling physics, and Japanese regulatory execution.</p>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <!-- ====== BLOG SECTION ====== -->
+  <section class="blog-section">
+    <div class="container">
+      
+      <!-- Category Filter Pills -->
+      <div class="blog-filter-bar">
+        <button class="blog-filter-btn active" onclick="filterArticles('all', this)">All Publications</button>
+        <button class="blog-filter-btn" onclick="filterArticles('whitepaper', this)">Technical Whitepapers</button>
+        <button class="blog-filter-btn" onclick="filterArticles('thermal', this)">Thermal & Liquid Cooling</button>
+        <button class="blog-filter-btn" onclick="filterArticles('seismic', this)">Seismic & Japan Regulatory</button>
+        <button class="blog-filter-btn" onclick="filterArticles('epc', this)">Modular EPC & Delivery</button>
+      </div>
+
+      <!-- FEATURED ARTICLE CARD (THE WHITEPAPER) -->
+      <a href="article-prefabricated-modules-ai-datacentres.html" class="featured-card reveal" data-category="whitepaper">
+        <div class="featured-img-wrap">
+          <img loading="lazy" src="assets/blog/img/plate-7.jpg" alt="Prefabricated Building Modules for AI Data Centres" />
+          <span class="featured-badge-pill">
+            <span class="pulse"></span>
+            Featured Whitepaper · 2026
+          </span>
+        </div>
+        <div class="featured-body">
+          <div class="featured-tag-line">
+            <span class="tag">AI Infrastructure · Structural & MEP</span>
+            <span>·</span>
+            <span>22 September 2026</span>
+            <span>·</span>
+            <span>18 min read</span>
+          </div>
+          <h2 class="featured-title">
+            Prefabricated Building Modules for AI Data Centres: Technological Feasibility, Global Practice, and the Two-Level Stacked Data Hall
+          </h2>
+          <p class="featured-excerpt">
+            A definitive 20-page technical paper on why prefabricated building modules deliver gigawatt-scale AI capacity, how they differ from steel frames and ISO containers, structural calculations under Japan's Article 6-3 Tekihan, and why Grid Apex adopted two-level vertical stacking for its Japanese multi-storey AI campus.
+          </p>
+          <div class="featured-meta">
+            <div class="author-info">
+              <div class="author-avatar">GA</div>
+              <div class="author-text">
+                <h5>Grid Apex Inc. & PSG Group</h5>
+                <p>Joint Engineering Publication · Referenced Across 9 Markets</p>
+              </div>
+            </div>
+            <div class="featured-actions">
+              <span class="btn-read-now">
+                Read Full Whitepaper
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+              </span>
+            </div>
+          </div>
+        </div>
+      </a>
+
+      <!-- BLOG GRID -->
+      <div class="blog-grid">
+
+        <!-- Card 1: The Whitepaper Card -->
+        <a href="article-prefabricated-modules-ai-datacentres.html" class="blog-card reveal" data-category="whitepaper">
+          <div class="blog-card-img-wrap">
+            <img loading="lazy" src="assets/blog/img/plate-7.jpg" alt="Prefabricated Building Modules for AI Data Centres" />
+            <span class="blog-card-badge">Whitepaper</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-tag">Architecture & EPC</span>
+              <span>Sep 22, 2026</span>
+            </div>
+            <h3 class="blog-card-title">Prefabricated Building Modules for AI Data Centres: Global Practice</h3>
+            <p class="blog-card-excerpt">
+              The full 20-page engineering study covering the 3 modular families, Japanese seismic importance factor 1.5, and multi-storey stacked data halls.
+            </p>
+            <div class="blog-card-footer">
+              <span>18 min read</span>
+              <span class="blog-card-arrow">Read Article &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 2: Liquid Cooling Gallery -->
+        <a href="article-prefabricated-modules-ai-datacentres.html#sec-4" class="blog-card reveal" data-category="thermal">
+          <div class="blog-card-img-wrap">
+            <img loading="lazy" src="assets/blog/img/plate-4.jpg" alt="The Pre-Piped Coolant Gallery" />
+            <span class="blog-card-badge" style="color:var(--accent-purple);border-color:rgba(139,92,246,0.4);">Thermal MEP</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-tag" style="color:var(--accent-purple);">Liquid Cooling</span>
+              <span>Sep 2026</span>
+            </div>
+            <h3 class="blog-card-title">The Pre-Piped Coolant Gallery: Why Factory Integration Beats Field Piping</h3>
+            <p class="blog-card-excerpt">
+              Direct-to-chip liquid cooling at 700–1,000 W per accelerator requires 30-bar pressure tolerance. Why factory jigs eliminate field leak risks.
+            </p>
+            <div class="blog-card-footer">
+              <span>8 min read</span>
+              <span class="blog-card-arrow">Read Article &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 3: Japanese Seismic Code -->
+        <a href="article-prefabricated-modules-ai-datacentres.html#sec-10" class="blog-card reveal" data-category="seismic">
+          <div class="blog-card-img-wrap">
+            <img loading="lazy" src="assets/blog/img/plate-10.jpg" alt="Substructure grid and foundation tolerance" />
+            <span class="blog-card-badge" style="color:var(--accent-emerald);border-color:rgba(52,211,153,0.4);">Seismic & Code</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-tag" style="color:var(--accent-emerald);">Japan Regulatory</span>
+              <span>Sep 2026</span>
+            </div>
+            <h3 class="blog-card-title">Navigating Article 6-3 Tekihan and JDCC Tier 4 in Japan</h3>
+            <p class="blog-card-excerpt">
+              How prefabricated structural modules obtain Type Conformity Approval (型式適合認定) and resolve the critical path under severe trade scarcity.
+            </p>
+            <div class="blog-card-footer">
+              <span>10 min read</span>
+              <span class="blog-card-arrow">Read Article &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 4: Stacking Mathematics -->
+        <a href="article-prefabricated-modules-ai-datacentres.html#sec-9" class="blog-card reveal" data-category="whitepaper">
+          <div class="blog-card-img-wrap">
+            <img loading="lazy" src="assets/blog/img/plate-9.jpg" alt="Five levels of stacked volumetric modules" />
+            <span class="blog-card-badge">Architecture</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-tag">Vertical Stacking</span>
+              <span>Sep 2026</span>
+            </div>
+            <h3 class="blog-card-title">Why Two Levels Specifically? The Mathematics of Superimposed Load</h3>
+            <p class="blog-card-excerpt">
+              Why two levels double megawatts per hectare while avoiding non-linear seismic penalties, complex smoke extract, and multi-year reviews.
+            </p>
+            <div class="blog-card-footer">
+              <span>12 min read</span>
+              <span class="blog-card-arrow">Read Article &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 5: Next-Gen Compute Node -->
+        <a href="article-prefabricated-modules-ai-datacentres.html#sec-11" class="blog-card reveal" data-category="thermal">
+          <div class="blog-card-img-wrap">
+            <img loading="lazy" src="assets/blog/img/plate-8.jpg" alt="Live liquid cooled direct to chip hall" />
+            <span class="blog-card-badge" style="color:var(--accent-hot);border-color:rgba(244,114,182,0.4);">Compute Nodes</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-tag" style="color:var(--accent-hot);">Hardware Roadmap</span>
+              <span>Sep 2026</span>
+            </div>
+            <h3 class="blog-card-title">Designing for 600 kW Racks: The Four Capacity Envelopes</h3>
+            <p class="blog-card-excerpt">
+              IT turns over every 2–4 years while buildings last decades. Decoupling floor loading, power paths, and cooling manifolds at the module boundary.
+            </p>
+            <div class="blog-card-footer">
+              <span>9 min read</span>
+              <span class="blog-card-arrow">Read Article &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+        <!-- Card 6: Crane Cycle & Delivery -->
+        <a href="article-prefabricated-modules-ai-datacentres.html#sec-4" class="blog-card reveal" data-category="epc">
+          <div class="blog-card-img-wrap">
+            <img loading="lazy" src="assets/blog/img/plate-5.jpg" alt="Aerial view of modular data hall assembly" />
+            <span class="blog-card-badge" style="color:var(--accent-blue);border-color:rgba(59,130,246,0.4);">Site EPC</span>
+          </div>
+          <div class="blog-card-body">
+            <div class="blog-card-meta">
+              <span class="blog-card-tag" style="color:var(--accent-blue);">Delivery Logistics</span>
+              <span>Sep 2026</span>
+            </div>
+            <h3 class="blog-card-title">Inside the Setting Face: How Crawler Cranes Drive Hyperscale Speed</h3>
+            <p class="blog-card-excerpt">
+              In prefabricated modular construction, the critical path runs through factory line and foundations in parallel, converging at the crane.
+            </p>
+            <div class="blog-card-footer">
+              <span>7 min read</span>
+              <span class="blog-card-arrow">Read Article &rarr;</span>
+            </div>
+          </div>
+        </a>
+
+      </div>
+
+      <!-- WHITEPAPER DOWNLOAD CTA BANNER -->
+      <div class="blog-cta-banner reveal">
+        <div class="blog-cta-text">
+          <h3>Download the Complete Whitepaper (PDF)</h3>
+          <p>Get the full 20-page document including high-resolution engineering plates, complete Japanese building code citations (Articles 68-10 to 68-12), and 9-market data tables.</p>
+        </div>
+        <a href="assets/docs/GridApex_Prefab-Module-AIDC-Paper.pdf" target="_blank" download class="btn-primary" style="padding:0.85rem 1.75rem;font-size:0.92rem;display:inline-flex;align-items:center;gap:0.6rem;">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+          Download Whitepaper PDF
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/logo.png" alt="Grid Apex" style="width:36px;height:36px;" />
+            <span class="nav-brand-text">Grid<span>Apex</span></span>
+          </a>
+          <p data-i18n="footer.desc">Building AI-ready warm-shell data centers in Japan — engineered for the future of artificial intelligence.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <a href="index.html#about" data-i18n="footer.about">About Us</a>
+          <a href="team.html">Leadership Team</a>
+          <a href="https://gridapex.co.jp" target="_blank" rel="noopener noreferrer" data-i18n="footer.japansite">Grid Apex Japan (co.jp) ↗</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="blog.html" class="active" data-i18n="footer.blog">Blog & Research</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.solutions">Solutions</h4>
+          <a href="solutions.html" data-i18n="footer.sol1">Warm Shell Leasing</a>
+          <a href="solutions.html" data-i18n="footer.sol2">Chilled Water Infrastructure</a>
+          <a href="solutions.html" data-i18n="footer.sol3">Prefab AI Factory</a>
+          <a href="calculator.html" data-i18n="footer.calc">Pollution Calculator</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <a href="assets/docs/GridApex_Prefab-Module-AIDC-Paper.pdf" target="_blank">Technical Whitepaper (PDF)</a>
+          <a href="#">Documentation</a>
+          <a href="#">Security</a>
+          <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">&copy; 2026 Grid Apex Inc. All rights reserved.</span>
+        <span>
+          <a href="#" data-i18n="footer.privacy">Privacy</a> &nbsp;·&nbsp; <a href="#" data-i18n="footer.terms">Terms</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /.page-wrapper -->
+
+<script src="main.js"></script>
+<script>
+  function filterArticles(category, btn) {
+    document.querySelectorAll('.blog-filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const cards = document.querySelectorAll('.blog-card, .featured-card');
+    cards.forEach(card => {
+      const cardCat = card.dataset.category;
+      if (category === 'all' || cardCat === category) {
+        card.style.display = card.classList.contains('featured-card') ? 'grid' : 'flex';
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  }
+</script>
+</body>
+</html>

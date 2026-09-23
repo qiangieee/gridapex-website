@@ -8,10 +8,12 @@ const TRANSLATIONS = {
   "nav.about":         { en: "About",      ja: "会社概要",     zh: "关于我们" },
   "nav.datacenters":   { en: "Data Centers", ja: "データセンター", zh: "数据中心" },
   "nav.solutions":     { en: "Solutions",   ja: "ソリューション", zh: "解决方案" },
+  "nav.team":          { en: "Team",        ja: "チーム",       zh: "核心团队" },
+  "nav.blog":          { en: "Blog",        ja: "ブログ・論文", zh: "研究与洞见" },
   "nav.calculator":    { en: "Calculator",  ja: "計算ツール",     zh: "计算器" },
   "nav.technology":    { en: "Technology",  ja: "テクノロジー",   zh: "核心技术" },
   "nav.ecosystem":     { en: "Ecosystem",   ja: "エコシステム",   zh: "生态系统" },
-  "nav.japansite":    { en: "Japan Entity ↗", ja: "日本法人 (gridapex.co.jp) ↗", zh: "日本子公司 ↗" },
+  "nav.japansite":     { en: "Japan Entity ↗", ja: "日本法人 (gridapex.co.jp) ↗", zh: "日本子公司 ↗" },
   "nav.cta":           { en: "Get Started", ja: "お問い合わせ",   zh: "立即开始" },
 
   /* ── Hero ── */
@@ -26,6 +28,12 @@ const TRANSLATIONS = {
                          zh: "Grid Apex在日本设计、建造和租赁专为AI打造的数据中心设施——从零开始工程化设计，满足下一代AI工作负载对极端功率、冷却和密度的需求。" },
   "hero.cta1":         { en: "Partner With Us", ja: "パートナーシップ", zh: "合作洽谈" },
   "hero.cta2":         { en: "Our Approach",    ja: "アプローチ",       zh: "了解详情" },
+
+  /* ── Data Centers page ── */
+  "datacenters.hero.badge":    { en: "Japan Campuses", ja: "日本のキャンパス", zh: "日本园区" },
+  "datacenters.hero.subtitle": { en: "Grid Apex builds high-capacity data center campuses in Japan's key markets. Discover our confirmed power infrastructure, modular layouts, and strategic utility layouts.",
+                                 ja: "Grid Apexは日本の主要市場で大容量データセンターキャンパスを建設しています。確定済みの電力インフラ、モジュール式レイアウト、戦略的なユーティリティ配置をご覧ください。",
+                                 zh: "Grid Apex在日本核心市场建设大容量数据中心园区。了解我们已确认的电力基础设施、模块化布局与战略性公用设施规划。" },
 
   /* ── Stats ── */
   "stats.power.label":   { en: "Phase 1 Power Capacity", ja: "フェーズ1電力容量",     zh: "一期电力容量" },

@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prefabricated Building Modules for AI Data Centres — Grid Apex Whitepaper</title>
+  <meta name="description" content="Technical feasibility, global practice, and the two-level stacked data hall for AI data centres by Grid Apex and PSG Group. A definitive 20-page whitepaper." />
+  <meta name="keywords" content="Prefabricated data centre, modular data center, AI data hall, liquid cooling, PSG Group, Grid Apex, Article 6-3 tekihan, seismic importance factor 1.5, stacked data hall" />
+  <link rel="icon" href="assets/logo.png" type="image/png" />
+  <link rel="stylesheet" href="styles.css?v=2.0" />
+</head>
+<body>
+
+<!-- Reading Progress Bar -->
+<div class="reading-progress-bar" id="readingProgress"></div>
+
+<!-- Animated particle background -->
+<canvas id="bg-canvas"></canvas>
+
+<div class="page-wrapper">
+
+  <!-- ====== NAVBAR ====== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="nav-brand">
+        <img src="assets/logo.png" alt="Grid Apex Logo" />
+        <span class="nav-brand-text">Grid<span>Apex</span></span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="index.html#about" data-i18n="nav.about">About</a></li>
+        <li><a href="datacenters.html" data-i18n="nav.datacenters">Data Centers</a></li>
+        <li><a href="solutions.html" data-i18n="nav.solutions">Solutions</a></li>
+        <li><a href="team.html" data-i18n="nav.team">Team</a></li>
+        <li><a href="blog.html" class="active" data-i18n="nav.blog">Blog</a></li>
+        <li><a href="index.html#partners" data-i18n="nav.ecosystem">Ecosystem</a></li>
+        <li><a href="index.html#contact" class="nav-cta" data-i18n="nav.cta">Get Started</a></li>
+      </ul>
+      <button class="burger" id="burger" aria-label="Toggle navigation">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- ====== ARTICLE HERO ====== -->
+  <header class="article-hero">
+    <div class="container">
+      <div class="article-breadcrumbs">
+        <a href="index.html">Home</a>
+        <span class="sep">/</span>
+        <a href="blog.html">Blog & Research</a>
+        <span class="sep">/</span>
+        <span>Technical Whitepaper</span>
+      </div>
+
+      <div class="article-badges-row">
+        <span class="article-badge cyan">AI Data Centre Infrastructure</span>
+        <span class="article-badge purple">Joint Technical Whitepaper</span>
+        <span class="article-badge" style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.12);color:var(--text-secondary);">20 Pages · Peer Referenced</span>
+      </div>
+
+      <h1 class="article-title-main">
+        Prefabricated Building Modules for AI Data Centres: <span class="gradient-text">Technological Feasibility, Global Practice, and the Two-Level Stacked Data Hall</span>
+      </h1>
+
+      <p class="article-abstract">
+        What MDC means, why the prefabricated building module is the family that delivers hyperscale AI capacity, how it differs from steel-frame construction and from container-scale MDC, why AI data halls can be stacked two storeys high, and why Grid Apex has adopted this method for its multi-storey AI data centre campus — illustrated from live prefabricated modular data centre programmes and referenced to projects across nine markets.
+      </p>
+
+      <div class="article-meta-bar">
+        <div class="article-authors-block">
+          <div class="article-author-pill">
+            <div class="avatar">GA</div>
+            <div class="meta-text">
+              <h5>Grid Apex Inc.</h5>
+              <p>gridapex.ai · Japan AI Data Campus</p>
+            </div>
+          </div>
+          <div class="article-author-pill">
+            <div class="avatar" style="border-color:rgba(139,92,246,0.5);color:var(--accent-purple);">PSG</div>
+            <div class="meta-text">
+              <h5>PSG Group</h5>
+              <p>psggroup.net · Global MDC EPC Contractor</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="article-meta-tags">
+          <span>📅 22 September 2026</span>
+          <span>⏱️ 18 min read</span>
+        </div>
+
+        <div class="article-actions">
+          <a href="assets/docs/GridApex_Prefab-Module-AIDC-Paper.pdf" target="_blank" download class="btn-doc-download">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
+            Download PDF
+          </a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ====== MAIN CONTENT & SIDEBAR ====== -->
+  <main class="container">
+    <div class="article-layout">
+      
+      <!-- STICKY SIDEBAR -->
+      <aside class="article-sidebar">
+        
+        <div class="toc-card">
+          <div class="toc-title">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="8" y1="6" x2="21" y2="6"/><line x1="8" y1="12" x2="21" y2="12"/><line x1="8" y1="18" x2="21" y2="18"/><line x1="3" y1="6" x2="3.01" y2="6"/><line x1="3" y1="12" x2="3.01" y2="12"/><line x1="3" y1="18" x2="3.01" y2="18"/></svg>
+            Contents
+          </div>
+          <ul class="toc-list" id="tocList">
+            <li><a href="#sec-intro" class="toc-link"><span class="num">00.</span> Market Overview</a></li>
+            <li><a href="#sec-1" class="toc-link"><span class="num">01.</span> What MDC Means & Families</a></li>
+            <li><a href="#sec-2" class="toc-link"><span class="num">02.</span> Anatomy of a Building Module</a></li>
+            <li><a href="#sec-3" class="toc-link"><span class="num">03.</span> Differences from Steel-Frame</a></li>
+            <li><a href="#sec-4" class="toc-link"><span class="num">04.</span> Delivery Sequence (Plates 1–8)</a></li>
+            <li><a href="#sec-5" class="toc-link"><span class="num">05.</span> Container-Scale vs. Building</a></li>
+            <li><a href="#sec-6" class="toc-link"><span class="num">06.</span> Proven Technological Feasibility</a></li>
+            <li><a href="#sec-7" class="toc-link"><span class="num">07.</span> The EPC Layer & Global Ranks</a></li>
+            <li><a href="#sec-8" class="toc-link"><span class="num">08.</span> Projects Across Nine Markets</a></li>
+            <li><a href="#sec-9" class="toc-link"><span class="num">09.</span> Two-Level Stacked Data Hall</a></li>
+            <li><a href="#sec-10" class="toc-link"><span class="num">10.</span> The Japanese Case & Seismic</a></li>
+            <li><a href="#sec-11" class="toc-link"><span class="num">11.</span> Grid Apex Adopted Approach</a></li>
+            <li><a href="#sec-12" class="toc-link"><span class="num">12.</span> Conclusion & References</a></li>
+          </ul>
+        </div>
+
+        <div class="sidebar-summary-card">
+          <h4>Key Engineering Metrics</h4>
+          <div class="spec-metric">
+            <span class="label">Rack Density:</span>
+            <span class="val">100–200 kW (600 kW ready)</span>
+          </div>
+          <div class="spec-metric">
+            <span class="label">Cooling PUE:</span>
+            <span class="val">~1.15 Direct-to-Chip</span>
+          </div>
+          <div class="spec-metric">
+            <span class="label">Seismic Grade:</span>
+            <span class="val">Factor 1.5 (JDCC Tier 4)</span>
+          </div>
+          <div class="spec-metric">
+            <span class="label">Structural Steel:</span>
+            <span class="val">JIS SN400B / SN490B</span>
+          </div>
+          <div class="spec-metric">
+            <span class="label">Stacking:</span>
+            <span class="val">2-Level Vertical Zoning</span>
+          </div>
+          <div class="spec-metric">
+            <span class="label">Delivery Speed:</span>
+            <span class="val">~12 Months vs 36+ Months</span>
+          </div>
+        </div>
+
+        <div class="sidebar-summary-card" style="background:rgba(0,212,255,0.04);border-color:rgba(0,212,255,0.25);">
+          <h4 style="color:var(--accent-cyan);">Whitepaper PDF</h4>
+          <p style="font-size:0.8rem;color:var(--text-secondary);margin-bottom:0.75rem;">Download the official 20-page document with complete footnotes, technical diagrams, and project credits.</p>
+          <a href="assets/docs/GridApex_Prefab-Module-AIDC-Paper.pdf" target="_blank" download class="btn-read-now" style="font-size:0.82rem;">
+            Download Rev2-EN (PDF) &rarr;
+          </a>
+        </div>
+
+      </aside>
+
+      <!-- ARTICLE MAIN BODY -->
+      <article class="article-content">
+        
+        <!-- SECTION: INTRO -->
+        <section id="sec-intro">
+          <p>
+            The modular data centre has moved, in roughly five years, from an edge-computing curiosity to the default delivery method for multi-hundred-megawatt AI campuses. The market reflects it: modular data centre revenues stood at <strong>US$31.24 billion in 2025</strong>, are put at <strong>US$35.44 billion in 2026</strong>, and are forecast to reach <strong>US$116.53 billion by 2034</strong> — a compound annual growth rate of <strong>16.0% over 2026–2034</strong>, or 15.8% measured from the 2025 base. North America alone accounted for 37.04% — some US$11.57 billion — of the 2025 total.<sup>1</sup>
+          </p>
+          <p>
+            That growth is not driven by cost. Factory integration and proprietary power and cooling assemblies carry a reported premium of 20–30% per megawatt against conventional site-built construction. It is driven by <strong>time</strong>, by <strong>labour scarcity</strong>, and increasingly by <strong>thermal physics</strong>. When an accelerator rack draws 100–200 kW and the roadmap points at 600 kW, the cooling system stops being a service routed through a building and becomes a structural element of it. Factories build that kind of assembly better than construction sites do.
+          </p>
+          <p>
+            This paper is about one specific answer to that problem: the <strong>prefabricated building module</strong> — the structural bay that is the building, manufactured complete with its frame, envelope, services and cooling, then set and connected on site. It is the family that delivers gigawatt-class AI capacity, it is the family that makes stacking an architectural option rather than a container-yard expedient, and it is the family that Japanese, Australian and Southeast Asian projects are converging on. The paper sets out what it is, how it differs from steel-frame construction and from container-scale MDC, what the delivery sequence actually looks like, who builds it, and — the question that decides land economics on a constrained site — whether AI data halls made this way can be stacked two levels high. It is also the method Grid Apex has adopted for its own multi-storey AI data centre campus, and section 11 sets out why that produces a permanent Japanese building capable of housing the current and next generations of AI hardware.
+          </p>
+        </section>
+
+        <!-- SECTION 1 -->
+        <section id="sec-1">
+          <h2><span class="section-num">01</span> What MDC means — and which family matters</h2>
+          <p>
+            <strong>MDC — modular data centre</strong> — denotes a data centre whose functional building blocks are manufactured, assembled, integrated and tested in a factory, then transported to site and connected together. The defining characteristic is not that the building is made of repeated parts. It is that <strong>the factory, not the site, is where integration happens</strong>.
+          </p>
+          <p>
+            In a conventional project, a contractor erects a structure and then installs equipment inside it: switchgear arrives, is positioned, wired, commissioned; chillers are craned onto a roof and piped; containment is built around racks. Every one of those operations happens outdoors, in sequence, subject to weather, trade availability and site congestion. In a modular project, those same operations happen on a production line under cover, in parallel with the site works, and the resulting unit is factory-acceptance-tested before it is ever loaded onto a truck.
+          </p>
+          <p>
+            Three families are commonly grouped under the term, and conflating them causes most of the confusion in the market.
+          </p>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Type</th>
+                  <th>What Ships</th>
+                  <th>Typical Unit</th>
+                  <th>Where it Dominates</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Container-scale (ISO)</strong></td>
+                  <td>A sealed, self-contained box with IT, power and cooling inside a transport-legal envelope</td>
+                  <td>10 ft / 20 ft / 40 ft; 0.5–2 MW</td>
+                  <td>Edge, rapid deployment, constrained or remote sites, phased capacity</td>
+                </tr>
+                <tr>
+                  <td><strong>Skid and room modules</strong></td>
+                  <td>Pre-integrated functional rooms — power skids, chiller plants, UPS and battery rooms, CDU plant — without the building</td>
+                  <td>Plant room or “pod”; 1–5 MW</td>
+                  <td>Large campuses where the building is conventional but the MEP is prefabricated</td>
+                </tr>
+                <tr>
+                  <td><strong>Prefabricated building modules</strong></td>
+                  <td>Structural bays that <em>are the building</em> — floor, frame, envelope and services as one manufactured element</td>
+                  <td>Transport-sized structural bay, typically 3–4.5 m × 12–16 m; joined into halls of any size</td>
+                  <td>Whole-campus delivery where speed, labour scarcity and density dominate</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            The third family is the subject of this paper. The distinction from the first is not one of size but of <strong>structural role</strong>. A container-scale module is a piece of equipment that happens to have walls; the building, if any, goes around it. A prefabricated building module is a piece of the building: its frame is primary structure, its floor is the data hall floor, its envelope is the external wall and fire-rated line, and its roof is either the roof of the finished hall or the deck that carries the level above. That is what allows prefabricated building modules to be assembled into continuous data halls of tens of thousands of square metres, and to be stacked — neither of which a yard of shipping containers can do.
+          </p>
+          <p>
+            A single project frequently uses all three families. NEXTDC's S4 Sydney — a 30,743 m² facility of 350 MW across two four-storey buildings, under construction by Multiplex for mid-2027 completion — is conventionally framed but uses prefabricated mechanical plantrooms, prefabricated electrical switch rooms and prefabricated main services reticulation pathways, alongside precast lift cores, columns and façade.<sup>2</sup> It is simultaneously the largest modular data centre project in Australia and not a “container” project at all.
+          </p>
+        </section>
+
+        <!-- SECTION 2 -->
+        <section id="sec-2">
+          <h2><span class="section-num">02</span> Anatomy of a prefabricated building module</h2>
+          <p>
+            A prefabricated building module for an AI data hall is a steel-framed volumetric unit sized by what can move on the road — typically <strong>3–4.5 m wide, 12–16 m long and 3.5–4.5 m high</strong> — and designed to be joined to its neighbours so that many modules combine into one continuous hall. The unit that ships is therefore not the unit that operates: capacity is quoted per hall or per campus, not per module, and a data hall of 2,000 m² is simply a hall built from more of them. It is best understood as four systems manufactured as one object:
+          </p>
+          <ul>
+            <li><strong>The chassis:</strong> A welded steel frame — base grillage, corner and intermediate posts, roof frame — fabricated to millimetre tolerance. It is simultaneously primary building structure, the transport frame, the equipment support and the lifting rig, and it must satisfy all of those load cases independently.</li>
+            <li><strong>The envelope:</strong> Insulated composite panel or rainscreen on a fire-rated substrate, with the module-to-module joint detailed as a continuous fire, air and water line. Because the joint is the one element made on site, its design governs the quality of the finished building far more than the panel specification does.</li>
+            <li><strong>The services layer:</strong> Containment, busway or cabling, switchboards, cooling distribution — CDUs, manifolds, primary and secondary coolant headers — fire detection and suppression, monitoring and controls, all installed and terminated at fixed interface points on the module face.</li>
+            <li><strong>The interface:</strong> Four families of connection cross the module boundary: <strong>power, coolant supply and return, network, and controls</strong>. These are the only genuinely site-made joints in the whole building, which is why they are engineered as repeatable quick-connect details rather than as drawn-and-measured site work.</li>
+          </ul>
+
+          <div class="article-callout">
+            <div class="article-callout-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+              The Structural Insight
+            </div>
+            <p>
+              In conventional construction the frame is a container for equipment. In prefabricated modular construction the frame is simultaneously structure, shipping crate, equipment chassis and lifting rig, and it must satisfy four load cases: <strong>in-service gravity and seismic loads, transport dynamic loads, lifting and racking loads during craneage, and stacking loads</strong> where modules are set on one another. A module designed only for the in-service case will fail on the road; a module designed only for transport cannot be stacked. The stacking case is what separates a building module from a container.
+            </p>
+          </div>
+
+          <p>
+            Module dimensions must be resolved against road and sea transport conditions together. Japan's general vehicle limits under the Vehicle Restriction Order (車両制限令 Art. 3) are 2.5 m width, 3.8 m height, 12.0 m length, 20 t gross, 10 t per axle and 5 t per wheel, with a 12 m minimum turning radius. Two qualifications matter. Height rises to 4.1 m on designated 高さ指定道路 and gross weight to 22–25 t on expressways and 重さ指定道路 according to axle spacing; but the 12.0 m length is measured over the tractor and trailer together and has no designated-road exemption. A 40 ft module is 12.19 m before the tractor is attached, so module transport in Japan is a permit exercise from the first drawing, under 特殊車両通行許可 or the confirmation scheme that replaced part of it in 2022, with permit ceilings for the standard exempted vehicle types running to 16.5 m and 36 t on expressways. Route and overhead clearances are verified case by case. Cross-border delivery additionally requires that vessel type, loading and discharge method, lashing and salt-spray protection be settled at the design stage, and that port transhipment, sailing schedules and the final road leg be planned as one sequence. Where a manufacturer quotes a large single figure — Daiwa House's approximately 200 m² Module DPDC — that denotes a design bay, which must be divided into several shipping pieces and mated on site.
+          </p>
+        </section>
+
+        <!-- SECTION 3 -->
+        <section id="sec-3">
+          <h2><span class="section-num">03</span> How it differs from steel-frame construction</h2>
+          <p>
+            The distinction most often misunderstood is between a prefabricated modular data centre and a steel-frame building that happens to be erected quickly. Both use steel. The difference is what the steel is doing, and when the mechanical and electrical content arrives.
+          </p>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Dimension</th>
+                  <th>Conventional Steel Frame</th>
+                  <th>Prefabricated Building Modules</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Sequence</strong></td>
+                  <td>Structure first, then fit-out. Trades follow one another on site.</td>
+                  <td>Structure and fit-out happen together in the factory; site works run in parallel.</td>
+                </tr>
+                <tr>
+                  <td><strong>Where integration occurs</strong></td>
+                  <td>On site, outdoors, in sequence.</td>
+                  <td>On a production line, indoors, repeatably.</td>
+                </tr>
+                <tr>
+                  <td><strong>What the steel does</strong></td>
+                  <td>Carries the building. Equipment is installed into the volume it encloses.</td>
+                  <td>Carries the building and is the transport frame, equipment chassis, lifting interface and stacking load path.</td>
+                </tr>
+                <tr>
+                  <td><strong>Testing</strong></td>
+                  <td>Commissioned on site after installation. Defects found late, at maximum cost.</td>
+                  <td>Factory acceptance tested before shipment. Defects found in the factory.</td>
+                </tr>
+                <tr>
+                  <td><strong>Site labour</strong></td>
+                  <td>High and sustained — an acute constraint in Japan, Korea, Australia, Europe and the US.</td>
+                  <td>Sharply reduced; site work is foundations, craneage, module-to-module joints and connection.</td>
+                </tr>
+                <tr>
+                  <td><strong>Tolerance regime</strong></td>
+                  <td>Construction tolerances, measured in centimetres.</td>
+                  <td>Manufacturing tolerances, measured in millimetres — necessary for modules to mate.</td>
+                </tr>
+                <tr>
+                  <td><strong>Change flexibility</strong></td>
+                  <td>High until late. Design can evolve during construction.</td>
+                  <td>Structure and principal interfaces frozen early; internal layout can still be assessed for adjustment.</td>
+                </tr>
+                <tr>
+                  <td><strong>Cost</strong></td>
+                  <td>Baseline.</td>
+                  <td>Reported 20–30% premium per MW; paid for in schedule and certainty.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <p>
+            In a steel-frame building the critical path runs through the structure: nothing else can start until the frame is up and clad. In a prefabricated modular building the critical path runs through the <strong>factory line and the foundations, in parallel</strong>, and the two converge at the crane. That is the whole of the schedule advantage, and it is also the whole of the risk: a module that arrives before its plinth is ready, or a plinth built to construction rather than manufacturing tolerance, destroys the benefit immediately.
+          </p>
+        </section>
+
+        <!-- SECTION 4: DELIVERY SEQUENCE & PLATES -->
+        <section id="sec-4">
+          <h2><span class="section-num">04</span> From factory line to live hall: the delivery sequence</h2>
+          <p>
+            The plates that follow document the sequence in a working prefabricated-module data centre programme, from the bare chassis on a factory line to a liquid-cooled hall in service. They are reproduced here because the argument of this paper — that integration has moved from the site to the factory, and that this is what makes stacking tractable — is easier to see than to assert. Read them as five stages: <strong>manufacture, integration, assembly, plant, operation</strong>.
+          </p>
+
+          <!-- STAGE 1 -->
+          <div class="article-plate">
+            <div class="plate-stage-header">STAGE 1 · MANUFACTURE — THE CHASSIS ON THE LINE</div>
+            <div class="plate-img-wrap">
+              <img loading="lazy" src="assets/blog/img/plate-1.jpg" alt="Plate 1 — The module begins as structure on a powered transfer pallet" />
+            </div>
+            <div class="plate-caption">
+              <span class="plate-badge">PLATE 1</span>
+              <strong>The module begins as structure, not as a box.</strong> A welded steel chassis — base grillage, corner posts, roof frame — on a powered transfer pallet at station 28 of a production line, tare weight marked at 1,900 kg. The floor deck is already laid and drilled to the equipment setting-out. Everything that follows is added to this frame while it advances down the line, in a covered, lit, climate-controlled environment with overhead lifting on every station. This is the single most important image in the sequence: the object on the pallet is simultaneously the building's primary structure, its transport frame and its lifting rig.
+            </div>
+          </div>
+
+          <!-- STAGE 2 -->
+          <div class="plate-grid-2">
+            <div class="article-plate">
+              <div class="plate-stage-header">STAGE 2 · INTEGRATION — SERVICES INSTALLED</div>
+              <div class="plate-img-wrap">
+                <img loading="lazy" src="assets/blog/img/plate-2.jpg" alt="Plate 2 — Mechanical and electrical fit-out inside the module" />
+              </div>
+              <div class="plate-caption">
+                <span class="plate-badge">PLATE 2</span>
+                <strong>Mechanical and electrical fit-out inside the module.</strong> Overhead containment, cable ladder, ductwork and hangers being installed at ceiling level within the module volume. Work at this stage is done from a stepladder in a protected space, to a repeated detail, rather than from a mobile platform in the open.
+              </div>
+            </div>
+
+            <div class="article-plate">
+              <div class="plate-stage-header">STAGE 2 · INTEGRATION — SWITCHBOARD WIRING</div>
+              <div class="plate-img-wrap">
+                <img loading="lazy" src="assets/blog/img/plate-3.jpg" alt="Plate 3 — Switchboard termination inside module box" />
+              </div>
+              <div class="plate-caption">
+                <span class="plate-badge">PLATE 3</span>
+                <strong>Switchboard termination inside the module box.</strong> Power cabling dressed into distribution boards, with tray, busway and pre-formed cable sets overhead. The stamp records the work as 模块箱 (module box) / 配电柜接线 (switchboard wiring), Johor Bahru, Malaysia, executed by PSG Construction Sdn. Bhd.
+              </div>
+            </div>
+          </div>
+
+          <!-- COOLANT GALLERY -->
+          <div class="article-plate">
+            <div class="plate-stage-header">COOLANT INTEGRATION · FACTORY-TESTED HYDRAULICS</div>
+            <div class="plate-img-wrap">
+              <img loading="lazy" src="assets/blog/img/plate-4.jpg" alt="Plate 4 — The pre-piped coolant gallery" />
+            </div>
+            <div class="plate-caption">
+              <span class="plate-badge">PLATE 4</span>
+              <strong>The pre-piped coolant gallery — the clearest single argument for factory integration.</strong> Stainless primary headers on a fabricated support frame, actuated control valves on every branch, flexible 30-bar coolant hoses to the rack-side manifolds, and segregated power and control containment below. In a site-built hall every one of these joints would be made outdoors by a different trade at a different time; here they are made on a jig, pressure-tested as an assembly, and delivered proven. A closed liquid loop is only as reliable as its worst field joint, which is why moving those joints indoors is not a convenience but a reliability strategy.
+            </div>
+          </div>
+
+          <!-- STAGE 3 -->
+          <div class="article-plate">
+            <div class="plate-stage-header">STAGE 3 · ASSEMBLY — SETTING THE BUILDING</div>
+            <div class="plate-img-wrap">
+              <img loading="lazy" src="assets/blog/img/plate-5.jpg" alt="Plate 5 — A data hall being assembled from prefabricated building modules" />
+            </div>
+            <div class="plate-caption">
+              <span class="plate-badge">PLATE 5</span>
+              <strong>A data hall being assembled from prefabricated building modules.</strong> At the left, modules already set and joined, with the roof and plant deck being completed over them; in the centre, a crawler crane working the setting face; at the right and rear, several hundred completed modules in laydown awaiting their slot. This is what distinguishes the prefabricated building module from every other form of modular delivery: the units are not parked next to each other as separate machines, they are knitted into one continuous building. The laydown yard is, in effect, the project's inventory of finished floor area — and the reason the programme is limited by crane cycles rather than by trade availability.
+            </div>
+          </div>
+
+          <!-- STAGE 4 -->
+          <div class="plate-grid-2">
+            <div class="article-plate">
+              <div class="plate-stage-header">STAGE 4 · PLANT — THE DECK ABOVE THE HALL</div>
+              <div class="plate-img-wrap">
+                <img loading="lazy" src="assets/blog/img/plate-6.jpg" alt="Plate 6 — Completed envelope with the rooftop plant deck under installation" />
+              </div>
+              <div class="plate-caption">
+                <span class="plate-badge">PLATE 6</span>
+                <strong>Completed envelope with the rooftop plant deck under installation.</strong> The modules are set on plinths that lift the floor clear of the ground and form a continuous service undercroft beneath the hall; above, a steel deck carries cooling plant and the primary pipe racks. Power and coolant therefore arrive from below and heat leaves from above, over the shortest possible vertical path — the same logic that, taken one step further, produces the stacked hall.
+              </div>
+            </div>
+
+            <div class="article-plate">
+              <div class="plate-stage-header">STAGE 4 · GENERAL ARRANGEMENT</div>
+              <div class="plate-img-wrap">
+                <img loading="lazy" src="assets/blog/img/plate-7.jpg" alt="Plate 7 — The configuration in general arrangement" />
+              </div>
+              <div class="plate-caption">
+                <span class="plate-badge">PLATE 7</span>
+                <strong>The configuration in general arrangement.</strong> A modular hall with its IT volume enclosed at ground level and the full cooling plant carried on an elevated steel deck directly above and alongside it, arranged in repeating bays that mirror the module grid below. Vertical zoning of this kind — plant over IT, services dropping rather than running — is the intermediate step between a single-storey modular hall and a genuinely two-level stacked one.
+              </div>
+            </div>
+          </div>
+
+          <!-- STAGE 5 -->
+          <div class="article-plate">
+            <div class="plate-stage-header">STAGE 5 · OPERATION — THE LIQUID-COOLED HALL IN SERVICE</div>
+            <div class="plate-img-wrap">
+              <img loading="lazy" src="assets/blog/img/plate-8.jpg" alt="Plate 8 — A direct-to-chip liquid-cooled hall, live" />
+            </div>
+            <div class="plate-caption">
+              <span class="plate-badge">PLATE 8</span>
+              <strong>A direct-to-chip liquid-cooled hall, live.</strong> Colour-coded supply and return hoses run from the rack-side manifolds to each cabinet, with overhead containment carrying power and network separately above the cold aisle. This is the load the building exists to serve: at 100–200 kW per cabinet the coolant distribution is no longer a service routed through the building — it is part of the building, and it is the reason the whole assembly is manufactured rather than constructed.
+            </div>
+          </div>
+
+          <div class="article-callout">
+            <div class="article-callout-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
+              What the Sequence Shows
+            </div>
+            <p>
+              Between Plate 1 and Plate 5, the proportion of the finished building produced under factory conditions is close to complete: structure, envelope, containment, switchboards, coolant headers and controls all arrive as one tested object. Site work reduces to four operations — <strong>foundations and plinths set to manufacturing tolerance, craneage and setting, connection of the four service families that cross the module boundary, and integrated testing</strong>, which becomes a verification exercise rather than a commissioning one because each unit was already proven.
+            </p>
+            <p>
+              The commercial consequence follows directly. <strong>Capacity arrives in module-sized quanta of 1–2 MW</strong> rather than in single 20–50 MW building steps, which lets construction be financed against a leasing curve instead of ahead of one.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 5 -->
+        <section id="sec-5">
+          <h2><span class="section-num">05</span> The container-scale case, and why it is different</h2>
+          <p>
+            Container-scale MDC is the most constrained variant and, for that reason, the most instructive contrast. Its logic runs as follows:
+          </p>
+          <p>
+            The envelope is set jointly by sea and road transport conditions. A container-scale module has to satisfy the ISO box format, ship loading, port lifting and the final road leg at once, and its internal layout, aisles and service clearances are constrained accordingly. The 40 ft format is convenient precisely because it connects sea and land carriage, but adopting it does not mean every leg of the journey is permit-free.
+          </p>
+          <p>
+            The difference from the prefabricated building module is architectural, and it is decisive at scale:
+          </p>
+          <p>
+            <strong>A container is a machine placed on a site:</strong> it carries only itself, its walls are not a building line, and a yard of them does not become a hall. <strong>A prefabricated building module is a piece of a building:</strong> it is designed for module-to-module joints, for continuous fire and acoustic lines, for a shared roof and plant deck, and for superimposed load from a module above. That is why the container is the right answer for 2 MW at the edge and the wrong answer for 80 MW on a campus — and why every gigawatt-class programme in this paper's section 8 uses building modules, prefabricated plantrooms, or both.
+          </p>
+        </section>
+
+        <!-- SECTION 6 -->
+        <section id="sec-6">
+          <h2><span class="section-num">06</span> Technological feasibility: what has been proven</h2>
+          <p>
+            Three questions determine whether prefabricated modular delivery is technically viable for AI workloads rather than merely for traditional colocation: can it carry the thermal load, can it satisfy structural and life-safety codes, and can it be certified repeatably.
+          </p>
+
+          <h3>Thermal Feasibility</h3>
+          <p>
+            This is settled. Direct-to-chip cold plates, rear-door heat exchangers and single-phase immersion all now ship as sealed factory-integrated units capable of carrying current 700 W accelerators with roadmap headroom toward 1,000 W devices. Vendor claims of liquid-cooling-enabled PUE approaching 1.15 are credible in principle, though they should be read as design-point rather than annualised figures. The significant point is architectural, and Plates 4 and 8 make it: because the coolant loop is assembled and pressure-tested on a jig in a factory, prefabricated construction is arguably better suited to liquid cooling than site-built construction, where thousands of field-made joints in a closed loop represent a serious leak-risk surface.
+          </p>
+
+          <h3>Structural and Seismic Feasibility</h3>
+          <p>
+            Here feasibility is jurisdiction-dependent, and Japan is the strictest case in the world. Japanese data centre practice targets seismic performance at <strong>importance factor 1.5</strong>. It is worth being precise about the status of that figure: 重要度係数 does not appear in the Building Standards Act, and a privately owned data centre can lawfully obtain building confirmation at 1.0. The 1.5 / 1.25 / 1.0 ladder is the Ⅲ・Ⅱ・Ⅰ classification of MLIT's 官庁施設の総合耐震・対津波計画基準, a standard whose own scope is government facilities; it reaches data centres because JDCC's facility standard adopts 耐震性能Ⅰ類相当 — the 1.5 grade — as its Tier 4 criterion, after which tenants and developers specify it contractually. Importance factor 1.5 is therefore a de facto market standard enforced through tenant specification and tier certification. What is statutory is the verification route: <strong>building confirmation plus structural calculation conformity review (構造計算適合性判定, “tekihan”) under Article 6-3</strong>, carried out by the prefectural governor or a designated agency. Two Japanese products demonstrate that prefabricated building modules clear this bar:
+          </p>
+          <ul>
+            <li><strong>Daiwa House Module DPDC:</strong> Announced 8 December 2025 and on sale nationwide from 5 January 2026, is a steel-framed seismic-resistant building module of approximately 200 m² and 6.6 m height, delivering 1–2 MW per module on high-voltage supply, built to importance factor 1.5, with its structural frame in conformance with (準拠) JDCC Tier 4 for robustness and availability, and delivery approximately one year from contract against a conventional programme of several years.<sup>3</sup></li>
+            <li><strong>NTT Facilities, with Nippon Steel Engineering:</strong> Developing a modular building method for hyperscale data centres that targets a reduction of up to approximately 50% in the period from application and design through to completion, for facilities in the tens to hundreds of MW range, with practical implementation targeted within FY2028.<sup>4</sup></li>
+          </ul>
+
+          <h3>Certification</h3>
+          <p>
+            The repeatability question is answered by type approval. Where a module type is certified once and manufactured repeatedly, the approval burden collapses from per-building to per-type. Japan provides this through <strong>type conformity approval (型式適合認定, Art. 68-10)</strong> followed by <strong>certification of the type-component manufacturer (Art. 68-11 / 68-12)</strong>. Canada certifies factory-built construction through CSA A277, and a binational safety standard dedicated to prefabricated modular data centres — ANSI/CAN/UL 2755, from UL Standards & Engagement — entered development in February 2026 (UL 2755:2025 Outline of Investigation). The United States combines state-level factory certification with local installation permitting around ICC/MBI 1200, 1205 and 1210. Europe works through CE marking under the Construction Products Regulation (CPR). China has gone furthest with T/CIEP 0205—2026.
+          </p>
+        </section>
+
+        <!-- SECTION 7 -->
+        <section id="sec-7">
+          <h2><span class="section-num">07</span> The EPC layer: who actually assembles the building</h2>
+          <p>
+            Discussion of modular data centres tends to concentrate on the module manufacturer, which is the wrong end of the problem. Delivering a prefabricated-module AI campus requires three distinct capabilities, and only the first is widely available:
+          </p>
+          <ol>
+            <li><strong>Module manufacture:</strong> Steel fabrication, envelope, production-line discipline. Widely available from the modular-construction and shipping-container industries.</li>
+            <li><strong>In-module MEP integration:</strong> Switchboards, busway, containment, coolant headers, controls, terminated to fixed interfaces and factory-acceptance-tested. Available from data centre MEP contractors, but rarely at production-line cadence.</li>
+            <li><strong>Site EPC and assembly:</strong> Foundations and plinths to manufacturing tolerance, transport and craneage planning, module setting, the module-to-module joints, the four boundary connections per module, the plant deck, and integrated testing of the assembled building. <em>This is the scarce capability</em>, because it is the only one that cannot be bought as a product.</li>
+          </ol>
+          <p>
+            The third capability is where programmes are won or lost. A module that is perfect in the factory is worth nothing if the plinth is 40 mm out, if the crane cycle is slower than the delivery convoy, or if the joint between two modules is detailed as a site improvisation.
+          </p>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Rank</th>
+                  <th>Contractor</th>
+                  <th>Headquarters</th>
+                  <th>Core Capability</th>
+                  <th>Representative Credits</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>1</td>
+                  <td><strong>Comfort Systems USA</strong></td>
+                  <td>United States</td>
+                  <td>Leading North American modular integrator; tied to hyperscale CSP demand</td>
+                  <td>Backlog of US$14.06 billion at 30 June 2026, up 73% year on year</td>
+                </tr>
+                <tr>
+                  <td>2</td>
+                  <td><strong>PSG Construction</strong></td>
+                  <td>Japan / Malaysia</td>
+                  <td>Containerised and modular DC mechanical-and-electrical main contracting</td>
+                  <td>Johor Bahru, Malaysia — 42 MW (in delivery); Osaka, Japan — approx. 2.5 MW (2025); United States</td>
+                </tr>
+                <tr>
+                  <td>3</td>
+                  <td><strong>Multiplex</strong></td>
+                  <td>Australia</td>
+                  <td>Large-scale DC main contracting; prefabricated plantrooms and precast lift cores</td>
+                  <td>NEXTDC S4 Sydney — multi-storey, completion mid-2027<sup>2</sup></td>
+                </tr>
+                <tr>
+                  <td>4</td>
+                  <td><strong>HOCHTIEF Polska</strong></td>
+                  <td>Poland</td>
+                  <td>DC main contracting; approximately 60% of components factory-prefabricated</td>
+                  <td>Data4 Jawczyce, Poland</td>
+                </tr>
+                <tr>
+                  <td>5</td>
+                  <td><strong>GS E&C</strong></td>
+                  <td>Korea</td>
+                  <td>EPC party to the PMDC alliance; large-scale DC construction experience</td>
+                  <td>LG U+ PMDC alliance reference model; constructability review</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="article-callout">
+            <div class="article-callout-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="8.5" cy="7" r="4"/><line x1="20" y1="8" x2="20" y2="14"/><line x1="23" y1="11" x2="17" y2="11"/></svg>
+              Grid Apex's EPC Contractor
+            </div>
+            <p>
+              <strong>PSG Construction is Grid Apex's EPC contractor for the campus</strong> — engaged for site assembly and construction, together with in-module mechanical-and-electrical integration. The briefing ranks the firm second globally in this category, and it is headquartered across Japan and Malaysia, which matters more than the ranking does: the Japanese presence is what allows a module manufactured and integrated offshore to be received, set and certified on a Japanese site under Japanese supervision, and the Osaka project establishes that the firm has already built modular data centre capacity inside the Japanese regulatory regime.
+            </p>
+            <p>
+              Plates 2, 3, 5 and 6 in section 4 are from PSG Construction's Johor programme. The capability being contracted for Project MIE is therefore one that has been photographed in execution, not one that has been described in a capability statement.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 8 -->
+        <section id="sec-8">
+          <h2><span class="section-num">08</span> Example projects across nine markets</h2>
+          <p>
+            The momentum toward modular and prefabricated construction in AI infrastructure is worldwide. Below are representative projects across nine key geographies:
+          </p>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Market</th>
+                  <th>Project</th>
+                  <th>What it Demonstrates</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>United States</strong></td>
+                  <td>Snyder AI Campus, Texas — Energy Vault, using Crusoe Spark modules</td>
+                  <td>Powered-land model: generation, storage and modular data centre co-located. Ground broken July 2026; phase 1 of 8 MW, campus designed for up to 500 MW, with Crusoe Cloud as anchor tenant.</td>
+                </tr>
+                <tr>
+                  <td><strong>Canada</strong></td>
+                  <td>DMG — Christina Lake, British Columbia</td>
+                  <td>Prefabricated secure data centre units delivered under the new CSA prefabricated-modular framework.</td>
+                </tr>
+                <tr>
+                  <td><strong>Europe</strong></td>
+                  <td>Data4 — Jawczyce, Poland; CADOLTO — NorthC</td>
+                  <td>Roughly 60% factory prefabrication of components on a hyperscale site; and two-storey modular data halls using stacked 750 kW building modules.</td>
+                </tr>
+                <tr>
+                  <td><strong>Japan</strong></td>
+                  <td>Daiwa House Module DPDC; NTT Facilities modular building method</td>
+                  <td>Prefabricated building modules clearing the world's strictest seismic regime — at one to two storeys.</td>
+                </tr>
+                <tr>
+                  <td><strong>Korea</strong></td>
+                  <td>LG U+ PMDC alliance; kt cloud 1 GW target</td>
+                  <td>Consortium standardisation, MOU September 2026: a 100 MW-class reference model covering both new build and retrofit; alongside kt cloud's 1 GW target for 2031.</td>
+                </tr>
+                <tr>
+                  <td><strong>Southeast Asia</strong></td>
+                  <td>Johor, Malaysia — prefabricated building-module data halls (PSG Construction); MRCB + TECO</td>
+                  <td>Continuous data halls assembled from several hundred building modules; highest regional acceptance of stacked module architecture, driven by heat, humidity and land cost.</td>
+                </tr>
+                <tr>
+                  <td><strong>Middle East</strong></td>
+                  <td>Khazna Ajman, UAE; Mindstream Al-Risha, Jordan</td>
+                  <td>Modular scalable architecture — 100 MW across 20 data halls of 5 MW each, Uptime Tier III design certified; and a 400 MW sovereign AI platform using single-phase immersion liquid cooling.</td>
+                </tr>
+                <tr>
+                  <td><strong>Australia</strong></td>
+                  <td>NEXTDC S4, Western Sydney (Multiplex)</td>
+                  <td>350 MW across two four-storey buildings, a 30,743 m² facility, with prefabricated plantrooms, switch rooms and services reticulation; mid-2027.<sup>2</sup></td>
+                </tr>
+                <tr>
+                  <td><strong>China</strong></td>
+                  <td>Huawei 3D Data Centre; Alibaba CUBE 5.0; CIMC (>1,000 MW cumulative)</td>
+                  <td>Four-layer vertical stacking in production; and programme compression from 6–12 months to around 100 days.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 9 -->
+        <section id="sec-9">
+          <h2><span class="section-num">09</span> The stacked data hall — and the two-level case</h2>
+          <p>
+            Stacking is where prefabricated modular construction stops being a procurement strategy and becomes an architectural one. The motivation is straightforward: on a land-constrained or power-dense site, <strong>megawatts per hectare is the governing metric</strong>, and the only way to raise it without raising rack density further is to build upward. It is also the point at which the container and the building module part company for good — only a module engineered for superimposed load can carry another module.
+          </p>
+
+          <h3>The Proof Point</h3>
+          <p>
+            The most significant demonstration to date is <strong>Huawei's 3D Data Centre</strong>, unveiled on 15 September 2026 at the AIDC Industry Development Conference in Wuhu, Anhui. It organises the facility into <strong>four vertically stacked functional layers — cooling, IT equipment, power supply and backup power</strong> — rather than distributing those functions horizontally across a site. It is architected to support Ascend supernode clusters of 100,000 cards and above (十万卡以上).<sup>5</sup>
+          </p>
+
+          <!-- PLATES 9 & 10 -->
+          <div class="plate-grid-2">
+            <div class="article-plate">
+              <div class="plate-stage-header">STACKING PROOF · FIVE LEVELS IN ELEVATION</div>
+              <div class="plate-img-wrap">
+                <img loading="lazy" src="assets/blog/img/plate-9.jpg" alt="Plate 9 — Five levels of stacked volumetric modules" />
+              </div>
+              <div class="plate-caption">
+                <span class="plate-badge">PLATE 9</span>
+                <strong>Five levels of stacked volumetric modules.</strong> The module grid reads directly in the elevation: each bay is one factory-built unit, with its own chassis posts and edge beams, set on the unit below and spliced at the corners. The pale blue members are the modules' own structural frames; the panelised infill between them is envelope, not structure. Every module carries its share of the superimposed load from the levels above.
+              </div>
+            </div>
+
+            <div class="article-plate">
+              <div class="plate-stage-header">SUBSTRUCTURE · MANUFACTURING-TOLERANCE GRID</div>
+              <div class="plate-img-wrap">
+                <img loading="lazy" src="assets/blog/img/plate-10.jpg" alt="Plate 10 — Stacking in progress over a foundation grid" />
+              </div>
+              <div class="plate-caption">
+                <span class="plate-badge">PLATE 10</span>
+                <strong>Stacking in progress, over a foundation grid built to manufacturing tolerance.</strong> In the foreground, the prepared substructure: a regular grid of reinforced strip footings and pile caps with starter bars, set out to the module grid so that every unit lands on a prepared bearing. Behind it, modules already set two and three high, with a crawler crane and a tower crane working the setting face.
+              </div>
+            </div>
+          </div>
+
+          <div class="article-callout">
+            <div class="article-callout-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              Why Vertical Zoning Works
+            </div>
+            <ul>
+              <li><strong>Gravity is free:</strong> Placing cooling plant above the IT floor lets coolant return by gravity and shortens the hydraulic path — the dominant parasitic load in a liquid-cooled facility.</li>
+              <li><strong>Services travel vertically, not horizontally:</strong> A 200 kW rack needs power and coolant delivered over the shortest possible distance. Stacking converts long horizontal runs into short vertical drops, cutting conductor mass, pumping energy and pressure drop.</li>
+              <li><strong>Fault propagation is bounded by the floor slab:</strong> A structural deck is already a fire and water barrier. Vertical zoning gives compartmentation for free — a leak in a cooling layer does not reach IT on a different level.</li>
+              <li><strong>Maintenance separates from operations:</strong> Plant on its own level can be serviced without entering the data hall, which is what concurrent maintainability requires in practice.</li>
+            </ul>
+          </div>
+
+          <h3>Why Two Levels Specifically</h3>
+          <p>
+            Two levels captures most of the benefit at a fraction of the regulatory and structural cost, for four reasons:
+          </p>
+          <ol>
+            <li><strong>The structure stays conventional:</strong> A two-level assembly can be built as modules-on-modules or as modules set into a simple frame, with load paths a structural engineer can verify by inspection. Beyond two or three levels, the lower modules become primary structure carrying substantial superimposed load, the frame becomes a moment-resisting system in its own right, and the design leaves the realm of repeatable type approval.</li>
+            <li><strong>Seismic demand scales faster than height:</strong> Under a seismic regime, mass at height attracts lateral force, and the overturning moment grows with the square of height. At two levels the centre of mass stays low and foundations remain economical. This is the binding constraint in Japan.</li>
+            <li><strong>Fire strategy remains tractable:</strong> Two levels permits direct external escape from both, straightforward fire-brigade access and simple smoke control.</li>
+            <li><strong>Density roughly doubles without changing the module:</strong> The same certified module, the same transport envelope, the same factory line, the same setting cycle — twice the megawatts per hectare.</li>
+          </ol>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Market</th>
+                  <th>Stacking Accepted</th>
+                  <th>Governing Constraint</th>
+                  <th>Evidence</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>China</strong></td>
+                  <td>Multi-level, no published limit</td>
+                  <td>T/CIEP 0205—2026 applies expressly to single-storey and multi-storey stacked</td>
+                  <td>Huawei 3D DC — four layers in production</td>
+                </tr>
+                <tr>
+                  <td><strong>Korea</strong></td>
+                  <td>High</td>
+                  <td>Consortium standard models rather than statute</td>
+                  <td>100 MW-class PMDC reference model</td>
+                </tr>
+                <tr>
+                  <td><strong>Southeast Asia</strong></td>
+                  <td>High</td>
+                  <td>Land cost and climate favour density</td>
+                  <td>Stacked module architecture common in Malaysia and Indonesia</td>
+                </tr>
+                <tr>
+                  <td><strong>Middle East</strong></td>
+                  <td>High</td>
+                  <td>Speed and sovereign AI strategy</td>
+                  <td>Khazna Ajman — modular scalable architecture</td>
+                </tr>
+                <tr>
+                  <td><strong>United States</strong></td>
+                  <td>High</td>
+                  <td>IBC plus state factory certification</td>
+                  <td>Powered-land campuses scaling 8 MW → 500 MW (Snyder, Texas)</td>
+                </tr>
+                <tr>
+                  <td><strong>Australia</strong></td>
+                  <td>Moderate–high</td>
+                  <td>Conventional frame with prefabricated MEP</td>
+                  <td>NEXTDC S4 — two four-storey buildings<sup>2</sup></td>
+                </tr>
+                <tr>
+                  <td><strong>Europe</strong></td>
+                  <td>Moderate</td>
+                  <td>CPR and EN 50575 fire classification</td>
+                  <td>CADOLTO NorthC — two-storey modular halls, stacked 750 kW modules</td>
+                </tr>
+                <tr>
+                  <td><strong>Canada</strong></td>
+                  <td>Moderate</td>
+                  <td>CSA A277 plus provincial approval</td>
+                  <td>Prefabricated units, typically 1–2 MW</td>
+                </tr>
+                <tr>
+                  <td><strong>Japan</strong></td>
+                  <td><strong>Limited — 1 to 2 levels</strong></td>
+                  <td>Structural conformity review, plus importance-factor-1.5 market standard</td>
+                  <td>NTT Facilities explicitly targets 1–2 storeys<sup>4</sup></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <!-- SECTION 10 -->
+        <section id="sec-10">
+          <h2><span class="section-num">10</span> The Japanese case</h2>
+          <p>
+            Japan is simultaneously the hardest market in which to stack and one of the most compelling in which to build with prefabricated building modules — and the two facts share a cause.
+          </p>
+          <p>
+            The drivers are acute: construction labour is severely constrained, and grid connection in the Tokyo core carries waiting times of five to ten years, pushing projects to regional sites where local trade capacity is thinner still. Against that, a one-year delivery programme is the difference between a viable project and an unviable one.
+          </p>
+          <p>
+            The Japanese industry's answer across its two most credible products is instructive: <strong>keep the building low and solve the seismic problem with isolation rather than with mass</strong>. NTT Facilities isolates the data hall floor only while applying vibration control to the main equipment; Daiwa House uses a single-level 200 m² steel building module engineered to importance factor 1.5, with its structural frame in conformance with JDCC Tier 4.
+          </p>
+          <p>
+            Structural steel must be a designated building material conforming to a JIS named in Notification 1446 of 2000 under Article 37, item (i) of the Building Standards Act. <strong>SN grades (JIS G 3136, typically SN400B and SN490B)</strong> are the Japanese design convention and effectively mandatory in practice for seismic-resisting and welded members, because only SN specifies yield-ratio caps, impact values and weldability control. Repeatable factory manufacture of a certified module type runs through two sequential approvals: <strong>type conformity approval of the design (型式適合認定, Art. 68-10)</strong>, then <strong>certification of the manufacturer (Art. 68-11, or Art. 68-12 where the factory is overseas)</strong>.
+          </p>
+
+          <div class="article-callout">
+            <div class="article-callout-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/><path d="M2 12h20"/></svg>
+              The Synthesis for a Japanese AI Campus
+            </div>
+            <p>
+              The evidence points to a specific and defensible architecture for a large Japanese AI data centre: <strong>low-rise prefabricated building modules — one to two levels — combined with a hybrid isolation strategy</strong> in which the structure is highly seismic-resistant, primary plant is vibration-controlled, and the data hall floor is base-isolated; manufactured under type conformity approval and assembled by an EPC contractor able to hold manufacturing tolerance on a Japanese site — for Grid Apex, <strong>PSG Construction</strong>.
+            </p>
+            <p>
+              Attempting four or five levels in Japan would trade a proven one-year programme for an unproven multi-year approval — which is precisely the trade modular construction exists to avoid.
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 11 -->
+        <section id="sec-11">
+          <h2><span class="section-num">11</span> Grid Apex's adopted approach</h2>
+          <p>
+            <strong>Grid Apex is building its multi-storey AI data centre campus using prefabricated building modules.</strong> The campus is designed as two-level stacked data halls assembled from factory-manufactured, factory-tested structural modules, set on permanent foundations, joined into continuous buildings, and served by a rooftop plant deck.
+          </p>
+
+          <h3>Why the Building is Permanent</h3>
+          <p>
+            “Modular” is often heard as “temporary”, because the word is associated with site cabins and container yards. A prefabricated building module campus is a different object in every respect that matters:
+          </p>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Test</th>
+                  <th>Temporary / Container Installation</th>
+                  <th>Prefabricated Building Modules — Grid Apex</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Legal status</strong></td>
+                  <td>Consented as equipment, a structure (工作物) or temporary building with limited consent period.</td>
+                  <td><strong>A building (建築物)</strong> under the Building Standards Act, with full building confirmation, tekihan, and completion inspection certificate.</td>
+                </tr>
+                <tr>
+                  <td><strong>Foundations</strong></td>
+                  <td>Set on pads, blocks or slab; removable without demolition.</td>
+                  <td><strong>Piled or reinforced strip foundations</strong> cast to the module grid with cast-in starter bars and anchor assemblies. Removal is demolition.</td>
+                </tr>
+                <tr>
+                  <td><strong>Structure</strong></td>
+                  <td>Each unit carries only itself; units are placed adjacent, not connected.</td>
+                  <td>Module frames are spliced into <strong>one continuous lateral load-resisting system</strong> carrying superimposed load from above.</td>
+                </tr>
+                <tr>
+                  <td><strong>Seismic basis</strong></td>
+                  <td>Equipment-grade anchorage.</td>
+                  <td>Structural verification through building confirmation and 適判, designed to <strong>importance factor 1.5 (JDCC Tier 4)</strong>.</td>
+                </tr>
+                <tr>
+                  <td><strong>Envelope and fire</strong></td>
+                  <td>Weather protection; fire strategy unit by unit.</td>
+                  <td>Fire-rated, insulated building envelope with <strong>continuous compartmentation lines</strong> across module joints and whole-building fire strategy.</td>
+                </tr>
+                <tr>
+                  <td><strong>Design life</strong></td>
+                  <td>Typically 10–15 years.</td>
+                  <td><strong>Specified to conventional building design life</strong>, on the same steel and protective-coating basis as a site-built steel-frame data centre.</td>
+                </tr>
+                <tr>
+                  <td><strong>Asset treatment</strong></td>
+                  <td>Plant and equipment; short depreciation; financed as equipment.</td>
+                  <td><strong>Real property:</strong> registered, depreciated on a building schedule, insurable and financeable as a building, and mortgageable as security.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <h3>Why it Houses the Latest AI Equipment</h3>
+          <p>
+            A data centre does not need to anticipate the specific accelerator it will host; it needs a shell whose four capacity envelopes — <strong>floor loading, power path, coolant path and heat rejection</strong> — are specified above the hardware roadmap rather than to the hardware of the day:
+          </p>
+
+          <div class="article-table-wrap">
+            <table class="article-table">
+              <thead>
+                <tr>
+                  <th>Envelope</th>
+                  <th>What the Latest AI Hardware Demands</th>
+                  <th>How the Prefabricated Building Module Answers It</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Floor loading</strong></td>
+                  <td>A fully populated liquid-cooled AI rack is roughly 1.5–2.0 tonnes on a footprint under 1 m², in continuous rows.</td>
+                  <td>The module deck is structural steel designed for rack layouts from the outset; load path from rack foot to beam to column to foundation. No raised-floor void to bridge.</td>
+                </tr>
+                <tr>
+                  <td><strong>Power path</strong></td>
+                  <td>100–200 kW per cabinet today, with roadmap pointing at 600 kW; higher-current busway, larger conductors.</td>
+                  <td>Power terminates at fixed interfaces on the module face. Uprating a hall means changing distribution inside modules — a factory-repeatable operation.</td>
+                </tr>
+                <tr>
+                  <td><strong>Coolant path</strong></td>
+                  <td>Direct-to-chip liquid cooling at 700–1,000 W per device, secondary loops and CDU capacity, near-zero leak tolerance.</td>
+                  <td>Primary headers, valved branches, CDU positions and manifold connections installed on a jig and pressure-tested as an assembly before shipment. Liquid-ready on day one.</td>
+                </tr>
+                <tr>
+                  <td><strong>Heat rejection</strong></td>
+                  <td>Every watt delivered must leave; plant capacity, not IT space, is the true constraint on density.</td>
+                  <td>The plant deck sits directly above the hall on its own structure, sized to the module grid below and extendable bay by bay as density rises.</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="article-callout">
+            <div class="article-callout-header">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              The Grid Apex Position
+            </div>
+            <p>
+              The campus is a <strong>permanent Japanese building</strong> — confirmed, conformity-reviewed, inspected and certified under the Building Standards Act, designed to the importance factor 1.5 that JDCC Tier 4 requires, on permanent foundations, financeable and insurable as real property — that happens to have been manufactured rather than constructed.
+            </p>
+            <p>
+              It is specified against the hardware roadmap rather than against today's hardware, on all four capacity envelopes, and it is designed so that the equipment inside can be replaced a generation at a time without the building being disturbed. It is delivered by an EPC contractor — <strong>PSG Construction</strong> — already ranked among the leaders in this exact scope and already building modular data centre capacity in Japan. <strong>Prefabrication is the delivery method. Permanence and capability are design requirements, and neither is traded away to obtain the schedule.</strong>
+            </p>
+          </div>
+        </section>
+
+        <!-- SECTION 12 -->
+        <section id="sec-12">
+          <h2><span class="section-num">12</span> Conclusion</h2>
+          <p>
+            Prefabricated modular delivery of AI data centres is no longer a question of technical feasibility. The thermal case is closed: liquid cooling at 700–1,000 W per accelerator ships as a factory-integrated, pressure-tested assembly. The structural case is closed in every major market, including Japan's importance-factor-1.5 standard. The certification case is closing fast through type approval in Japan, CSA in Canada, state certification in the United States, CPR in Europe and T/CIEP in China.
+          </p>
+          <p>
+            For a large AI campus in Japan, the <strong>two-level stacked data hall built from prefabricated building modules is therefore the point of maximum advantage</strong>: roughly double the megawatts per hectare, shorter vertical service runs, compartmentation given by the structure, and maintenance separated from operations — all within a structural form that the Japanese approval system has already accepted.
+          </p>
+
+          <div class="article-references">
+            <h3>Sources & Confidence</h3>
+            <p style="font-size:0.86rem;color:var(--text-secondary);">
+              Every footnoted reference, statistic, date, standard number and project credit was checked against primary sources on 22 September 2026. Claims fall into verified primary sources (market figures from Fortune Business Insights report 100504; Huawei 3D Data Centre; Daiwa House Module DPDC; NTT Facilities modular building method; NEXTDC S4 Sydney; Comfort Systems USA backlog; Japanese regulatory articles 68-10 to 68-12, Article 37, JIS G 3136, JDCC standards), photographic execution records (Plates 1–10 from live programmes executed by PSG Construction Sdn. Bhd.), and design intent targets for Project MIE.
+            </p>
+
+            <h3 style="margin-top:2rem;">References</h3>
+            <ul class="references-list">
+              <li class="reference-item">
+                <span class="reference-num">[1]</span>
+                <span>Fortune Business Insights, <em>Modular Data Center Market, 2025–2034</em> (Report 100504).</span>
+              </li>
+              <li class="reference-item">
+                <span class="reference-num">[2]</span>
+                <span>Multiplex, <em>Work commences on NEXTDC's 350MW Western Sydney Data Centre</em>.</span>
+              </li>
+              <li class="reference-item">
+                <span class="reference-num">[3]</span>
+                <span>大和ハウス工業, モジュール型データセンター商品「Module DPDC」販売開始, 8 December 2025.</span>
+              </li>
+              <li class="reference-item">
+                <span class="reference-num">[4]</span>
+                <span>NTTファシリティーズ, ハイパースケーラー向けデータセンターにおけるモジュール型建築手法の開発に着手, 1 July 2026.</span>
+              </li>
+              <li class="reference-item">
+                <span class="reference-num">[5]</span>
+                <span>Huawei 3D Data Centre, AIDC Industry Development Conference, Wuhu, 15 September 2026.</span>
+              </li>
+            </ul>
+          </div>
+        </section>
+
+        <!-- ORGANIZATIONS BLOCK -->
+        <div class="article-organizations">
+          <div class="org-card">
+            <h4>Grid Apex Inc.</h4>
+            <span class="org-url">gridapex.ai</span>
+            <p>Grid Apex designs, finances, and builds purpose-engineered AI-ready warm-shell data centers in Japan, delivering 100MW+ campuses with turnkey liquid cooling for hyperscalers and frontier AI laboratories.</p>
+          </div>
+          <div class="org-card">
+            <h4>PSG Group</h4>
+            <span class="org-url">psggroup.net</span>
+            <p>PSG Construction is a leading global modular data centre EPC contractor headquartered in Japan and Malaysia, specialized in high-tolerance site assembly, in-module MEP integration, and gigawatt-scale data hall delivery.</p>
+          </div>
+        </div>
+
+        <!-- ARTICLE FOOTER NAVIGATION -->
+        <div class="article-bottom-nav">
+          <a href="blog.html" class="btn-back-blog">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+            Back to All Articles
+          </a>
+          <a href="datacenters.html" class="btn-primary" style="padding:0.7rem 1.4rem;font-size:0.88rem;">
+            Explore Project MIE Campus &rarr;
+          </a>
+        </div>
+
+      </article>
+    </div>
+  </main>
+
+  <!-- ====== FOOTER ====== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="nav-brand">
+            <img src="assets/logo.png" alt="Grid Apex" style="width:36px;height:36px;" />
+            <span class="nav-brand-text">Grid<span>Apex</span></span>
+          </a>
+          <p data-i18n="footer.desc">Building AI-ready warm-shell data centers in Japan — engineered for the future of artificial intelligence.</p>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.company">Company</h4>
+          <a href="index.html#about" data-i18n="footer.about">About Us</a>
+          <a href="team.html">Leadership Team</a>
+          <a href="https://gridapex.co.jp" target="_blank" rel="noopener noreferrer" data-i18n="footer.japansite">Grid Apex Japan (co.jp) ↗</a>
+          <a href="#">Careers</a>
+          <a href="#">Press</a>
+          <a href="blog.html" class="active" data-i18n="footer.blog">Blog & Research</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.solutions">Solutions</h4>
+          <a href="solutions.html" data-i18n="footer.sol1">Warm Shell Leasing</a>
+          <a href="solutions.html" data-i18n="footer.sol2">Chilled Water Infrastructure</a>
+          <a href="solutions.html" data-i18n="footer.sol3">Prefab AI Factory</a>
+          <a href="calculator.html" data-i18n="footer.calc">Pollution Calculator</a>
+        </div>
+        <div class="footer-col">
+          <h4 data-i18n="footer.resources">Resources</h4>
+          <a href="assets/docs/GridApex_Prefab-Module-AIDC-Paper.pdf" target="_blank">Technical Whitepaper (PDF)</a>
+          <a href="#">Documentation</a>
+          <a href="#">Security</a>
+          <a href="index.html#contact" data-i18n="footer.contact">Contact</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span data-i18n="footer.copyright">&copy; 2026 Grid Apex Inc. All rights reserved.</span>
+        <span>
+          <a href="#" data-i18n="footer.privacy">Privacy</a> &nbsp;·&nbsp; <a href="#" data-i18n="footer.terms">Terms</a>
+        </span>
+      </div>
+    </div>
+  </footer>
+
+</div><!-- /.page-wrapper -->
+
+<script src="main.js"></script>
+<script>
+  // Reading Progress Bar
+  window.addEventListener('scroll', () => {
+    const docElem = document.documentElement;
+    const docBody = document.body;
+    const scrollTop = docElem.scrollTop || docBody.scrollTop;
+    const scrollBottom = (docElem.scrollHeight || docBody.scrollHeight) - window.innerHeight;
+    const scrollPercent = scrollBottom > 0 ? (scrollTop / scrollBottom) * 100 : 0;
+    const bar = document.getElementById('readingProgress');
+    if (bar) bar.style.width = scrollPercent + '%';
+  });
+
+  // Table of Contents Scrollspy
+  const sections = document.querySelectorAll('article section[id]');
+  const tocLinks = document.querySelectorAll('.toc-link');
+
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollY = window.pageYOffset;
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 150;
+      const sectionHeight = section.offsetHeight;
+      if (scrollY >= sectionTop && scrollY < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+
+    tocLinks.forEach(link => {
+      link.classList.remove('active');
+      if (link.getAttribute('href') === `#${current}`) {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
+</body>
+</html>
